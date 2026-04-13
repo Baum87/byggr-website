@@ -7,10 +7,12 @@
   <title>Byggr — Websites. Data. AI-tools.</title>
   <link rel="canonical" href="https://byggr.nl/">
 
-  <!-- Fonts (Sprint 2: vervangen door definitieve keuze) -->
+  <!-- Fonts — Cabinet Grotesk (Fontshare) + Inter + IBM Plex Mono -->
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="src/css/reset.css">
@@ -33,9 +35,7 @@
     <nav class="nav" aria-label="Hoofdnavigatie">
       <div class="container nav__inner">
 
-        <a href="#" class="nav__logo" aria-label="Byggr — naar boven">
-          Byggr
-        </a>
+        <a href="#" class="nav__logo" aria-label="Byggr — naar boven">BYGGR</a>
 
         <ul class="nav__links" role="list">
           <li><a href="#diensten" class="nav__link">Diensten</a></li>
@@ -79,13 +79,15 @@
 
         <span class="label reveal">Twente · Web · Data · AI</span>
 
-        <h1 class="hero__title reveal" id="hero-title">
-          <!-- PLACEHOLDER — copywriter levert definitieve tagline Sprint 2 -->
-          Van schets<br>naar werkend.
+        <h1 class="hero__title" id="hero-title" aria-label="Van schets naar werkend.">
+          <span class="word-reveal"><span>Van</span></span>
+          <span class="word-reveal"><span>schets</span></span>
+          <br aria-hidden="true">
+          <span class="word-reveal"><span>naar</span></span>
+          <span class="word-reveal"><span class="hero__title-accent">werkend.</span></span>
         </h1>
 
         <p class="hero__sub reveal">
-          <!-- PLACEHOLDER — subline Sprint 2 -->
           Ik bouw websites, dashboards en AI-tools voor ondernemers
           die willen dat het gewoon werkt.
         </p>
@@ -93,6 +95,11 @@
         <a href="#portfolio" class="btn btn--primary reveal">
           Bekijk mijn werk
         </a>
+
+        <div class="hero__scroll reveal" aria-hidden="true">
+          <span class="hero__scroll-line"></span>
+          <span>Scroll</span>
+        </div>
 
       </div>
     </section>
@@ -347,7 +354,7 @@
   <footer class="footer" role="contentinfo">
     <div class="container footer__inner">
 
-      <span class="footer__logo">Byggr</span>
+      <span class="footer__logo">BYGGR</span>
 
       <nav class="footer__nav" aria-label="Footer navigatie">
         <a href="#diensten">Diensten</a>

@@ -1,42 +1,72 @@
 .portfolio {
   border-bottom: 1px solid var(--color-border);
 }
+
 .portfolio__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-4);
 }
+
 .project-card {
+  background-color: var(--color-bg-surface);
   border: 1px solid var(--color-border);
   padding: var(--space-8);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  transition: border-color var(--transition-base), background-color var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color var(--transition-base),
+    background-color var(--transition-base),
+    transform var(--transition-base);
 }
 .project-card:hover {
-  border-color: rgba(232, 228, 223, 0.3);
-  background-color: var(--color-bg-surface);
+  border-color: var(--color-border-accent);
+  background-color: var(--color-bg-raised);
+  transform: translateY(-2px);
 }
+
+/* Nummer — groot, op de achtergrond */
+.project-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .project-card h3 {
   font-family: var(--font-display);
   font-size: var(--text-xl);
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  transition: color var(--transition-fast);
 }
+.project-card:hover h3 { color: var(--color-accent); }
+
 .project-card p {
   color: var(--color-text-muted);
   font-size: var(--text-sm);
-  line-height: 1.7;
+  line-height: var(--leading-relaxed);
   flex: 1;
 }
+
 .project-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--color-text-muted);
-  transition: color var(--transition-base);
-  margin-top: auto;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  transition: color var(--transition-fast), gap var(--transition-fast);
+  margin-top: var(--space-2);
 }
-.project-card__link:hover { color: var(--color-text); }
+.project-card:hover .project-card__link {
+  color: var(--color-accent);
+  gap: var(--space-3);
+}
 
 @media (max-width: 640px) {
   .portfolio__grid { grid-template-columns: 1fr; }

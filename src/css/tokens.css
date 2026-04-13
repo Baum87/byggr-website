@@ -1,24 +1,38 @@
 /* ============================================================
    DESIGN TOKENS — Byggr.nl
-   Pas alleen hier aan. Nooit hardcoded elders.
-   Kleuren en typografie worden vastgesteld in Sprint 2.
+   Sprint 2 definitief — 2026-04-13
    ============================================================ */
 
 :root {
-  /* Kleuren — placeholder, Sprint 2 definitief */
-  --color-bg:          #111111;
-  --color-bg-surface:  #1a1a1a;
-  --color-text:        #e8e4df;
-  --color-text-muted:  rgba(232, 228, 223, 0.5);
-  --color-accent:      #TBD;      /* Sprint 2 */
-  --color-border:      rgba(232, 228, 223, 0.1);
 
-  /* Typografie — placeholder, Sprint 2 definitief */
-  --font-display: 'Space Grotesk', sans-serif;  /* TBD Sprint 2 */
-  --font-body:    'Inter', sans-serif;           /* TBD Sprint 2 */
+  /* ── Donker palet (standaard) ─────────────────────────────── */
+  --color-bg:             #0D0D0B;
+  --color-bg-surface:     #161614;
+  --color-bg-raised:      #1E1E1B;
+  --color-text:           #ECEAE4;
+  --color-text-muted:     rgba(236, 234, 228, 0.45);
+  --color-text-disabled:  rgba(236, 234, 228, 0.2);
+  --color-accent:         #D4962A;
+  --color-accent-dim:     rgba(212, 150, 42, 0.12);
+  --color-border:         rgba(236, 234, 228, 0.08);
+  --color-border-accent:  rgba(212, 150, 42, 0.35);
+
+  /* ── Licht palet (Over-sectie) ────────────────────────────── */
+  --color-light-bg:       #F2EDE4;
+  --color-light-surface:  #EAE4DA;
+  --color-light-text:     #0D0D0B;
+  --color-light-muted:    rgba(13, 13, 11, 0.5);
+  --color-light-border:   rgba(13, 13, 11, 0.1);
+
+  /* ── Contact palet (warm mid-toon) ───────────────────────── */
+  --color-contact-bg:     #131210;
+
+  /* ── Typografie ───────────────────────────────────────────── */
+  --font-display: 'Cabinet Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
   --font-mono:    'IBM Plex Mono', monospace;
 
-  /* Schaal */
+  /* ── Tekstschaal ──────────────────────────────────────────── */
   --text-xs:   0.75rem;
   --text-sm:   0.875rem;
   --text-base: 1rem;
@@ -28,8 +42,23 @@
   --text-3xl:  2rem;
   --text-4xl:  2.75rem;
   --text-5xl:  3.75rem;
+  --text-6xl:  5rem;
+  --text-7xl:  6.5rem;
 
-  /* Spacing */
+  /* ── Letter-spacing ──────────────────────────────────────── */
+  --tracking-tight:  -0.03em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.06em;
+  --tracking-wider:   0.12em;
+
+  /* ── Line-height ─────────────────────────────────────────── */
+  --leading-none:    1;
+  --leading-tight:   1.1;
+  --leading-snug:    1.3;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+
+  /* ── Spacing ─────────────────────────────────────────────── */
   --space-1:  0.25rem;
   --space-2:  0.5rem;
   --space-3:  0.75rem;
@@ -40,12 +69,26 @@
   --space-16: 4rem;
   --space-24: 6rem;
   --space-32: 8rem;
+  --space-48: 12rem;
 
-  /* Layout */
-  --container-max: 1200px;
+  /* ── Layout ──────────────────────────────────────────────── */
+  --container-max:     1200px;
+  --container-narrow:  780px;
   --container-padding: var(--space-6);
 
-  /* Animaties */
-  --transition-base: 200ms ease;
-  --transition-slow: 400ms ease;
+  /* ── Animaties ───────────────────────────────────────────── */
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:    cubic-bezier(0.4, 0, 0.2, 1);
+
+  --transition-fast:   150ms var(--ease-out-expo);
+  --transition-base:   250ms var(--ease-out-expo);
+  --transition-slow:   450ms var(--ease-out-expo);
+  --transition-reveal: 700ms var(--ease-out-expo);
+
+  /* ── Z-index ─────────────────────────────────────────────── */
+  --z-base:    0;
+  --z-raised:  10;
+  --z-overlay: 100;
+  --z-modal:   200;
+
 }
