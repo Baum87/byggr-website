@@ -1,0 +1,22 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/public/uploads"
+
+collections:
+  - name: "portfolio"
+    label: "Portfolio projecten"
+    folder: "portfolio"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Projectnaam", name: "title", widget: "string" }
+      - { label: "Type", name: "type", widget: "string", hint: "bijv. Website, Dashboard, AI-tool" }
+      - { label: "Status", name: "status", widget: "select", options: ["Live", "In uitvoering", "Intern"] }
+      - { label: "Beschrijving (kort)", name: "summary", widget: "string" }
+      - { label: "Beschrijving (uitgebreid)", name: "body", widget: "markdown" }
+      - { label: "Live URL", name: "url", widget: "string", required: false }
+      - { label: "Publicatiedatum", name: "date", widget: "datetime" }
+      - { label: "Uitgelicht", name: "featured", widget: "boolean", default: false }

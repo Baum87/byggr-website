@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Byggr — Remco Eissink. Ik bouw websites, dashboards en AI-tools voor ondernemers die willen dat het gewoon werkt.">
+  <title>Byggr — Websites. Data. AI-tools.</title>
+  <link rel="canonical" href="https://byggr.nl/">
+
+  <!-- Fonts (Sprint 2: vervangen door definitieve keuze) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="src/css/reset.css">
+  <link rel="stylesheet" href="src/css/tokens.css">
+  <link rel="stylesheet" href="src/css/base.css">
+  <link rel="stylesheet" href="src/css/sections/nav.css">
+  <link rel="stylesheet" href="src/css/sections/hero.css">
+  <link rel="stylesheet" href="src/css/sections/diensten.css">
+  <link rel="stylesheet" href="src/css/sections/over.css">
+  <link rel="stylesheet" href="src/css/sections/portfolio.css">
+  <link rel="stylesheet" href="src/css/sections/contact.css">
+  <link rel="stylesheet" href="src/css/sections/footer.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATIE — sticky, transparant → solid bij scrollen
+       ============================================================ -->
+  <header role="banner">
+    <nav class="nav" aria-label="Hoofdnavigatie">
+      <div class="container nav__inner">
+
+        <a href="#" class="nav__logo" aria-label="Byggr — naar boven">
+          Byggr
+        </a>
+
+        <ul class="nav__links" role="list">
+          <li><a href="#diensten" class="nav__link">Diensten</a></li>
+          <li><a href="#over" class="nav__link">Over</a></li>
+          <li><a href="#portfolio" class="nav__link">Portfolio</a></li>
+          <li><a href="#contact" class="nav__link">Contact</a></li>
+        </ul>
+
+        <button
+          class="nav__hamburger"
+          aria-label="Menu openen"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="nav__mobile-menu" role="dialog" aria-label="Navigatiemenu" aria-modal="true">
+      <ul role="list">
+        <li><a href="#diensten" class="nav__mobile-link">Diensten</a></li>
+        <li><a href="#over" class="nav__mobile-link">Over</a></li>
+        <li><a href="#portfolio" class="nav__mobile-link">Portfolio</a></li>
+        <li><a href="#contact" class="nav__mobile-link">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         HERO
+         Tagline — subline — 1 CTA. Geen foto's.
+         ============================================================ -->
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+
+        <span class="label reveal">Twente · Web · Data · AI</span>
+
+        <h1 class="hero__title reveal" id="hero-title">
+          <!-- PLACEHOLDER — copywriter levert definitieve tagline Sprint 2 -->
+          Van schets<br>naar werkend.
+        </h1>
+
+        <p class="hero__sub reveal">
+          <!-- PLACEHOLDER — subline Sprint 2 -->
+          Ik bouw websites, dashboards en AI-tools voor ondernemers
+          die willen dat het gewoon werkt.
+        </p>
+
+        <a href="#portfolio" class="btn btn--primary reveal">
+          Bekijk mijn werk
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DIENSTEN
+         Drie blokken naast/onder elkaar. Bezoeker kiest zelf.
+         ============================================================ -->
+    <section id="diensten" class="diensten" aria-labelledby="diensten-titel">
+      <div class="container">
+
+        <span class="label reveal">Wat ik bouw</span>
+        <h2 class="section-title reveal" id="diensten-titel">Drie manieren om te helpen</h2>
+
+        <div class="diensten__grid">
+
+          <article class="dienst-card reveal" aria-labelledby="dienst-web">
+            <span class="dienst-card__nummer" aria-hidden="true">01</span>
+            <h3 id="dienst-web">Websites</h3>
+            <p>
+              Professionele sites die je zelf kunt beheren. Snel, veilig,
+              geen maandelijkse bureaukosten.
+            </p>
+            <ul aria-label="Voorbeelden">
+              <li>Portfolio- en bedrijfssites</li>
+              <li>Landing pages</li>
+              <li>Calculators &amp; tools (zoals afbouwr.nl)</li>
+            </ul>
+          </article>
+
+          <article class="dienst-card reveal" aria-labelledby="dienst-data">
+            <span class="dienst-card__nummer" aria-hidden="true">02</span>
+            <h3 id="dienst-data">BI &amp; Data</h3>
+            <p>
+              Dashboards en rapportages die inzicht geven. Van ruwe data
+              naar beslissingen die je kunt uitleggen.
+            </p>
+            <ul aria-label="Voorbeelden">
+              <li>Power BI dashboards</li>
+              <li>Excel-automatisering</li>
+              <li>Python/SQL dataflows</li>
+            </ul>
+          </article>
+
+          <article class="dienst-card reveal" aria-labelledby="dienst-ai">
+            <span class="dienst-card__nummer" aria-hidden="true">03</span>
+            <h3 id="dienst-ai">AI-tools</h3>
+            <p>
+              Praktische toepassingen van AI die jouw proces sneller maken.
+              Geen hype, wel resultaat.
+            </p>
+            <ul aria-label="Voorbeelden">
+              <li>Automatisering via Make/Zapier</li>
+              <li>Custom GPT-workflows</li>
+              <li>AI-assisted documentverwerking</li>
+            </ul>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         OVER
+         ============================================================ -->
+    <section id="over" class="over" aria-labelledby="over-titel">
+      <div class="container over__inner">
+
+        <div class="over__tekst">
+          <span class="label reveal">Over mij</span>
+          <h2 class="section-title reveal" id="over-titel">
+            <!-- PLACEHOLDER — copywriter Sprint 2 -->
+            Gebouwd,<br>niet bedacht.
+          </h2>
+          <p class="reveal">
+            <!-- PLACEHOLDER — tekst Sprint 2 -->
+            8 jaar in de bouwsector bij Eissink. Ik begrijp hoe MKB van
+            binnenuit werkt — en ik bouw tools die dagelijks gebruikt worden,
+            niet alleen indruk maken in een presentatie.
+          </p>
+          <p class="reveal">
+            Geen bureau, geen overhead, geen account manager. Je praat direct
+            met de bouwer. Analytisch, methodisch, van A tot Z.
+          </p>
+          <a href="#contact" class="btn btn--secondary reveal">Plan een gesprek</a>
+        </div>
+
+        <!-- Visueel element — Sprint 2: data/code-visual of typografisch blok -->
+        <div class="over__visual reveal" aria-hidden="true">
+          <div class="stat-block">
+            <span class="stat-block__getal">8</span>
+            <span class="stat-block__label">jaar bouwsector</span>
+          </div>
+          <div class="stat-block">
+            <span class="stat-block__getal">4+</span>
+            <span class="stat-block__label">live projecten</span>
+          </div>
+          <div class="stat-block">
+            <span class="stat-block__getal">1</span>
+            <span class="stat-block__label">aanspreekpunt</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PORTFOLIO
+         Preview-kaarten. Detailpagina's zijn losse HTML-bestanden.
+         ============================================================ -->
+    <section id="portfolio" class="portfolio" aria-labelledby="portfolio-titel">
+      <div class="container">
+
+        <span class="label reveal">Werk</span>
+        <h2 class="section-title reveal" id="portfolio-titel">Gebouwde projecten</h2>
+
+        <div class="portfolio__grid">
+
+          <!-- Project 1 -->
+          <article class="project-card reveal" aria-labelledby="project-afbouwr">
+            <div class="project-card__meta">
+              <span class="label">Calculator · Webapplicatie</span>
+            </div>
+            <h3 id="project-afbouwr">afbouwr.nl</h3>
+            <p>Calculatortool voor de afbouwsector. Vakspecifieke berekeningen, direct bruikbaar op de bouw.</p>
+            <a href="/portfolio/afbouwr.html" class="project-card__link" aria-label="Bekijk project afbouwr.nl">
+              Bekijk project →
+            </a>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card reveal" aria-labelledby="project-beentels">
+            <div class="project-card__meta">
+              <span class="label">Website</span>
+            </div>
+            <h3 id="project-beentels">beentelskabaal.nl</h3>
+            <p>Website gebouwd met AI-assisted workflow. Van briefing naar live in record tempo.</p>
+            <a href="/portfolio/beentelskabaal.html" class="project-card__link" aria-label="Bekijk project beentelskabaal.nl">
+              Bekijk project →
+            </a>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card reveal" aria-labelledby="project-kenkhuis">
+            <div class="project-card__meta">
+              <span class="label">Website · In uitvoering</span>
+            </div>
+            <h3 id="project-kenkhuis">Kenkhuisprojecten</h3>
+            <p>Projectsite voor aannemer. Overzichtelijk, beheersbaar, klantgericht.</p>
+            <a href="/portfolio/kenkhuisprojecten.html" class="project-card__link" aria-label="Bekijk project Kenkhuisprojecten">
+              Bekijk project →
+            </a>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card reveal" aria-labelledby="project-bi">
+            <div class="project-card__meta">
+              <span class="label">Dashboard · Intern</span>
+            </div>
+            <h3 id="project-bi">BI Dashboard Eissink</h3>
+            <p>Intern Power BI dashboard voor operationele sturing. Dagelijks in gebruik door het MT.</p>
+            <a href="/portfolio/bi-dashboard-eissink.html" class="project-card__link" aria-label="Bekijk project BI Dashboard Eissink">
+              Bekijk project →
+            </a>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT
+         Netlify Forms — geen externe dienst nodig.
+         ============================================================ -->
+    <section id="contact" class="contact" aria-labelledby="contact-titel">
+      <div class="container contact__inner">
+
+        <div class="contact__intro">
+          <span class="label reveal">Contact</span>
+          <h2 class="section-title reveal" id="contact-titel">
+            <!-- PLACEHOLDER — copywriter Sprint 2 -->
+            Iets te bouwen?
+          </h2>
+          <p class="reveal">
+            Vertel me wat je wil aanpakken. Ik kijk of ik kan helpen.
+          </p>
+        </div>
+
+        <form
+          class="contact__form reveal"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          aria-label="Contactformulier"
+          novalidate
+        >
+          <!-- Honeypot anti-spam -->
+          <p hidden>
+            <label>Niet invullen: <input name="bot-field"></label>
+          </p>
+
+          <div class="form-field">
+            <label for="naam">Naam</label>
+            <input
+              type="text"
+              id="naam"
+              name="naam"
+              autocomplete="name"
+              required
+              aria-required="true"
+            >
+          </div>
+
+          <div class="form-field">
+            <label for="email">E-mailadres</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              required
+              aria-required="true"
+            >
+          </div>
+
+          <div class="form-field">
+            <label for="bericht">Bericht</label>
+            <textarea
+              id="bericht"
+              name="bericht"
+              rows="5"
+              required
+              aria-required="true"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary">Versturen</button>
+
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+
+      <span class="footer__logo">Byggr</span>
+
+      <nav class="footer__nav" aria-label="Footer navigatie">
+        <a href="#diensten">Diensten</a>
+        <a href="#over">Over</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <p class="footer__copy">
+        &copy; <span id="current-year">2026</span> Byggr — Remco Eissink, Twente
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="src/js/main.js" defer></script>
+  <script src="src/js/animations.js" defer></script>
+  <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>
