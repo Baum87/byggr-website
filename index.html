@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Byggr — Remco Eissink. Ik bouw websites, dashboards en AI-tools voor ondernemers die willen dat het gewoon werkt.">
-  <title>Byggr — Websites. Data. AI-tools.</title>
+  <meta name="description" content="Byggr — Remco Baumeister. Websites, dashboards en AI-tools voor MKB-ondernemers. Eenvoudig, werkend, op tijd.">
+  <title>Byggr — Websites. Data. AI. Hosting.</title>
   <link rel="canonical" href="https://byggr.nl/">
+  <!-- Theme: direct toepassen om flash te voorkomen -->
+  <script>if(localStorage.getItem('byggr-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
 
-  <!-- Fonts — Cabinet Grotesk (Fontshare) + Inter + IBM Plex Mono -->
-  <link rel="preconnect" href="https://api.fontshare.com">
-  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet">
+  <!-- Fonts: Bebas Neue (display) + Barlow Condensed (koppen) + Space Mono (mono/nav) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="src/css/reset.css">
@@ -29,38 +31,43 @@
 <body>
 
   <!-- ============================================================
-       NAVIGATIE — sticky, transparant → solid bij scrollen
+       NAVIGATIE
        ============================================================ -->
   <header role="banner">
     <nav class="nav" aria-label="Hoofdnavigatie">
       <div class="container nav__inner">
 
-        <a href="#" class="nav__logo" aria-label="Byggr — naar boven">BYGGR</a>
+        <a href="#" class="nav__logo" aria-label="Byggr — naar boven">
+          <span class="nav__logo-mark" aria-hidden="true">▣</span> BYGGR
+        </a>
 
         <ul class="nav__links" role="list">
-          <li><a href="#diensten" class="nav__link">Diensten</a></li>
+          <li><a href="#services" class="nav__link">Services</a></li>
           <li><a href="#over" class="nav__link">Over</a></li>
           <li><a href="#portfolio" class="nav__link">Portfolio</a></li>
           <li><a href="#contact" class="nav__link">Contact</a></li>
         </ul>
 
-        <button
-          class="nav__hamburger"
-          aria-label="Menu openen"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </button>
+        <div class="nav__actions">
+          <button class="nav__theme-toggle" id="theme-toggle" aria-label="Wisselen naar donker thema">◐</button>
+          <button
+            class="nav__hamburger"
+            aria-label="Menu openen"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
 
       </div>
     </nav>
 
     <div id="mobile-menu" class="nav__mobile-menu" role="dialog" aria-label="Navigatiemenu" aria-modal="true">
       <ul role="list">
-        <li><a href="#diensten" class="nav__mobile-link">Diensten</a></li>
+        <li><a href="#services" class="nav__mobile-link">Services</a></li>
         <li><a href="#over" class="nav__mobile-link">Over</a></li>
         <li><a href="#portfolio" class="nav__mobile-link">Portfolio</a></li>
         <li><a href="#contact" class="nav__mobile-link">Contact</a></li>
@@ -71,32 +78,19 @@
   <main id="main-content">
 
     <!-- ============================================================
-         HERO
-         Tagline — subline — 1 CTA. Geen foto's.
+         SECTIE 1 — HERO
          ============================================================ -->
     <section id="hero" class="hero" aria-labelledby="hero-title">
       <div class="container hero__inner">
 
-        <span class="label reveal">Twente · Web · Data · AI</span>
-
-        <h1 class="hero__title" id="hero-title" aria-label="Van schets naar werkend.">
-          <span class="word-reveal"><span>Van</span></span>
-          <span class="word-reveal"><span>schets</span></span>
-          <br aria-hidden="true">
-          <span class="word-reveal"><span>naar</span></span>
-          <span class="word-reveal"><span class="hero__title-accent">werkend.</span></span>
+        <h1 class="hero__title" id="hero-title" aria-label="Web. Data. AI. Hosting.">
+          <span class="word-reveal"><span><b>WEB.</b></span></span><br>
+          <span class="word-reveal"><span><b>DATA.</b></span></span><br>
+          <span class="word-reveal"><span><b>AI.</b></span></span><br>
+          <span class="word-reveal"><span><b>HOSTING.</b></span></span><br>
         </h1>
 
-        <p class="hero__sub reveal">
-          Ik bouw websites, dashboards en AI-tools voor ondernemers
-          die willen dat het gewoon werkt.
-        </p>
-
-        <a href="#portfolio" class="btn btn--primary reveal">
-          Bekijk mijn werk
-        </a>
-
-        <div class="hero__scroll reveal" aria-hidden="true">
+        <div class="hero__scroll reveal-fade" aria-hidden="true">
           <span class="hero__scroll-line"></span>
           <span>Scroll</span>
         </div>
@@ -105,102 +99,175 @@
     </section>
 
     <!-- ============================================================
-         DIENSTEN
-         Drie blokken naast/onder elkaar. Bezoeker kiest zelf.
+         SECTIE 2 — DIENSTEN SHOWCASE
+         Donkere achtergrond, horizontale marquee met afbeeldingen
          ============================================================ -->
-    <section id="diensten" class="diensten" aria-labelledby="diensten-titel">
-      <div class="container">
+    <section id="services" class="showcase" aria-label="Services">
 
-        <span class="label reveal">Wat ik bouw</span>
-        <h2 class="section-title reveal" id="diensten-titel">Drie manieren om te helpen</h2>
+      <div class="showcase__header container">
+        <span class="section-label reveal-fade">Services</span>
+        <h2 class="section-title reveal">Digitaal geregeld.</h2>
+      </div>
 
-        <div class="diensten__grid">
+      <!-- Marquee: 3 kaarten + 3 duplicaten voor seamless loop -->
+      <div class="showcase__stage">
+        <div class="showcase__track">
 
-          <article class="dienst-card reveal" aria-labelledby="dienst-web">
-            <span class="dienst-card__nummer" aria-hidden="true">01</span>
-            <h3 id="dienst-web">Websites</h3>
-            <p>
-              Professionele sites die je zelf kunt beheren. Snel, veilig,
-              geen maandelijkse bureaukosten.
-            </p>
-            <ul aria-label="Voorbeelden">
-              <li>Portfolio- en bedrijfssites</li>
-              <li>Landing pages</li>
-              <li>Calculators &amp; tools (zoals afbouwr.nl)</li>
-            </ul>
+          <!-- Set 1 — origineel -->
+          <article class="showcase__card">
+            <div class="showcase__img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=640&h=400&fit=crop&q=80"
+                alt="Website ontwikkeling"
+                loading="lazy"
+              >
+            </div>
+            <div class="showcase__card-body">
+              <span class="showcase__card-num">01</span>
+              <span class="showcase__card-title">Websites</span>
+              <span class="showcase__card-sub">Snel. Helder. Van jou.</span>
+            </div>
           </article>
 
-          <article class="dienst-card reveal" aria-labelledby="dienst-data">
-            <span class="dienst-card__nummer" aria-hidden="true">02</span>
-            <h3 id="dienst-data">BI &amp; Data</h3>
-            <p>
-              Dashboards en rapportages die inzicht geven. Van ruwe data
-              naar beslissingen die je kunt uitleggen.
-            </p>
-            <ul aria-label="Voorbeelden">
-              <li>Power BI dashboards</li>
-              <li>Excel-automatisering</li>
-              <li>Python/SQL dataflows</li>
-            </ul>
+          <article class="showcase__card">
+            <div class="showcase__img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=640&h=400&fit=crop&q=80"
+                alt="BI en Data dashboards"
+                loading="lazy"
+              >
+            </div>
+            <div class="showcase__card-body">
+              <span class="showcase__card-num">02</span>
+              <span class="showcase__card-title">BI &amp; Data</span>
+              <span class="showcase__card-sub">Cijfers die iets zeggen.</span>
+            </div>
           </article>
 
-          <article class="dienst-card reveal" aria-labelledby="dienst-ai">
-            <span class="dienst-card__nummer" aria-hidden="true">03</span>
-            <h3 id="dienst-ai">AI-tools</h3>
-            <p>
-              Praktische toepassingen van AI die jouw proces sneller maken.
-              Geen hype, wel resultaat.
-            </p>
-            <ul aria-label="Voorbeelden">
-              <li>Automatisering via Make/Zapier</li>
-              <li>Custom GPT-workflows</li>
-              <li>AI-assisted documentverwerking</li>
-            </ul>
+          <article class="showcase__card">
+            <div class="showcase__img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=640&h=400&fit=crop&q=80"
+                alt="AI tools en automatisering"
+                loading="lazy"
+              >
+            </div>
+            <div class="showcase__card-body">
+              <span class="showcase__card-num">03</span>
+              <span class="showcase__card-title">AI-tools</span>
+              <span class="showcase__card-sub">Minder herhaling. Meer resultaat.</span>
+            </div>
+          </article>
+
+          <article class="showcase__card">
+            <div class="showcase__img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=640&h=400&fit=crop&q=80"
+                alt="Hosting en online infrastructuur"
+                loading="lazy"
+              >
+            </div>
+            <div class="showcase__card-body">
+              <span class="showcase__card-num">04</span>
+              <span class="showcase__card-title">Hosting</span>
+              <span class="showcase__card-sub">Altijd online. Geen zorgen.</span>
+            </div>
+          </article>
+
+          <!-- Set 2 — duplicaat voor seamless loop -->
+          <article class="showcase__card" aria-hidden="true">
+            <div class="showcase__img-wrap">
+              <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=640&h=400&fit=crop&q=80" alt="" loading="lazy">
+            </div>
+            <div class="showcase__card-body">
+              <span class="showcase__card-num">01</span>
+              <span class="showcase__card-title">Websites</span>
+              <span class="showcase__card-sub">Snel. Helder. Van jou.</span>
+            </div>
+          </article>
+
+          <article class="showcase__card" aria-hidden="true">
+            <div class="showcase__img-wrap">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=640&h=400&fit=crop&q=80" alt="" loading="lazy">
+            </div>
+            <div class="showcase__card-body">
+              <span class="showcase__card-num">02</span>
+              <span class="showcase__card-title">BI &amp; Data</span>
+              <span class="showcase__card-sub">Cijfers die iets zeggen.</span>
+            </div>
+          </article>
+
+          <article class="showcase__card" aria-hidden="true">
+            <div class="showcase__img-wrap">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=640&h=400&fit=crop&q=80" alt="" loading="lazy">
+            </div>
+            <div class="showcase__card-body">
+              <span class="showcase__card-num">03</span>
+              <span class="showcase__card-title">AI-tools</span>
+              <span class="showcase__card-sub">Minder herhaling. Meer resultaat.</span>
+            </div>
+          </article>
+
+          <article class="showcase__card" aria-hidden="true">
+            <div class="showcase__img-wrap">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=640&h=400&fit=crop&q=80" alt="" loading="lazy">
+            </div>
+            <div class="showcase__card-body">
+              <span class="showcase__card-num">04</span>
+              <span class="showcase__card-title">Hosting</span>
+              <span class="showcase__card-sub">Altijd online. Geen zorgen.</span>
+            </div>
           </article>
 
         </div>
-
       </div>
+
     </section>
 
     <!-- ============================================================
-         OVER
+         SECTIE 3 — OVER / BRAND STATEMENT
          ============================================================ -->
     <section id="over" class="over" aria-labelledby="over-titel">
       <div class="container over__inner">
 
-        <div class="over__tekst">
-          <span class="label reveal">Over mij</span>
-          <h2 class="section-title reveal" id="over-titel">
-            <!-- PLACEHOLDER — copywriter Sprint 2 -->
-            Gebouwd,<br>niet bedacht.
-          </h2>
+        <span class="section-label reveal-fade">Over</span>
+        <h2 class="section-title reveal" id="over-titel">Zo werkt het.</h2>
+
+        <div class="over__body">
           <p class="reveal">
-            <!-- PLACEHOLDER — tekst Sprint 2 -->
-            8 jaar in de bouwsector bij Eissink. Ik begrijp hoe MKB van
-            binnenuit werkt — en ik bouw tools die dagelijks gebruikt worden,
-            niet alleen indruk maken in een presentatie.
+            Geen bureau. Geen team. Één aanspreekpunt.
           </p>
           <p class="reveal">
-            Geen bureau, geen overhead, geen account manager. Je praat direct
-            met de bouwer. Analytisch, methodisch, van A tot Z.
+            Iemand die luistert, begrijpt wat je nodig hebt, en het gewoon regelt —
+            eenvoudig, zonder omwegen. Websites, dashboards, AI-tools, hosting.
+            <strong>Alles wat digitaal moet werken, maar dat nog niet doet.</strong>
           </p>
-          <a href="#contact" class="btn btn--secondary reveal">Plan een gesprek</a>
+          <p class="reveal">
+            Betrouwbaar. Hands-on. Op tijd.
+          </p>
         </div>
 
-        <!-- Visueel element — Sprint 2: data/code-visual of typografisch blok -->
-        <div class="over__visual reveal" aria-hidden="true">
+        <div class="over__stats reveal-scale">
           <div class="stat-block">
             <span class="stat-block__getal">8</span>
-            <span class="stat-block__label">jaar bouwsector</span>
+            <span class="stat-block__label">
+              <span class="stat-block__label-default">jaar werkervaring</span>
+              <span class="stat-block__label-hover">dag in, dag uit</span>
+            </span>
           </div>
           <div class="stat-block">
             <span class="stat-block__getal">4+</span>
-            <span class="stat-block__label">live projecten</span>
+            <span class="stat-block__label">
+              <span class="stat-block__label-default">live projecten</span>
+              <span class="stat-block__label-hover">live. nu.</span>
+            </span>
           </div>
           <div class="stat-block">
             <span class="stat-block__getal">1</span>
-            <span class="stat-block__label">aanspreekpunt</span>
+            <span class="stat-block__label">
+              <span class="stat-block__label-default">aanspreekpunt</span>
+              <span class="stat-block__label-hover">direct contact</span>
+            </span>
           </div>
         </div>
 
@@ -208,63 +275,95 @@
     </section>
 
     <!-- ============================================================
-         PORTFOLIO
-         Preview-kaarten. Detailpagina's zijn losse HTML-bestanden.
+         SECTIE 4 — PORTFOLIO
+         Grid met afbeeldingen, per-project accentkleur
          ============================================================ -->
     <section id="portfolio" class="portfolio" aria-labelledby="portfolio-titel">
       <div class="container">
 
-        <span class="label reveal">Werk</span>
-        <h2 class="section-title reveal" id="portfolio-titel">Gebouwde projecten</h2>
+        <span class="section-label reveal-fade">Cases</span>
+        <h2 class="section-title reveal" id="portfolio-titel">Live gegaan.</h2>
 
         <div class="portfolio__grid">
 
-          <!-- Project 1 -->
-          <article class="project-card reveal" aria-labelledby="project-afbouwr">
-            <div class="project-card__meta">
-              <span class="label">Calculator · Webapplicatie</span>
+          <article class="project-card reveal-scale" aria-labelledby="project-afbouwr">
+            <div class="project-card__img">
+              <img
+                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=450&fit=crop&q=80"
+                alt="afbouwr.nl — calculator voor de bouwsector"
+                loading="lazy"
+              >
             </div>
-            <h3 id="project-afbouwr">afbouwr.nl</h3>
-            <p>Calculatortool voor de afbouwsector. Vakspecifieke berekeningen, direct bruikbaar op de bouw.</p>
-            <a href="/portfolio/afbouwr.html" class="project-card__link" aria-label="Bekijk project afbouwr.nl">
-              Bekijk project →
-            </a>
+            <div class="project-card__content">
+              <div class="project-card__meta">
+                <span class="label">Calculator · Webapplicatie</span>
+              </div>
+              <h3 id="project-afbouwr">afbouwr.nl</h3>
+              <p>Calculatortool voor de afbouwsector. Vakspecifieke berekeningen, direct bruikbaar in het veld.</p>
+              <a href="/portfolio/afbouwr.html" class="project-card__link" aria-label="Bekijk project afbouwr.nl">
+                Bekijk project →
+              </a>
+            </div>
           </article>
 
-          <!-- Project 2 -->
-          <article class="project-card reveal" aria-labelledby="project-beentels">
-            <div class="project-card__meta">
-              <span class="label">Website</span>
+          <article class="project-card reveal-scale" aria-labelledby="project-beentels">
+            <div class="project-card__img">
+              <img
+                src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&h=450&fit=crop&q=80"
+                alt="beentelskabaal.nl — website"
+                loading="lazy"
+              >
             </div>
-            <h3 id="project-beentels">beentelskabaal.nl</h3>
-            <p>Website gebouwd met AI-assisted workflow. Van briefing naar live in record tempo.</p>
-            <a href="/portfolio/beentelskabaal.html" class="project-card__link" aria-label="Bekijk project beentelskabaal.nl">
-              Bekijk project →
-            </a>
+            <div class="project-card__content">
+              <div class="project-card__meta">
+                <span class="label">Website</span>
+              </div>
+              <h3 id="project-beentels">beentelskabaal.nl</h3>
+              <p>Website opgezet met AI-assisted workflow. Van briefing naar live in record tempo.</p>
+              <a href="/portfolio/beentelskabaal.html" class="project-card__link" aria-label="Bekijk project beentelskabaal.nl">
+                Bekijk project →
+              </a>
+            </div>
           </article>
 
-          <!-- Project 3 -->
-          <article class="project-card reveal" aria-labelledby="project-kenkhuis">
-            <div class="project-card__meta">
-              <span class="label">Website · In uitvoering</span>
+          <article class="project-card reveal-scale" aria-labelledby="project-kenkhuis">
+            <div class="project-card__img">
+              <img
+                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=450&fit=crop&q=80"
+                alt="Kenkhuisprojecten — projectsite aannemer"
+                loading="lazy"
+              >
             </div>
-            <h3 id="project-kenkhuis">Kenkhuisprojecten</h3>
-            <p>Projectsite voor aannemer. Overzichtelijk, beheersbaar, klantgericht.</p>
-            <a href="/portfolio/kenkhuisprojecten.html" class="project-card__link" aria-label="Bekijk project Kenkhuisprojecten">
-              Bekijk project →
-            </a>
+            <div class="project-card__content">
+              <div class="project-card__meta">
+                <span class="label">Website · In uitvoering</span>
+              </div>
+              <h3 id="project-kenkhuis">Kenkhuisprojecten</h3>
+              <p>Projectsite voor aannemer. Overzichtelijk, beheersbaar, klantgericht.</p>
+              <a href="/portfolio/kenkhuisprojecten.html" class="project-card__link" aria-label="Bekijk project Kenkhuisprojecten">
+                Bekijk project →
+              </a>
+            </div>
           </article>
 
-          <!-- Project 4 -->
-          <article class="project-card reveal" aria-labelledby="project-bi">
-            <div class="project-card__meta">
-              <span class="label">Dashboard · Intern</span>
+          <article class="project-card reveal-scale" aria-labelledby="project-bi">
+            <div class="project-card__img">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop&q=80"
+                alt="BI Dashboard Eissink"
+                loading="lazy"
+              >
             </div>
-            <h3 id="project-bi">BI Dashboard Eissink</h3>
-            <p>Intern Power BI dashboard voor operationele sturing. Dagelijks in gebruik door het MT.</p>
-            <a href="/portfolio/bi-dashboard-eissink.html" class="project-card__link" aria-label="Bekijk project BI Dashboard Eissink">
-              Bekijk project →
-            </a>
+            <div class="project-card__content">
+              <div class="project-card__meta">
+                <span class="label">Dashboard · Intern</span>
+              </div>
+              <h3 id="project-bi">BI Dashboard Baumeister</h3>
+              <p>Intern Power BI dashboard voor operationele sturing. Dagelijks in gebruik door het MT.</p>
+              <a href="/portfolio/bi-dashboard-baumeister.html" class="project-card__link" aria-label="Bekijk project BI Dashboard Baumeister">
+                Bekijk project →
+              </a>
+            </div>
           </article>
 
         </div>
@@ -273,25 +372,35 @@
     </section>
 
     <!-- ============================================================
-         CONTACT
-         Netlify Forms — geen externe dienst nodig.
+         SECTIE 5 — CONTACT INTRO
+         PLACEHOLDER TITEL — wachten op copywriter keuze (A/B/C)
          ============================================================ -->
-    <section id="contact" class="contact" aria-labelledby="contact-titel">
-      <div class="container contact__inner">
+    <section id="contact" class="contact-intro" aria-labelledby="contact-intro-titel">
+      <div class="container contact-intro__inner">
 
-        <div class="contact__intro">
-          <span class="label reveal">Contact</span>
-          <h2 class="section-title reveal" id="contact-titel">
-            <!-- PLACEHOLDER — copywriter Sprint 2 -->
-            Iets te bouwen?
-          </h2>
-          <p class="reveal">
-            Vertel me wat je wil aanpakken. Ik kijk of ik kan helpen.
-          </p>
+        <span class="section-label reveal-fade">Contact</span>
+        <h2 class="section-title reveal" id="contact-intro-titel">Laten we beginnen.</h2>
+        <p class="reveal">
+          Vertel wat er moet gebeuren. De rest wordt geregeld.
+        </p>
+        <a href="#contact-form" class="btn btn--primary reveal-fade">Stuur een bericht</a>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTIE 6 — CONTACTFORMULIER
+         ============================================================ -->
+    <section id="contact-form" class="contact-form-section" aria-labelledby="contact-form-titel">
+      <div class="container contact-form-section__inner">
+
+        <div class="contact-form-section__header">
+          <span class="section-label reveal-fade">Formulier</span>
+          <h2 class="section-title reveal" id="contact-form-titel">Neem contact op</h2>
         </div>
 
         <form
-          class="contact__form reveal"
+          class="contact__form reveal-scale"
           name="contact"
           method="POST"
           data-netlify="true"
@@ -299,7 +408,6 @@
           aria-label="Contactformulier"
           novalidate
         >
-          <!-- Honeypot anti-spam -->
           <p hidden>
             <label>Niet invullen: <input name="bot-field"></label>
           </p>
@@ -311,6 +419,7 @@
               id="naam"
               name="naam"
               autocomplete="name"
+              placeholder="Sam Altman"
               required
               aria-required="true"
             >
@@ -323,6 +432,7 @@
               id="email"
               name="email"
               autocomplete="email"
+              placeholder="sam@altman.nl"
               required
               aria-required="true"
             >
@@ -334,6 +444,7 @@
               id="bericht"
               name="bericht"
               rows="5"
+              placeholder="Vertel kort wat je nodig hebt. Een paar zinnen is genoeg."
               required
               aria-required="true"
             ></textarea>
@@ -354,17 +465,17 @@
   <footer class="footer" role="contentinfo">
     <div class="container footer__inner">
 
-      <span class="footer__logo">BYGGR</span>
+      <span class="footer__logo"><span class="footer__logo-mark" aria-hidden="true">▣</span> BYGGR</span>
 
       <nav class="footer__nav" aria-label="Footer navigatie">
-        <a href="#diensten">Diensten</a>
+        <a href="#services">Services</a>
         <a href="#over">Over</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#contact">Contact</a>
       </nav>
 
       <p class="footer__copy">
-        &copy; <span id="current-year">2026</span> Byggr — Remco Eissink, Twente
+        &copy; <span id="current-year">2026</span> Byggr — Remco Baumeister, Delden
       </p>
 
     </div>

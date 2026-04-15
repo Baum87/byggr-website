@@ -1,59 +1,57 @@
 /* ============================================================
    DESIGN TOKENS — Byggr.nl
-   Sprint 2 definitief — 2026-04-13
    ============================================================ */
 
 :root {
 
-  /* ── Donker palet (standaard) ─────────────────────────────── */
-  --color-bg:             #0D0D0B;
-  --color-bg-surface:     #161614;
-  --color-bg-raised:      #1E1E1B;
-  --color-text:           #ECEAE4;
-  --color-text-muted:     rgba(236, 234, 228, 0.45);
-  --color-text-disabled:  rgba(236, 234, 228, 0.2);
-  --color-accent:         #D4962A;
-  --color-accent-dim:     rgba(212, 150, 42, 0.12);
-  --color-border:         rgba(236, 234, 228, 0.08);
-  --color-border-accent:  rgba(212, 150, 42, 0.35);
+  /* ── Light mode (standaard) ───────────────────────────────── */
+  --color-bg:             #e4e4e4;
+  --color-bg-surface:     #d4d4d4;
+  --color-bg-raised:      #c8c8c8;
+  --color-text:           #000000;
+  --color-text-muted:     #464646;
+  --color-text-disabled:  rgba(0, 0, 0, 0.25);
+  --color-accent:         #B8720A;
+  --color-accent-dim:     rgba(184, 114, 10, 0.12);
+  --color-border:         rgba(0, 0, 0, 0.1);
+  --color-border-accent:  rgba(184, 114, 10, 0.35);
 
-  /* ── Licht palet (Over-sectie) ────────────────────────────── */
-  --color-light-bg:       #F2EDE4;
-  --color-light-surface:  #EAE4DA;
-  --color-light-text:     #0D0D0B;
-  --color-light-muted:    rgba(13, 13, 11, 0.5);
-  --color-light-border:   rgba(13, 13, 11, 0.1);
+  /* ── Showcase sectie — altijd donker in beide modi ───────── */
+  --color-showcase-bg:    #0f0f0f;
+  --color-showcase-text:  #ffffff;
 
-  /* ── Contact palet (warm mid-toon) ───────────────────────── */
-  --color-contact-bg:     #131210;
+  /* ── Nav scrolled achtergrond ─────────────────────────────── */
+  --color-nav-scrolled:   rgba(228, 228, 228, 0.94);
 
   /* ── Typografie ───────────────────────────────────────────── */
-  --font-display: 'Cabinet Grotesk', sans-serif;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-heading: 'Barlow Condensed', sans-serif;
   --font-body:    'Inter', sans-serif;
-  --font-mono:    'IBM Plex Mono', monospace;
+  --font-mono:    'Space Mono', monospace;
 
   /* ── Tekstschaal ──────────────────────────────────────────── */
   --text-xs:   0.75rem;
   --text-sm:   0.875rem;
-  --text-base: 1rem;
-  --text-lg:   1.125rem;
-  --text-xl:   1.25rem;
-  --text-2xl:  1.5rem;
-  --text-3xl:  2rem;
-  --text-4xl:  2.75rem;
-  --text-5xl:  3.75rem;
-  --text-6xl:  5rem;
-  --text-7xl:  6.5rem;
+  --text-base: 1.125rem;
+  --text-lg:   1.375rem;
+  --text-xl:   1.625rem;
+  --text-2xl:  2rem;
+  --text-3xl:  2.5rem;
+  --text-4xl:  3rem;
+  --text-5xl:  4.75rem;
+  --text-6xl:  6rem;
+  --text-7xl:  7.5rem;
+  --text-8xl:  9.5rem;
 
   /* ── Letter-spacing ──────────────────────────────────────── */
-  --tracking-tight:  -0.03em;
+  --tracking-tight:  -0.02em;
   --tracking-normal:  0em;
   --tracking-wide:    0.06em;
   --tracking-wider:   0.12em;
 
   /* ── Line-height ─────────────────────────────────────────── */
   --leading-none:    1;
-  --leading-tight:   1.1;
+  --leading-tight:   1.05;
   --leading-snug:    1.3;
   --leading-normal:  1.5;
   --leading-relaxed: 1.65;
@@ -91,4 +89,19 @@
   --z-overlay: 100;
   --z-modal:   200;
 
+}
+
+/* ── Dark mode ──────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --color-bg:             #000000;
+  --color-bg-surface:     #111111;
+  --color-bg-raised:      #1a1a1a;
+  --color-text:           #ffffff;
+  --color-text-muted:     #cccccc;
+  --color-text-disabled:  rgba(255, 255, 255, 0.25);
+  --color-accent:         #D4962A;
+  --color-accent-dim:     rgba(212, 150, 42, 0.15);
+  --color-border:         rgba(255, 255, 255, 0.1);
+  --color-border-accent:  rgba(212, 150, 42, 0.35);
+  --color-nav-scrolled:   rgba(0, 0, 0, 0.94);
 }

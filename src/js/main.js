@@ -1,12 +1,31 @@
-// Nav: transparant → solid bij scrollen
+// ── Nav: transparant → solid bij scrollen ─────────────────────
 const nav = document.querySelector('.nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('nav--scrolled', window.scrollY > 60);
 }, { passive: true });
 
-// Hamburger menu
+// ── Theme toggle ──────────────────────────────────────────────
+const themeToggle = document.getElementById('theme-toggle');
+const html = document.documentElement;
+// Voorkeur is al toegepast via inline script in <head> — hier alleen de toggle
+
+themeToggle?.addEventListener('click', () => {
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    html.removeAttribute('data-theme');
+    localStorage.setItem('byggr-theme', 'light');
+    themeToggle.setAttribute('aria-label', 'Wisselen naar donker thema');
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    localStorage.setItem('byggr-theme', 'dark');
+    themeToggle.setAttribute('aria-label', 'Wisselen naar licht thema');
+  }
+});
+
+// ── Hamburger menu ─────────────────────────────────────────────
 const hamburger = document.querySelector('.nav__hamburger');
 const mobileMenu = document.querySelector('.nav__mobile-menu');
+
 hamburger?.addEventListener('click', () => {
   const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
   hamburger.setAttribute('aria-expanded', String(!isOpen));
@@ -23,16 +42,13 @@ document.querySelectorAll('.nav__mobile-link').forEach((link) => {
   });
 });
 
-// Actieve nav-link op basis van scroll positie
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav__link[href^="#"]');
-const activateNavLink = () => {
-  let current = '';
-  sections.forEach((section) => {
-    if (window.scrollY >= section.offsetTop - 120) current = section.id;
-  });
-  navLinks.forEach((link) => {
-    link.classList.toggle('is-active', link.getAttribute('href') === `#${current}`);
-  });
-};
-window.addEventListener('scroll', activateNavLink, { passive: true });
+// Sluit mobiel menu met Escape-toets
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileMenu.classList.remove('is-open');
+    document.body.classList.remove('no-scroll');
+    hamburger.focus();
+  }
+});
+

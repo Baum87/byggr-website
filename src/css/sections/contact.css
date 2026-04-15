@@ -1,50 +1,49 @@
-.contact {
+/* ============================================================
+   CONTACT INTRO — Sectie 5
+   Gecentreerd, uitnodigend, niet-generieke titel
+   ============================================================ */
+
+.contact-intro {
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.contact-intro__inner {
+  max-width: 700px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.contact-intro p {
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  max-width: 500px;
+}
+
+/* ============================================================
+   CONTACT FORMULIER — Sectie 6
+   ============================================================ */
+
+.contact-form-section {
+  border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 }
 
-.contact__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-24);
-  align-items: start;
-}
-
-.contact__intro {
+.contact-form-section__inner {
+  max-width: 640px;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
-  position: sticky;
-  top: 100px;
+  gap: var(--space-8);
 }
 
-.contact__intro p {
-  color: var(--color-text-muted);
-  line-height: var(--leading-relaxed);
+.contact-form-section__header {
+  text-align: center;
 }
-
-/* Contactgegevens onder de intro */
-.contact__meta {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  padding-top: var(--space-6);
-  border-top: 1px solid var(--color-border);
-  margin-top: var(--space-4);
-}
-.contact__meta-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
-  letter-spacing: var(--tracking-wide);
-}
-.contact__meta-item a {
-  color: var(--color-text-muted);
-  transition: color var(--transition-fast);
-}
-.contact__meta-item a:hover { color: var(--color-accent); }
 
 /* Formulier */
 .contact__form {
@@ -71,7 +70,7 @@
 .form-field textarea {
   background-color: var(--color-bg-surface);
   border: 1px solid var(--color-border);
-  border-radius: 0;
+  border-radius: 6px;
   color: var(--color-text);
   padding: var(--space-4);
   font-family: var(--font-body);
@@ -89,14 +88,4 @@
   background-color: var(--color-bg-raised);
 }
 .form-field input::placeholder,
-.form-field textarea::placeholder {
-  color: var(--color-text-disabled);
-}
-
-@media (max-width: 768px) {
-  .contact__inner {
-    grid-template-columns: 1fr;
-    gap: var(--space-12);
-  }
-  .contact__intro { position: static; }
-}
+.form-field textarea::placeholder { color: var(--color-text-disabled); }

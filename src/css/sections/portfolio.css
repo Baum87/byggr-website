@@ -1,7 +1,13 @@
+/* ============================================================
+   PORTFOLIO — Sectie 4
+   Grid met afbeeldingen, per-card accentkleuren
+   ============================================================ */
+
 .portfolio {
   border-bottom: 1px solid var(--color-border);
 }
 
+/* Gelijkmatig 2×2 grid */
 .portfolio__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -11,36 +17,61 @@
 .project-card {
   background-color: var(--color-bg-surface);
   border: 1px solid var(--color-border);
-  padding: var(--space-8);
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
   position: relative;
-  overflow: hidden;
-  transition:
-    border-color var(--transition-base),
-    background-color var(--transition-base),
-    transform var(--transition-base);
+  will-change: transform;
+  transition: background-color var(--transition-base);
+  /* Geen overflow:hidden hier — dat plat het 3D-effect in Safari */
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 .project-card:hover {
-  border-color: var(--color-border-accent);
   background-color: var(--color-bg-raised);
-  transform: translateY(-2px);
 }
 
-/* Nummer — groot, op de achtergrond */
+/* Afbeelding bovenaan de kaart */
+.project-card__img {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: var(--color-bg-raised);
+  position: relative;
+  border-radius: 8px 8px 0 0;
+}
+.project-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(20%);
+  transition: filter 0.7s var(--ease-out-expo);
+}
+.project-card:hover .project-card__img img {
+  filter: grayscale(0%);
+}
+
+/* Tekstinhoud */
+.project-card__content {
+  padding: var(--space-6) var(--space-6) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1;
+}
+
 .project-card__meta {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .project-card h3 {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
+  font-family: var(--font-heading);
+  font-size: clamp(var(--text-xl), 2.5vw, var(--text-3xl));
   font-weight: 700;
   letter-spacing: var(--tracking-tight);
   transition: color var(--transition-fast);
+  line-height: var(--leading-tight);
 }
 .project-card:hover h3 { color: var(--color-accent); }
 

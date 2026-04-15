@@ -5,6 +5,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: var(--leading-normal);
+  transition: background-color 0.3s var(--ease-in-out), color 0.3s var(--ease-in-out);
 }
 
 .container {
@@ -17,24 +18,82 @@ section {
   padding-block: var(--space-24);
 }
 
-/* Scroll-reveal */
+/* ── Gedeelde sectie-typografie ──────────────────────────────── */
+.section-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-bottom: var(--space-3);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--text-5xl), 5vw, var(--text-8xl));
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: var(--space-12);
+  cursor: default;
+}
+.section-title .char {
+  transition: opacity 0.05s linear;
+}
+
+/* ── Reveal animaties ────────────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity var(--transition-reveal),
-    transform var(--transition-reveal);
+  transform: translateY(36px);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.reveal:nth-child(2) { transition-delay: 80ms; }
-.reveal:nth-child(3) { transition-delay: 160ms; }
-.reveal:nth-child(4) { transition-delay: 240ms; }
-.reveal:nth-child(5) { transition-delay: 320ms; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* Buttons */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
+}
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
+}
+.reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity calc(var(--transition-reveal) * 1.1);
+}
+.reveal-fade.visible { opacity: 1; }
+
+/* Stagger delays */
+.reveal:nth-child(2), .reveal-left:nth-child(2), .reveal-right:nth-child(2),
+.reveal-scale:nth-child(2), .reveal-fade:nth-child(2) { transition-delay: 80ms; }
+
+.reveal:nth-child(3), .reveal-left:nth-child(3), .reveal-right:nth-child(3),
+.reveal-scale:nth-child(3), .reveal-fade:nth-child(3) { transition-delay: 160ms; }
+
+.reveal:nth-child(4), .reveal-left:nth-child(4), .reveal-right:nth-child(4),
+.reveal-scale:nth-child(4), .reveal-fade:nth-child(4) { transition-delay: 240ms; }
+
+.reveal:nth-child(5), .reveal-left:nth-child(5), .reveal-right:nth-child(5),
+.reveal-scale:nth-child(5), .reveal-fade:nth-child(5) { transition-delay: 320ms; }
+
+/* ── Buttons ─────────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -42,10 +101,11 @@ section {
   padding: var(--space-3) var(--space-6);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
   border: 1px solid transparent;
+  border-radius: 6px;
   cursor: pointer;
   transition:
     background-color var(--transition-fast),
@@ -58,7 +118,7 @@ section {
 
 .btn--primary {
   background-color: var(--color-accent);
-  color: var(--color-bg);
+  color: #ffffff;
   border-color: var(--color-accent);
 }
 .btn--primary:hover {
@@ -71,11 +131,9 @@ section {
   color: var(--color-text);
   border-color: var(--color-border);
 }
-.btn--secondary:hover {
-  border-color: var(--color-text);
-}
+.btn--secondary:hover { border-color: var(--color-text); }
 
-/* Label */
+/* ── Label (inline, legacy) ──────────────────────────────────── */
 .label {
   display: inline-block;
   font-family: var(--font-mono);
@@ -83,4 +141,26 @@ section {
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
   color: var(--color-text-muted);
+}
+
+/* ── Focus stijlen — toetsenbordnavigatie ────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ── Reduced motion — respecteer OS voorkeur ─────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade {
+    opacity: 1;
+    transform: none;
+  }
+  .word-reveal span {
+    transform: translateY(0) !important;
+  }
 }

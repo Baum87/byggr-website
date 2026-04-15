@@ -1,91 +1,125 @@
+/* ============================================================
+   OVER — Sectie 3
+   Brand statement, gecentreerd, grote tekst
+   ============================================================ */
+
 .over {
+  border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 }
 
 .over__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-24);
-  align-items: center;
-}
-
-.over__tekst {
+  max-width: 860px;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  text-align: center;
+}
+
+/* Grote brand-tekst */
+.over__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: var(--space-6);
 }
 
-.over__tekst p {
+.over__body p {
+  font-size: clamp(var(--text-lg), 2.2vw, var(--text-xl));
   color: var(--color-text-muted);
   line-height: var(--leading-relaxed);
-  font-size: var(--text-base);
+  max-width: 700px;
 }
 
-/* Stat-blokken */
-.over__visual {
+.over__body p strong {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* Stats — 3 gelijke kolommen, onderaan de sectie */
+.over__stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-3);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  width: 100%;
+  margin-top: var(--space-8);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border);
 }
 
 .stat-block {
   background-color: var(--color-bg-surface);
   border: 1px solid var(--color-border);
+  border-radius: 8px;
   padding: var(--space-6);
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-2);
+  text-align: center;
   position: relative;
-  overflow: hidden;
   transition: border-color var(--transition-base), background-color var(--transition-base);
 }
 .stat-block:hover {
   border-color: var(--color-border-accent);
   background-color: var(--color-bg-raised);
 }
-/* Amber corner accent */
-.stat-block::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 0 20px 20px;
-  border-color: transparent transparent var(--color-accent-dim) transparent;
-  transition: border-width var(--transition-base);
-}
-.stat-block:hover::after {
-  border-width: 0 0 32px 32px;
-  border-color: transparent transparent rgba(212, 150, 42, 0.25) transparent;
-}
-
-.stat-block:last-child {
-  grid-column: span 2;
-}
 
 .stat-block__getal {
   font-family: var(--font-display);
   font-size: var(--text-5xl);
-  font-weight: 800;
-  letter-spacing: var(--tracking-tight);
+  font-weight: 400;
   line-height: 1;
   color: var(--color-text);
+  letter-spacing: 0.02em;
 }
 
 .stat-block__label {
+  display: block;
+  position: relative;
+  height: 1.2em;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wider);
 }
 
-@media (max-width: 900px) {
-  .over__inner {
-    grid-template-columns: 1fr;
-    gap: var(--space-12);
-  }
-  .stat-block:last-child { grid-column: span 1; }
+.stat-block__label-default,
+.stat-block__label-hover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transition: opacity var(--transition-base);
+}
+
+.stat-block__label-default {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+.stat-block__label-hover {
+  color: var(--color-accent);
+  opacity: 0;
+}
+
+.stat-block:hover .stat-block__label-default {
+  opacity: 0;
+}
+
+.stat-block:hover .stat-block__label-hover {
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .over__stats { grid-template-columns: repeat(3, 1fr); }
+  .stat-block__getal { font-size: var(--text-4xl); }
+}
+
+@media (max-width: 480px) {
+  .over__stats { grid-template-columns: 1fr; }
 }
