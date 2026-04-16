@@ -6,5 +6,11 @@
   to = "/admin/index.html"
   status = 200
 
+# Aangepaste 404-pagina
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
 [forms]
   # Netlify Forms verwerkt het contactformulier automatisch

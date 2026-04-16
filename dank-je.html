@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Bericht ontvangen | BYGGR</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/css/reset.css">
+  <link rel="stylesheet" href="/src/css/tokens.css">
+  <link rel="stylesheet" href="/src/css/base.css">
+  <link rel="stylesheet" href="/src/css/sections/nav.css">
+  <link rel="stylesheet" href="/src/css/sections/footer.css">
+  <script>if(localStorage.getItem('byggr-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+  <style>
+    .dank-inner {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: var(--space-6);
+      padding-block: var(--space-32);
+    }
+    .dank-inner .section-label { margin-bottom: 0; }
+    .dank-inner h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(var(--text-4xl), 6vw, var(--text-7xl));
+      font-weight: 700;
+      letter-spacing: var(--tracking-tight);
+      text-transform: uppercase;
+      line-height: var(--leading-tight);
+    }
+    .dank-inner p {
+      color: var(--color-text-muted);
+      font-size: var(--text-lg);
+      max-width: 420px;
+      line-height: var(--leading-relaxed);
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Ga naar inhoud</a>
+
+  <header role="banner">
+    <nav class="nav" aria-label="Hoofdnavigatie">
+      <div class="container nav__inner">
+        <a href="/" class="nav__logo" aria-label="BYGGR — naar home">
+          <img src="/logo-light.svg" alt="BYGGR" class="nav__logo-img nav__logo-img--light" width="120" height="29">
+          <img src="/logo-dark.svg"  alt="BYGGR" class="nav__logo-img nav__logo-img--dark"  width="120" height="29">
+        </a>
+        <div class="nav__actions">
+          <button class="nav__theme-toggle" id="theme-toggle" aria-label="Wisselen van thema">◐</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="container dank-inner">
+      <span class="section-label">Ontvangen</span>
+      <h1>Bericht<br>ontvangen.</h1>
+      <p>Je hoort zo snel mogelijk van ons. Gemiddeld binnen één werkdag.</p>
+      <a href="/" class="btn btn--primary">Terug naar home</a>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <span class="footer__logo">
+        <img src="/logo-light.svg" alt="BYGGR" class="footer__logo-img footer__logo-img--light" width="100" height="24">
+        <img src="/logo-dark.svg"  alt="BYGGR" class="footer__logo-img footer__logo-img--dark"  width="100" height="24">
+      </span>
+      <nav class="footer__nav" aria-label="Footer navigatie">
+        <a href="/#services">Services</a>
+        <a href="/#over">Over</a>
+        <a href="/#portfolio">Portfolio</a>
+        <a href="/#contact">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+      </nav>
+      <p class="footer__copy">
+        &copy; <span id="current-year">2026</span> BYGGR — Remco Baumeister, Delden
+      </p>
+    </div>
+  </footer>
+
+  <script src="/src/js/main.js" defer></script>
+  <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>

@@ -5,13 +5,16 @@ backend:
 media_folder: "uploads"
 public_folder: "/uploads"
 
+# Portfolio-items worden beheerd als markdown-bestanden in content/portfolio/.
+# De bijbehorende HTML-detailpagina's in /portfolio/ zijn handmatig gebouwd
+# en hoeven niet via het CMS te worden aangemaakt.
 collections:
   - name: "portfolio"
     label: "Portfolio projecten"
-    folder: "portfolio"
+    folder: "content/portfolio"
     create: true
     slug: "{{slug}}"
-    extension: "html"
+    extension: "md"
     format: "frontmatter"
     fields:
       - { label: "Projectnaam", name: "title", widget: "string" }
@@ -19,7 +22,8 @@ collections:
       - { label: "Status", name: "status", widget: "select", options: ["Live", "In uitvoering", "Intern"] }
       - { label: "Beschrijving (kort)", name: "summary", widget: "string" }
       - { label: "Beschrijving (uitgebreid)", name: "body", widget: "markdown" }
-      - { label: "Afbeelding URL", name: "image", widget: "string", required: false }
+      - { label: "Afbeelding", name: "image", widget: "image", required: false }
       - { label: "Live URL", name: "url", widget: "string", required: false }
+      - { label: "Detailpagina (intern)", name: "detail_path", widget: "string", hint: "bijv. /portfolio/afbouwr.html", required: false }
       - { label: "Publicatiedatum", name: "date", widget: "datetime" }
       - { label: "Uitgelicht op homepage", name: "featured", widget: "boolean", default: false }
