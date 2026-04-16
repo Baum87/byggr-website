@@ -12,9 +12,23 @@
   --color-text-muted:     #464646;
   --color-text-disabled:  rgba(0, 0, 0, 0.25);
   --color-accent:         #B8720A;
+  --color-accent-hover:   #C8820F;   /* amber-300 light — hover state knoppen/links */
   --color-accent-dim:     rgba(184, 114, 10, 0.12);
   --color-border:         rgba(0, 0, 0, 0.1);
   --color-border-accent:  rgba(184, 114, 10, 0.35);
+
+  /* ── Steelblue — optioneel, voor technische labels / code UI ── */
+  --color-tech:           #4A7FA5;
+  --color-tech-dim:       rgba(74, 127, 165, 0.12);
+
+  /* ── Grijsschaal (modus-onafhankelijk referentie) ─────────── */
+  --gray-100: #c8c8c8;
+  --gray-200: #d4d4d4;
+  --gray-300: #e4e4e4;
+  --gray-700: #464646;
+  --gray-800: #1a1a1a;
+  --gray-900: #111111;
+  --gray-950: #000000;
 
   /* ── Showcase sectie — altijd donker in beide modi ───────── */
   --color-showcase-bg:    #0f0f0f;
@@ -100,8 +114,22 @@
   --color-text-muted:     #cccccc;
   --color-text-disabled:  rgba(255, 255, 255, 0.25);
   --color-accent:         #D4962A;
+  --color-accent-hover:   #F0BA5E;   /* amber-300 — hover state knoppen/links */
   --color-accent-dim:     rgba(212, 150, 42, 0.15);
   --color-border:         rgba(255, 255, 255, 0.1);
   --color-border-accent:  rgba(212, 150, 42, 0.35);
+
+  /* ── Steelblue — optioneel, voor technische labels / code UI ── */
+  --color-tech:           #4A7FA5;
+  --color-tech-dim:       rgba(74, 127, 165, 0.15);
+
+  /* ── Grijsschaal (modus-onafhankelijk referentie) ─────────── */
+  --gray-100: #c8c8c8;
+  --gray-200: #d4d4d4;
+  --gray-300: #e4e4e4;
+  --gray-700: #464646;
+  --gray-800: #1a1a1a;
+  --gray-900: #111111;
+  --gray-950: #000000;
   --color-nav-scrolled:   rgba(0, 0, 0, 0.94);
 }

@@ -14,17 +14,23 @@
 .footer__logo {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-display);
-  font-size: var(--text-sm);
-  font-weight: 800;
-  letter-spacing: var(--tracking-wide);
-  color: var(--color-text-muted);
 }
-.footer__logo-mark {
-  color: var(--color-accent);
-  opacity: 0.6;
+
+/* Logo SVG — thema-afhankelijk tonen */
+.footer__logo-img {
+  display: block;
+  height: 20px;
+  width: auto;
+  opacity: 0.65;
 }
+
+/* Licht thema (standaard): dark variant zichtbaar */
+.footer__logo-img--light { display: none;  }
+.footer__logo-img--dark  { display: block; }
+
+/* Donker thema: light variant zichtbaar */
+[data-theme="dark"] .footer__logo-img--light { display: block; }
+[data-theme="dark"] .footer__logo-img--dark  { display: none;  }
 
 .footer__nav {
   display: flex;

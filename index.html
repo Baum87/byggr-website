@@ -1,14 +1,60 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Byggr — Remco Baumeister. Websites, dashboards en AI-tools voor MKB-ondernemers. Eenvoudig, werkend, op tijd.">
-  <title>Byggr — Websites. Data. AI. Hosting.</title>
+
+  <!-- Google Analytics 4 wordt geladen na cookietoestemming (zie script onderaan) -->
+  <!-- Vervang G-XXXXXXXXXX met jouw Measurement ID uit analytics.google.com -->
+
+  <meta name="description" content="Websites, dashboards en AI-tools voor MKB in Twente. BYGGR bouwt wat werkt — eenvoudig, snel en schaalbaar. Vraag een offerte aan.">
+  <title>Websites & AI-tools voor MKB Twente | BYGGR</title>
   <link rel="canonical" href="https://byggr.nl/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Websites & AI-tools voor MKB Twente | BYGGR">
+  <meta property="og:description" content="Websites, dashboards en AI-tools voor MKB in Twente. BYGGR bouwt wat werkt — eenvoudig, snel en schaalbaar. Vraag een offerte aan.">
+  <meta property="og:image" content="https://byggr.nl/og-image.png">
+  <meta property="og:url" content="https://byggr.nl/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="nl_NL">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Websites & AI-tools voor MKB Twente | BYGGR">
+  <meta name="twitter:description" content="Websites, dashboards en AI-tools voor MKB in Twente. BYGGR bouwt wat werkt — eenvoudig, snel en schaalbaar.">
+  <meta name="twitter:image" content="https://byggr.nl/og-image.png">
+
+  <!-- Structured Data: ProfessionalService -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Byggr",
+    "description": "BYGGR is een digitale studio uit Delden voor MKB-ondernemers. Websites, dashboards en AI-tools die werken.",
+    "url": "https://byggr.nl",
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Twente"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Delden",
+      "addressRegion": "Overijssel",
+      "addressCountry": "NL"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Remco Baumeister"
+    },
+    "serviceType": ["Webdesign", "BI & Data dashboards", "AI-tools", "Hosting"],
+    "priceRange": "€€"
+  }
+  </script>
   <!-- Theme: direct toepassen om flash te voorkomen -->
   <script>if(localStorage.getItem('byggr-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
 
   <!-- Fonts: Bebas Neue (display) + Barlow Condensed (koppen) + Space Mono (mono/nav) + Inter (body) -->
@@ -37,8 +83,9 @@
     <nav class="nav" aria-label="Hoofdnavigatie">
       <div class="container nav__inner">
 
-        <a href="#" class="nav__logo" aria-label="Byggr — naar boven">
-          <span class="nav__logo-mark" aria-hidden="true">▣</span> BYGGR
+        <a href="#" class="nav__logo" aria-label="BYGGR — naar boven">
+          <img src="/logo-light.svg" alt="BYGGR" class="nav__logo-img nav__logo-img--light" width="120" height="29">
+          <img src="/logo-dark.svg"  alt="BYGGR" class="nav__logo-img nav__logo-img--dark"  width="120" height="29">
         </a>
 
         <ul class="nav__links" role="list">
@@ -122,11 +169,11 @@
                 loading="lazy"
               >
             </div>
-            <div class="showcase__card-body">
+            <a href="/services/websites.html" class="showcase__card-body" aria-label="Meer over Websites">
               <span class="showcase__card-num">01</span>
               <span class="showcase__card-title">Websites</span>
               <span class="showcase__card-sub">Snel. Helder. Van jou.</span>
-            </div>
+            </a>
           </article>
 
           <article class="showcase__card">
@@ -137,11 +184,11 @@
                 loading="lazy"
               >
             </div>
-            <div class="showcase__card-body">
+            <a href="/services/bi-data.html" class="showcase__card-body" aria-label="Meer over BI &amp; Data">
               <span class="showcase__card-num">02</span>
               <span class="showcase__card-title">BI &amp; Data</span>
               <span class="showcase__card-sub">Cijfers die iets zeggen.</span>
-            </div>
+            </a>
           </article>
 
           <article class="showcase__card">
@@ -152,11 +199,11 @@
                 loading="lazy"
               >
             </div>
-            <div class="showcase__card-body">
+            <a href="/services/ai-tools.html" class="showcase__card-body" aria-label="Meer over AI-tools">
               <span class="showcase__card-num">03</span>
               <span class="showcase__card-title">AI-tools</span>
               <span class="showcase__card-sub">Minder herhaling. Meer resultaat.</span>
-            </div>
+            </a>
           </article>
 
           <article class="showcase__card">
@@ -167,11 +214,11 @@
                 loading="lazy"
               >
             </div>
-            <div class="showcase__card-body">
+            <a href="/services/hosting.html" class="showcase__card-body" aria-label="Meer over Hosting">
               <span class="showcase__card-num">04</span>
               <span class="showcase__card-title">Hosting</span>
               <span class="showcase__card-sub">Altijd online. Geen zorgen.</span>
-            </div>
+            </a>
           </article>
 
           <!-- Set 2 — duplicaat voor seamless loop -->
@@ -235,15 +282,14 @@
 
         <div class="over__body">
           <p class="reveal">
-            Geen bureau. Geen team. Één aanspreekpunt.
+            BYGGR is een studio uit Delden — opgezet door Remco Baumeister.
+            Geen account managers, geen estafette van mensen. Je praat direct
+            met degene die bouwt.
           </p>
           <p class="reveal">
-            Iemand die luistert, begrijpt wat je nodig hebt, en het gewoon regelt —
-            eenvoudig, zonder omwegen. Websites, dashboards, AI-tools, hosting.
-            <strong>Alles wat digitaal moet werken, maar dat nog niet doet.</strong>
-          </p>
-          <p class="reveal">
-            Betrouwbaar. Hands-on. Op tijd.
+            We luisteren eerst. Dan kijken we wat je echt nodig hebt —
+            niet wat er toevallig in een pakket zit.
+            <strong>Of dat nu een simpele website is of een dataplatform: BYGGR zoekt de kortste weg naar iets dat werkt.</strong>
           </p>
         </div>
 
@@ -339,7 +385,7 @@
                 <span class="label">Website · In uitvoering</span>
               </div>
               <h3 id="project-kenkhuis">Kenkhuisprojecten</h3>
-              <p>Projectsite voor aannemer. Overzichtelijk, beheersbaar, klantgericht.</p>
+              <p>Projectsite voor een aannemer. Overzichtelijk, zelf te beheren, gebouwd om te groeien.</p>
               <a href="/portfolio/kenkhuisprojecten.html" class="project-card__link" aria-label="Bekijk project Kenkhuisprojecten">
                 Bekijk project →
               </a>
@@ -379,9 +425,9 @@
       <div class="container contact-intro__inner">
 
         <span class="section-label reveal-fade">Contact</span>
-        <h2 class="section-title reveal" id="contact-intro-titel">Laten we beginnen.</h2>
+        <h2 class="section-title reveal" id="contact-intro-titel">Vertel wat er speelt.</h2>
         <p class="reveal">
-          Vertel wat er moet gebeuren. De rest wordt geregeld.
+          Geen verkooppraatje, geen offerte zonder gesprek. Gewoon even kijken wat er nodig is.
         </p>
         <a href="#contact-form" class="btn btn--primary reveal-fade">Stuur een bericht</a>
 
@@ -465,7 +511,10 @@
   <footer class="footer" role="contentinfo">
     <div class="container footer__inner">
 
-      <span class="footer__logo"><span class="footer__logo-mark" aria-hidden="true">▣</span> BYGGR</span>
+      <span class="footer__logo">
+        <img src="/logo-light.svg" alt="BYGGR" class="footer__logo-img footer__logo-img--light" width="100" height="24">
+        <img src="/logo-dark.svg"  alt="BYGGR" class="footer__logo-img footer__logo-img--dark"  width="100" height="24">
+      </span>
 
       <nav class="footer__nav" aria-label="Footer navigatie">
         <a href="#services">Services</a>
@@ -475,16 +524,64 @@
       </nav>
 
       <p class="footer__copy">
-        &copy; <span id="current-year">2026</span> Byggr — Remco Baumeister, Delden
+        &copy; <span id="current-year">2026</span> BYGGR — Remco Baumeister, Delden
       </p>
 
     </div>
   </footer>
 
+  <!-- Cookie banner -->
+  <div id="cookie-banner" class="cookie-banner" role="alertdialog" aria-label="Cookiemelding" hidden>
+    <p>Deze site gebruikt analytics om bezoekersgedrag bij te houden. <a href="/privacy.html">Meer info</a></p>
+    <button id="cookie-accept" class="cookie-banner__btn">Akkoord</button>
+  </div>
+
+  <!-- Netlify Identity — redirect naar /admin/ na login -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', function(user) {
+        if (!user) {
+          window.netlifyIdentity.on('login', function() {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
+  </script>
+
   <!-- JavaScript -->
   <script src="src/js/main.js" defer></script>
   <script src="src/js/animations.js" defer></script>
   <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+  <script>
+    // Cookie consent + GA4 activeren na akkoord
+    (function() {
+      function loadGA() {
+        if (window._gaLoaded) return;
+        window._gaLoaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+      }
+      if (localStorage.getItem('byggr-cookies')) {
+        loadGA();
+      } else {
+        document.getElementById('cookie-banner').removeAttribute('hidden');
+      }
+      document.getElementById('cookie-accept').addEventListener('click', function() {
+        localStorage.setItem('byggr-cookies', '1');
+        document.getElementById('cookie-banner').setAttribute('hidden', '');
+        loadGA();
+      });
+    })();
+  </script>
 
 </body>
 </html>

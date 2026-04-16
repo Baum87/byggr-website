@@ -1,0 +1,220 @@
+/* ============================================================
+   PORTFOLIO DETAIL — Byggr.nl
+   Stijlen voor de projectdetailpagina's onder /portfolio/
+   ============================================================ */
+
+/* ── Paginastructuur ─────────────────────────────────────── */
+.detail-page {
+  padding-top: var(--space-32); /* ruimte voor vaste nav */
+}
+
+/* ── Project Hero ────────────────────────────────────────── */
+.project-hero {
+  padding-block: var(--space-16) var(--space-12);
+}
+
+.project-hero__inner {
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+/* Breadcrumb */
+.project-hero__breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-bottom: var(--space-8);
+  transition: color var(--transition-fast);
+}
+
+.project-hero__breadcrumb:hover {
+  color: var(--color-accent);
+}
+
+.project-hero__breadcrumb::before {
+  content: '←';
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+.project-hero__breadcrumb:hover::before {
+  transform: translateX(-3px);
+}
+
+/* Label boven de H1 */
+.project-hero__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+}
+
+/* Project naam */
+.project-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-4xl), 10vw, var(--text-7xl));
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-none);
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-bottom: var(--space-8);
+}
+
+/* Intro tekst */
+.project-hero__intro {
+  font-family: var(--font-body);
+  font-size: clamp(var(--text-base), 2.5vw, var(--text-lg));
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+  max-width: 60ch;
+}
+
+/* Hero afbeelding */
+.project-hero__img-wrap {
+  margin-top: var(--space-12);
+  /* Breek uit de narrow container — volle breedte */
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.project-hero__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+}
+
+/* ── Project Detail ──────────────────────────────────────── */
+.project-detail {
+  padding-block: var(--space-16);
+  border-top: 1px solid var(--color-border);
+}
+
+.project-detail__inner {
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+  display: grid;
+  gap: var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .project-detail__inner {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-8);
+  }
+}
+
+/* Individueel blok (Uitdaging / Oplossing / Resultaat) */
+.detail-block__kicker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border-accent);
+}
+
+.detail-block__heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+}
+
+.detail-block__body {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+}
+
+/* ── CTA Sectie ──────────────────────────────────────────── */
+.project-cta {
+  padding-block: var(--space-24);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.project-cta__inner {
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.project-cta__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  margin-bottom: var(--space-6);
+}
+
+.project-cta__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 7vw, var(--text-5xl));
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-bottom: var(--space-8);
+}
+
+/* ── Hergebruikte basis knop uit base.css ────────────────── */
+/* .btn en .btn--primary worden overgenomen uit base.css     */
+
+/* ── Reveal animaties (IntersectionObserver via animations.js) */
+.reveal-fade {
+  opacity: 0;
+  transition: opacity var(--transition-reveal);
+}
+.reveal-fade.is-visible {
+  opacity: 1;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--transition-reveal),
+    transform var(--transition-reveal);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.97);
+  transition:
+    opacity var(--transition-reveal),
+    transform var(--transition-reveal);
+}
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}

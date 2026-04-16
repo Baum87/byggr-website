@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+
+  <!-- Achtergrond -->
+  <rect width="1200" height="630" fill="#111111"/>
+
+  <!-- Accent vlak rechtsboven — asymmetrisch, dynamisch -->
+  <polygon points="900,0 1200,0 1200,630 1050,630" fill="rgba(212,150,42,0.06)"/>
+
+  <!-- Accent lijn links -->
+  <rect x="0" y="0" width="6" height="630" fill="#D4962A"/>
+
+  <!-- Diagonale accent lijn — geeft beweging -->
+  <line x1="760" y1="0" x2="900" y2="630" stroke="rgba(212,150,42,0.35)" stroke-width="2"/>
+  <line x1="820" y1="0" x2="960" y2="630" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+
+  <!-- Subtiele horizontale lijnen -->
+  <line x1="80" y1="200" x2="700" y2="200" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <line x1="80" y1="500" x2="700" y2="500" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+
+  <!-- BYGGR. wordmark -->
+  <text x="80" y="130" font-family="Arial Black, Impact, sans-serif" font-size="42" font-weight="900" letter-spacing="-1">
+    <tspan fill="#ffffff">BYGGR</tspan><tspan fill="#D4962A">.</tspan>
+  </text>
+
+  <!-- Hoofdtitel — stacked, hero-stijl -->
+  <text x="80" y="255" font-family="Arial Black, Impact, sans-serif" font-size="90" font-weight="900" fill="#ffffff" letter-spacing="-3">WEB.</text>
+  <text x="80" y="350" font-family="Arial Black, Impact, sans-serif" font-size="90" font-weight="900" fill="#ffffff" letter-spacing="-3">DATA.</text>
+  <text x="80" y="445" font-family="Arial Black, Impact, sans-serif" font-size="90" font-weight="900" letter-spacing="-3">
+    <tspan fill="#D4962A">AI.</tspan><tspan fill="#ffffff"> HOSTING.</tspan>
+  </text>
+
+  <!-- Subline -->
+  <text x="80" y="490" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.45)" letter-spacing="2">Freelance web developer · Delden</text>
+
+  <!-- Service tags — alle vier -->
+  <rect x="80" y="516" width="118" height="36" rx="3" fill="rgba(212,150,42,0.18)" stroke="rgba(212,150,42,0.45)" stroke-width="1"/>
+  <text x="139" y="539" font-family="Arial, sans-serif" font-size="13" fill="#D4962A" text-anchor="middle" letter-spacing="0.5">Websites</text>
+
+  <rect x="210" y="516" width="118" height="36" rx="3" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="269" y="539" font-family="Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)" text-anchor="middle" letter-spacing="0.5">BI &amp; Data</text>
+
+  <rect x="340" y="516" width="118" height="36" rx="3" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="399" y="539" font-family="Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)" text-anchor="middle" letter-spacing="0.5">AI-tools</text>
+
+  <rect x="470" y="516" width="118" height="36" rx="3" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="529" y="539" font-family="Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)" text-anchor="middle" letter-spacing="0.5">Hosting</text>
+
+  <!-- Domein rechtsonder -->
+  <text x="1120" y="600" font-family="Arial, sans-serif" font-size="16" fill="rgba(255,255,255,0.22)" text-anchor="end" letter-spacing="3">byggr.nl</text>
+
+</svg>

@@ -1,13 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <!-- Dark background square with rounded corners -->
-  <rect width="32" height="32" rx="6" fill="#111111"/>
-  <!-- Amber accent mark — top-left square -->
-  <rect x="6" y="6" width="8" height="8" rx="1.5" fill="#D4962A"/>
-  <!-- White B letterform built from rectangles -->
-  <rect x="6" y="17" width="8" height="9" rx="1.5" fill="#ffffff"/>
-  <!-- Right column of B -->
-  <rect x="17" y="6" width="9" height="8" rx="1.5" fill="#ffffff"/>
-  <rect x="17" y="17" width="9" height="9" rx="1.5" fill="#ffffff"/>
-  <!-- Middle connector of B (the gap) — accent bridge -->
-  <rect x="17" y="14.5" width="9" height="3" rx="1" fill="#D4962A"/>
+  <!--
+    Byggr favicon — "B." wordmark, minimaal
+    Donkere achtergrond zodat het werkt in alle browsers en OS-contexten
+  -->
+  <rect width="32" height="32" fill="#111111" rx="4"/>
+  <text
+    x="3"
+    y="26"
+    font-family="Arial Black, Impact, sans-serif"
+    font-size="26"
+    font-weight="900"
+    letter-spacing="-1"
+    fill="none"
+  >
+    <tspan fill="#ffffff">B</tspan><tspan fill="#D4962A">.</tspan>
+  </text>
 </svg>

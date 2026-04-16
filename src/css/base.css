@@ -40,6 +40,7 @@ section {
   text-transform: uppercase;
   margin-bottom: var(--space-12);
   cursor: default;
+  text-wrap: balance;
 }
 .section-title .char {
   transition: opacity 0.05s linear;
@@ -141,6 +142,56 @@ section {
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
   color: var(--color-text-muted);
+}
+
+/* ── Cookie banner — hoek rechtsonder, minimaal ─────────────── */
+.cookie-banner {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  z-index: var(--z-modal);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background-color: rgba(26, 26, 26, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: var(--space-3) var(--space-4);
+  max-width: 220px;
+}
+.cookie-banner[hidden] { display: none; }
+.cookie-banner p {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+  margin: 0;
+}
+.cookie-banner p a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: underline;
+}
+.cookie-banner__btn {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  background: none;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 3px var(--space-3);
+  cursor: pointer;
+  align-self: flex-start;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+.cookie-banner__btn:hover {
+  color: rgba(255,255,255,0.7);
+  border-color: rgba(255,255,255,0.3);
+}
+@media (max-width: 640px) {
+  .cookie-banner { bottom: var(--space-3); right: var(--space-3); max-width: 180px; }
 }
 
 /* ── Focus stijlen — toetsenbordnavigatie ────────────────────── */

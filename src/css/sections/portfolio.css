@@ -94,6 +94,12 @@
   transition: color var(--transition-fast), gap var(--transition-fast);
   margin-top: var(--space-2);
 }
+/* Stretched link — maakt de hele kaart klikbaar */
+.project-card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
 .project-card:hover .project-card__link {
   color: var(--color-accent);
   gap: var(--space-3);

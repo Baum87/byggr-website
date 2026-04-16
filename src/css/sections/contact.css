@@ -44,6 +44,10 @@
 .contact-form-section__header {
   text-align: center;
 }
+.contact-form-section__header .section-title {
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-6xl));
+  white-space: nowrap;
+}
 
 /* Formulier */
 .contact__form {
