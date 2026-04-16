@@ -85,8 +85,8 @@
   -webkit-appearance: none;
   appearance: none;
 }
-.form-field input:focus,
-.form-field textarea:focus {
+.form-field input:focus-visible,
+.form-field textarea:focus-visible {
   outline: none;
   border-color: var(--color-accent);
   background-color: var(--color-bg-raised);
