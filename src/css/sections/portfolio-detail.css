@@ -107,6 +107,12 @@
   border: 1px solid var(--color-border);
 }
 
+@media (min-width: 768px) {
+  .project-hero__img {
+    aspect-ratio: 21 / 9;
+  }
+}
+
 /* ── Project meta-balk ───────────────────────────────────── */
 .project-meta {
   max-width: var(--container-max);
