@@ -143,9 +143,63 @@ const countObserver = new IntersectionObserver((entries) => {
 
 statGetallen.forEach((el) => countObserver.observe(el));
 
-// ── Typewriter hover op sectie-titels + project-hero titels ──
-document.querySelectorAll('.section-title, .project-hero__title').forEach((title) => {
-  // Splits tekst in individuele karakter-spans
+// ── Section title word-split reveal ──────────────────────────
+// Grote koppen knippen per woord omhoog als ze in beeld komen.
+// Op hover: typewriter char-for-char effect.
+document.querySelectorAll('.section-title').forEach((title) => {
+  const text = title.textContent.trim();
+  title.setAttribute('data-text', text);
+
+  if (prefersReducedMotion) {
+    // Geen animatie, direct tonen
+    title.classList.add('visible');
+    return;
+  }
+
+  const words = text.split(/\s+/);
+
+  const buildWords = (stayVisible) => {
+    title.innerHTML = words.map((word, i) =>
+      `<span class="st-word-wrap"><span class="st-word"` +
+      (stayVisible ? ` style="transform:translateY(0);transition:none"` : ` style="transition-delay:${i * 95}ms"`) +
+      `>${word}</span></span>`
+    ).join(' ');
+  };
+
+  buildWords(false);
+
+  // IntersectionObserver: voeg .visible toe zodra titel in beeld komt
+  const titleObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        titleObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  titleObs.observe(title);
+
+  // Hover: typewriter over originele tekst
+  title.addEventListener('mouseenter', () => {
+    title.innerHTML = text
+      .split('')
+      .map((ch) => `<span class="char" style="display:inline-block">${ch === ' ' ? '&nbsp;' : ch}</span>`)
+      .join('');
+    title.querySelectorAll('.char').forEach((ch, i) => {
+      ch.style.opacity = '0';
+      setTimeout(() => { ch.style.opacity = '1'; }, i * 65);
+    });
+  });
+
+  // Na hover: herstel word-split (zichtbaar, geen heranimatie)
+  title.addEventListener('mouseleave', () => {
+    buildWords(true);
+  });
+});
+
+// ── Typewriter hover op project-hero titels ──────────────────
+document.querySelectorAll('.project-hero__title').forEach((title) => {
   title.innerHTML = title.textContent
     .split('')
     .map((ch) => `<span class="char" style="display:inline-block">${ch === ' ' ? '&nbsp;' : ch}</span>`)
@@ -154,7 +208,7 @@ document.querySelectorAll('.section-title, .project-hero__title').forEach((title
   title.addEventListener('mouseenter', () => {
     title.querySelectorAll('.char').forEach((ch, i) => {
       ch.style.opacity = '0';
-      setTimeout(() => { ch.style.opacity = '1'; }, i * 70);
+      setTimeout(() => { ch.style.opacity = '1'; }, i * 65);
     });
   });
 });
@@ -182,8 +236,8 @@ document.querySelectorAll('.section-title, .project-hero__title').forEach((title
 })();
 
 // ── Parallax: homepage hero ───────────────────────────────────
-// De inhoud van de hero trekt iets achter bij het scrollen,
-// wat de hero meer "laagdiepte" geeft.
+// De inhoud van de hero trekt achter bij het scrollen — meer
+// parallax-factor voor een zichtbaarder diepte-effect.
 (function () {
   const heroSection = document.querySelector('.hero');
   const heroInner   = document.querySelector('.hero__inner');
@@ -195,7 +249,7 @@ document.querySelectorAll('.section-title, .project-hero__title').forEach((title
   const update = () => {
     const y = window.scrollY;
     if (y < heroH * 1.5) {
-      heroInner.style.transform = `translateY(${y * 0.18}px)`;
+      heroInner.style.transform = `translateY(${y * 0.32}px)`;
     }
     ticking = false;
   };
@@ -206,6 +260,67 @@ document.querySelectorAll('.section-title, .project-hero__title').forEach((title
       ticking = true;
     }
   }, { passive: true });
+})();
+
+// ── Custom cursor ─────────────────────────────────────────────
+// Dot volgt muis direct. Ring volgt met lerp-vertraging.
+// Alleen op pointer:fine (desktop met muis).
+(function () {
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+
+  const dot  = document.createElement('div');
+  const ring = document.createElement('div');
+  dot.className  = 'cursor-dot is-hidden';
+  ring.className = 'cursor-ring is-hidden';
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+
+  let mouseX = -200, mouseY = -200;
+  let ringX  = -200, ringY  = -200;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top  = mouseY + 'px';
+    dot.classList.remove('is-hidden');
+    ring.classList.remove('is-hidden');
+  });
+
+  document.addEventListener('mouseleave', () => {
+    dot.classList.add('is-hidden');
+    ring.classList.add('is-hidden');
+  });
+
+  // Ring: soepele volgbeweging via lineaire interpolatie
+  if (!prefersReducedMotion) {
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const tick = () => {
+      ringX = lerp(ringX, mouseX, 0.1);
+      ringY = lerp(ringY, mouseY, 0.1);
+      ring.style.left = ringX + 'px';
+      ring.style.top  = ringY + 'px';
+      requestAnimationFrame(tick);
+    };
+    tick();
+  } else {
+    document.addEventListener('mousemove', (e) => {
+      ring.style.left = e.clientX + 'px';
+      ring.style.top  = e.clientY + 'px';
+    });
+  }
+
+  // Hover-staat: dot krimpt, ring groeit
+  document.querySelectorAll('a, button, [role="button"], .project-card, .showcase__card-inner').forEach((el) => {
+    el.addEventListener('mouseenter', () => {
+      dot.classList.add('is-hover');
+      ring.classList.add('is-hover');
+    });
+    el.addEventListener('mouseleave', () => {
+      dot.classList.remove('is-hover');
+      ring.classList.remove('is-hover');
+    });
+  });
 })();
 
 // ── Parallax: detail-pagina hero afbeelding ───────────────────
