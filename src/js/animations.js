@@ -1,5 +1,5 @@
 // ── Scroll-triggered reveals — alle typen ────────────────────
-const revealSelector = '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade';
+const revealSelector = '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade, .reveal-up, .reveal-blur';
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -158,3 +158,81 @@ document.querySelectorAll('.section-title, .project-hero__title').forEach((title
     });
   });
 });
+
+// ── Scroll progress bar ──────────────────────────────────────
+(function () {
+  const bar = document.getElementById('scroll-progress');
+  if (!bar || prefersReducedMotion) return;
+
+  let ticking = false;
+
+  const updateBar = () => {
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = `scaleX(${total > 0 ? scrolled / total : 0})`;
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateBar);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+// ── Parallax: homepage hero ───────────────────────────────────
+// De inhoud van de hero trekt iets achter bij het scrollen,
+// wat de hero meer "laagdiepte" geeft.
+(function () {
+  const heroSection = document.querySelector('.hero');
+  const heroInner   = document.querySelector('.hero__inner');
+  if (!heroSection || !heroInner || prefersReducedMotion) return;
+
+  const heroH = heroSection.offsetHeight;
+  let ticking = false;
+
+  const update = () => {
+    const y = window.scrollY;
+    if (y < heroH * 1.5) {
+      heroInner.style.transform = `translateY(${y * 0.18}px)`;
+    }
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+// ── Parallax: detail-pagina hero afbeelding ───────────────────
+// De afbeelding beweegt trager dan de pagina (klassieke parallax).
+// .project-hero__img-wrap heeft overflow:hidden — de afbeelding
+// begint met scale(1.08) zodat er geen witruimte verschijnt.
+(function () {
+  const wrap = document.querySelector('.project-hero__img-wrap');
+  const img  = document.querySelector('.project-hero__img');
+  if (!wrap || !img || prefersReducedMotion) return;
+
+  let ticking = false;
+
+  const update = () => {
+    const y         = window.scrollY;
+    const wrapBot   = wrap.getBoundingClientRect().bottom + y;
+    if (y < wrapBot) {
+      // Negatieve Y: beeld beweegt omhoog binnen de wrapper
+      img.style.transform = `scale(1.08) translateY(${y * -0.12}px)`;
+    }
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+})();

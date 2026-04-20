@@ -51,6 +51,7 @@
   <link rel="stylesheet" href="/src/css/base.css">
   <link rel="stylesheet" href="/src/css/sections/nav.css">
   <link rel="stylesheet" href="/src/css/sections/footer.css">
+  <link rel="stylesheet" href="/src/css/sections/scrollytelling.css">
 
   <!-- CSS: pagina-specifiek -->
   {% if extraCSS %}
@@ -64,6 +65,9 @@
   {% endif %}
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+
+  <!-- Scroll progress indicator -->
+  <div id="scroll-progress" aria-hidden="true"></div>
 
   <a href="#main-content" class="skip-link">Ga naar inhoud</a>
 
