@@ -1,0 +1,30 @@
+---
+pageTitle: "BI & Data — Dashboards die je helpen beslissen | BYGGR"
+metaDescription: "BYGGR bouwt BI-dashboards en dataoplossingen op maat. Cijfers die iets zeggen — Power BI of web-dashboard gekoppeld aan jouw databronnen."
+canonical: "https://byggr.nl/services/bi-data.html"
+ogImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop&q=80"
+title: "BI & Data"
+label: "02 — BI & Data"
+intro: "Je hebt de data al. BYGGR zorgt dat je er iets mee kunt — zonder iedere week handmatig te knippen en plakken."
+image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop&q=80"
+imageAlt: "BI en Data — laptop met data dashboard en grafieken"
+blocks:
+  - kicker: "Wat je krijgt"
+    heading: "Wat je krijgt"
+    items:
+      - "Power BI of web-dashboard op maat"
+      - "Gekoppeld aan jouw bestaande databronnen"
+      - "Data ververst automatisch — geen handmatig werk meer"
+      - "Elke gebruiker ziet wat voor hem relevant is"
+  - kicker: "Voor wie"
+    heading: "Voor wie"
+    body: "Bedrijven die al data hebben maar er weinig mee doen — omdat het verspreid zit over Excel-bestanden, systemen of e-mails. Je wil gewoon weten hoe het er voor staat, zonder elke keer iemand te hoeven vragen."
+  - kicker: "Werkwijze"
+    heading: "Hoe het werkt"
+    items:
+      - "<strong>Inventarisatie</strong> — waar zit je data, wat wil je ermee weten?"
+      - "<strong>Bouwen</strong> — stap voor stap, jij bepaalt wat op het scherm komt"
+      - "<strong>Overdracht</strong> — je begrijpt wat je ziet en kunt het zelf bijhouden"
+ctaTitle: "Inzicht nodig?"
+ctaButton: "Vertel wat je nodig hebt"
+---

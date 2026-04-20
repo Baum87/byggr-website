@@ -7,25 +7,32 @@
   <!-- Google Analytics 4 — laadt alleen na cookietoestemming -->
   <script>if(localStorage.getItem('byggr-cookies')){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','G-XXXXXXXXXX');}</script>
 
-  <meta name="description" content="afbouwr.nl — calculatortool voor de afbouwsector. Vakspecifieke berekeningen voor scheidingswanden, plafonds en vloeren, direct bruikbaar op de bouwplaats.">
-  <title>afbouwr.nl — Calculator · Webapplicatie | BYGGR</title>
-  <link rel="canonical" href="https://byggr.nl/portfolio/afbouwr.html">
+  <meta name="description" content="{{ metaDescription }}">
+  {% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+  <title>{{ pageTitle }}</title>
+  <link rel="canonical" href="{{ canonical }}">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="afbouwr.nl — Calculator · Webapplicatie | BYGGR">
-  <meta property="og:description" content="Calculatortool voor de afbouwsector. Vakspecifieke berekeningen, direct bruikbaar in het veld.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=630&fit=crop&q=80">
+  <meta property="og:title" content="{{ ogTitle if ogTitle else pageTitle }}">
+  <meta property="og:description" content="{{ ogDescription if ogDescription else metaDescription }}">
+  <meta property="og:image" content="{{ ogImage }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:url" content="https://byggr.nl/portfolio/afbouwr.html">
-  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:type" content="{{ ogType if ogType else 'website' }}">
   <meta property="og:locale" content="nl_NL">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="afbouwr.nl — Calculator · Webapplicatie | BYGGR">
-  <meta name="twitter:description" content="Calculatortool voor de afbouwsector. Vakspecifieke berekeningen, direct bruikbaar in het veld.">
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=630&fit=crop&q=80">
+  <meta name="twitter:title" content="{{ ogTitle if ogTitle else pageTitle }}">
+  <meta name="twitter:description" content="{{ ogDescription if ogDescription else metaDescription }}">
+  <meta name="twitter:image" content="{{ ogImage }}">
+
+  {% if structuredData %}
+  <script type="application/ld+json">
+  {{ structuredData | safe }}
+  </script>
+  {% endif %}
 
   <!-- Theme: direct toepassen om flash te voorkomen -->
   <script>if(localStorage.getItem('byggr-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
@@ -33,20 +40,30 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
 
-  <!-- Fonts: Bebas Neue (display) + Barlow Condensed (koppen) + Space Mono (mono/nav) + Inter (body) -->
+  <!-- Fonts: Bebas Neue + Barlow Condensed + Space Mono + Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
+  <!-- CSS: gemeenschappelijk -->
   <link rel="stylesheet" href="/src/css/reset.css">
   <link rel="stylesheet" href="/src/css/tokens.css">
   <link rel="stylesheet" href="/src/css/base.css">
   <link rel="stylesheet" href="/src/css/sections/nav.css">
   <link rel="stylesheet" href="/src/css/sections/footer.css">
-  <link rel="stylesheet" href="/src/css/sections/portfolio-detail.css">
+
+  <!-- CSS: pagina-specifiek -->
+  {% if extraCSS %}
+    {% for css in extraCSS %}
+  <link rel="stylesheet" href="{{ css }}">
+    {% endfor %}
+  {% endif %}
+
+  {% if inlineCSS %}
+  <style>{{ inlineCSS | safe }}</style>
+  {% endif %}
 </head>
-<body class="detail-page">
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
 
   <a href="#main-content" class="skip-link">Ga naar inhoud</a>
 
@@ -57,20 +74,34 @@
     <nav class="nav" aria-label="Hoofdnavigatie">
       <div class="container nav__inner">
 
+        {% if isHome %}
+        <a href="#" class="nav__logo" aria-label="BYGGR — naar boven">
+        {% else %}
         <a href="/" class="nav__logo" aria-label="BYGGR — naar homepage">
+        {% endif %}
           <img src="/logo-light.svg" alt="BYGGR" class="nav__logo-img nav__logo-img--light" width="120" height="29">
           <img src="/logo-dark.svg"  alt="BYGGR" class="nav__logo-img nav__logo-img--dark"  width="120" height="29">
         </a>
 
+        {% if not simpleNav %}
         <ul class="nav__links" role="list">
+          {% if isHome %}
+          <li><a href="#services" class="nav__link">Services</a></li>
+          <li><a href="#over" class="nav__link">Over</a></li>
+          <li><a href="#portfolio" class="nav__link">Portfolio</a></li>
+          <li><a href="#contact" class="nav__link">Contact</a></li>
+          {% else %}
           <li><a href="/#services" class="nav__link">Services</a></li>
           <li><a href="/#over" class="nav__link">Over</a></li>
           <li><a href="/#portfolio" class="nav__link">Portfolio</a></li>
           <li><a href="/#contact" class="nav__link">Contact</a></li>
+          {% endif %}
         </ul>
+        {% endif %}
 
         <div class="nav__actions">
           <button class="nav__theme-toggle" id="theme-toggle" aria-label="Wisselen naar donker thema">◐</button>
+          {% if not simpleNav %}
           <button
             class="nav__hamburger"
             aria-label="Menu openen"
@@ -81,105 +112,33 @@
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </button>
+          {% endif %}
         </div>
 
       </div>
     </nav>
 
+    {% if not simpleNav %}
     <div id="mobile-menu" class="nav__mobile-menu" role="dialog" aria-label="Navigatiemenu" aria-modal="true">
       <ul role="list">
+        {% if isHome %}
+        <li><a href="#services" class="nav__mobile-link">Services</a></li>
+        <li><a href="#over" class="nav__mobile-link">Over</a></li>
+        <li><a href="#portfolio" class="nav__mobile-link">Portfolio</a></li>
+        <li><a href="#contact" class="nav__mobile-link">Contact</a></li>
+        {% else %}
         <li><a href="/#services" class="nav__mobile-link">Services</a></li>
         <li><a href="/#over" class="nav__mobile-link">Over</a></li>
         <li><a href="/#portfolio" class="nav__mobile-link">Portfolio</a></li>
         <li><a href="/#contact" class="nav__mobile-link">Contact</a></li>
+        {% endif %}
       </ul>
     </div>
+    {% endif %}
   </header>
 
   <main id="main-content">
-
-    <!-- ============================================================
-         PROJECT HERO
-         ============================================================ -->
-    <section class="project-hero" aria-labelledby="project-title">
-
-      <div class="project-hero__inner">
-        <a href="/#portfolio" class="project-hero__breadcrumb reveal-fade">
-          Terug naar portfolio
-        </a>
-
-        <span class="project-hero__label reveal-fade">Calculator · Webapplicatie</span>
-        <h1 class="project-hero__title reveal" id="project-title">afbouwr.nl</h1>
-        <p class="project-hero__intro reveal">
-          Calculatortool voor afbouwers. Vakspecifieke berekeningen voor scheidingswanden,
-          plafonds en vloeren — direct op de telefoon, ook op de bouwplaats.
-        </p>
-      </div>
-
-      <div class="project-hero__img-wrap reveal-scale">
-        <img
-          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=630&fit=crop&q=80"
-          alt="Afbouwsector — scheidingswanden en plafondwerk op een bouwplaats"
-          width="1200"
-          height="630"
-          loading="eager"
-          class="project-hero__img"
-        >
-      </div>
-
-    </section>
-
-    <!-- ============================================================
-         PROJECT DETAIL
-         ============================================================ -->
-    <section class="project-detail" aria-label="Projectdetails">
-      <div class="project-detail__inner">
-
-        <div class="detail-block reveal">
-          <span class="detail-block__kicker">01 — Uitdaging</span>
-          <h2 class="detail-block__heading">Het probleem</h2>
-          <p class="detail-block__body">
-            Afbouwers rekenen nog veel handmatig of met Excel. Dat kost tijd
-            en geeft fouten bij offertes — met name als je midden op de
-            bouwplaats staat zonder laptop en goede verbinding.
-          </p>
-        </div>
-
-        <div class="detail-block reveal">
-          <span class="detail-block__kicker">02 — Oplossing</span>
-          <h2 class="detail-block__heading">De aanpak</h2>
-          <p class="detail-block__body">
-            Webapplicatie met vakspecifieke calculators voor scheidingswanden,
-            plafonds en vloeren. Mobiel-first, direct bruikbaar op de
-            bouwplaats. Geen account nodig, geen installatie — gewoon de URL
-            openen en rekenen.
-          </p>
-        </div>
-
-        <div class="detail-block reveal">
-          <span class="detail-block__kicker">03 — Resultaat</span>
-          <h2 class="detail-block__heading">Wat het opleverde</h2>
-          <p class="detail-block__body">
-            Dagelijks in gebruik. Snellere offertes, minder rekenfouten.
-            Gebruikers slaan de webapp op als snelkoppeling op hun telefoon
-            en starten er elke ochtend mee.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============================================================
-         CTA
-         ============================================================ -->
-    <section class="project-cta" aria-label="Soortgelijk project aanvragen">
-      <div class="project-cta__inner">
-        <span class="project-cta__label reveal-fade">Volgende stap</span>
-        <h2 class="project-cta__title reveal">Soortgelijk project nodig?</h2>
-        <a href="/#contact" class="btn btn--primary reveal-fade">Neem contact op</a>
-      </div>
-    </section>
-
+    {{ content | safe }}
   </main>
 
   <!-- ============================================================
@@ -194,10 +153,17 @@
       </span>
 
       <nav class="footer__nav" aria-label="Footer navigatie">
+        {% if isHome %}
+        <a href="#services">Services</a>
+        <a href="#over">Over</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+        {% else %}
         <a href="/#services">Services</a>
         <a href="/#over">Over</a>
         <a href="/#portfolio">Portfolio</a>
         <a href="/#contact">Contact</a>
+        {% endif %}
         <a href="/privacy.html">Privacy</a>
       </nav>
 
@@ -208,10 +174,63 @@
     </div>
   </footer>
 
+  <!-- Cookie banner -->
+  <div id="cookie-banner" class="cookie-banner" role="alertdialog" aria-label="Cookiemelding" hidden>
+    <p>Deze site gebruikt analytics om bezoekersgedrag bij te houden. <a href="/privacy.html">Meer info</a></p>
+    <button id="cookie-accept" class="cookie-banner__btn">Akkoord</button>
+  </div>
+
+  {% if includeNetlifyIdentity %}
+  <!-- Netlify Identity — redirect naar /admin/ na login -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', function(user) {
+        if (!user) {
+          window.netlifyIdentity.on('login', function() {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
+  </script>
+  {% endif %}
+
   <!-- JavaScript -->
   <script src="/src/js/main.js" defer></script>
   <script src="/src/js/animations.js" defer></script>
   <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+  <script>
+    // Cookie consent + GA4 activeren na akkoord
+    (function() {
+      function loadGA() {
+        if (window._gaLoaded) return;
+        window._gaLoaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+      }
+      if (localStorage.getItem('byggr-cookies')) {
+        loadGA();
+      } else {
+        var banner = document.getElementById('cookie-banner');
+        if (banner) banner.removeAttribute('hidden');
+      }
+      var btn = document.getElementById('cookie-accept');
+      if (btn) btn.addEventListener('click', function() {
+        localStorage.setItem('byggr-cookies', '1');
+        var banner = document.getElementById('cookie-banner');
+        if (banner) banner.setAttribute('hidden', '');
+        loadGA();
+      });
+    })();
+  </script>
 
 </body>
 </html>

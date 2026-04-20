@@ -1,0 +1,6 @@
+{
+  "layout": "layouts/detail.njk",
+  "pageType": "portfolio",
+  "ogType": "article",
+  "permalink": "/portfolio/{{ page.fileSlug }}.html"
+}

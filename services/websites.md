@@ -1,0 +1,30 @@
+---
+pageTitle: "Websites — Snel, helder en van jou | BYGGR"
+metaDescription: "BYGGR bouwt websites die werken voor jouw bedrijf. Snel, helder, responsive en volledig van jou — inclusief CMS, hosting en SEO-basis."
+canonical: "https://byggr.nl/services/websites.html"
+ogImage: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&h=630&fit=crop&q=80"
+title: "Websites"
+label: "01 — Websites"
+intro: "Een site die doet wat hij moet doen. Snel live, zelf te beheren, en geen abonnement op onderhoud dat je niet nodig hebt."
+image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&h=630&fit=crop&q=80"
+imageAlt: "Website ontwikkeling — laptop met code editor op een werkplek"
+blocks:
+  - kicker: "Wat je krijgt"
+    heading: "Wat je krijgt"
+    items:
+      - "Responsive website — werkt op telefoon en desktop"
+      - "CMS zodat je zelf teksten en foto's kunt aanpassen"
+      - "Hosting inbegrepen — geen technisch gedoe"
+      - "SEO-basis op orde zodat Google je vindt"
+  - kicker: "Voor wie"
+    heading: "Voor wie"
+    body: "Ondernemers die online gevonden willen worden maar geen zin hebben in ellenlange trajecten of bureaus die je niet terugbellen. Je hoeft niks van techniek te snappen — na oplevering regel je het zelf."
+  - kicker: "Werkwijze"
+    heading: "Hoe het werkt"
+    items:
+      - "<strong>Gesprek</strong> — wat moet de site doen, voor wie, en wanneer moet het live?"
+      - "<strong>Prototype</strong> — je ziet al vroeg iets werkends, niet alleen een ontwerp"
+      - "<strong>Oplevering</strong> — je krijgt de sleutels, inclusief uitleg hoe je het zelf beheert"
+ctaTitle: "Wil je een website?"
+ctaButton: "Vertel wat je nodig hebt"
+---

@@ -1,0 +1,23 @@
+---
+pageTitle: "BI Dashboard Baumeister — Dashboard · Intern | BYGGR"
+metaDescription: "BI Dashboard Baumeister — intern Power BI dashboard voor operationele sturing. Dagelijks in gebruik door het managementteam. Wekelijkse Excel-rapportage volledig vervangen."
+canonical: "https://byggr.nl/portfolio/bi-dashboard-baumeister.html"
+ogImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop&q=80"
+title: "BI Dashboard"
+label: "Dashboard · Intern"
+intro: "Power BI dashboard voor intern gebruik. Het MT startte de dag met een week oude Excel — nu met actuele cijfers. De wekelijkse rapportage is er niet meer."
+image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop&q=80"
+imageAlt: "Data dashboard met grafieken en KPI-overzichten op een scherm"
+blocks:
+  - kicker: "01 — Uitdaging"
+    heading: "Het probleem"
+    body: "Het managementteam had geen actueel inzicht in operationele KPI's. Beslissingen werden genomen op basis van wekelijkse Excel-rapporten — altijd een week te laat en afhankelijk van handmatige bewerking."
+  - kicker: "02 — Oplossing"
+    heading: "De aanpak"
+    body: "Power BI dashboard gekoppeld aan bestaande databronnen. Automatische verversing, rolgebaseerde toegang per manager. Elke gebruiker ziet precies wat relevant is voor zijn of haar afdeling — niet meer, niet minder."
+  - kicker: "03 — Resultaat"
+    heading: "Wat het opleverde"
+    body: "Dagelijks in gebruik door het MT. De wekelijkse rapportage is volledig vervangen. Managers starten de dag met actuele cijfers in plaats van een e-mail met een bijlage uit gisteren."
+ctaTitle: "Soortgelijk project nodig?"
+ctaButton: "Neem contact op"
+---

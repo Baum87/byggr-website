@@ -1,0 +1,78 @@
+---
+layout: layouts/base.njk
+bodyClass: detail-page
+extraCSS:
+  - /src/css/sections/portfolio-detail.css
+---
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="project-hero" aria-labelledby="{% if pageType == 'service' %}service-title{% else %}project-title{% endif %}">
+
+      <div class="project-hero__inner">
+        {% if pageType == 'service' %}
+        <a href="/#services" class="project-hero__breadcrumb reveal-fade">
+          Terug naar services
+        </a>
+        {% else %}
+        <a href="/#portfolio" class="project-hero__breadcrumb reveal-fade">
+          Terug naar portfolio
+        </a>
+        {% endif %}
+
+        <span class="project-hero__label reveal-fade">{{ label }}</span>
+        <h1 class="project-hero__title reveal" id="{% if pageType == 'service' %}service-title{% else %}project-title{% endif %}">{{ titleDisplay | safe if titleDisplay else title }}</h1>
+        <p class="project-hero__intro reveal">
+          {{ intro }}
+        </p>
+      </div>
+
+      <div class="project-hero__img-wrap reveal-scale">
+        <img
+          src="{{ image }}"
+          alt="{{ imageAlt }}"
+          width="1200"
+          height="630"
+          loading="eager"
+          class="project-hero__img"
+        >
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         DETAIL BLOKKEN
+         ============================================================ -->
+    <section class="project-detail" aria-label="{% if pageType == 'service' %}Service details{% else %}Projectdetails{% endif %}">
+      <div class="project-detail__inner">
+
+        {% for block in blocks %}
+        <div class="detail-block reveal">
+          <span class="detail-block__kicker">{{ block.kicker }}</span>
+          <h2 class="detail-block__heading">{{ block.heading }}</h2>
+          {% if block.body %}
+          <p class="detail-block__body">{{ block.body }}</p>
+          {% elif block.items %}
+          <ul class="detail-block__body" style="padding-left: 1.25em; display: flex; flex-direction: column; gap: 0.5em;">
+            {% for item in block.items %}
+            <li>{{ item | safe }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        {% endfor %}
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA
+         ============================================================ -->
+    <section class="project-cta" aria-label="{% if pageType == 'service' %}Contact opnemen{% else %}Soortgelijk project aanvragen{% endif %}">
+      <div class="project-cta__inner">
+        <span class="project-cta__label reveal-fade">Volgende stap</span>
+        <h2 class="project-cta__title reveal">{{ ctaTitle }}</h2>
+        <a href="/#contact" class="btn btn--primary reveal-fade">{{ ctaButton }}</a>
+      </div>
+    </section>

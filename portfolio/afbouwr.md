@@ -1,0 +1,23 @@
+---
+pageTitle: "afbouwr.nl — Calculator · Webapplicatie | BYGGR"
+metaDescription: "afbouwr.nl — calculatortool voor de afbouwsector. Vakspecifieke berekeningen voor scheidingswanden, plafonds en vloeren, direct bruikbaar op de bouwplaats."
+canonical: "https://byggr.nl/portfolio/afbouwr.html"
+ogImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=630&fit=crop&q=80"
+title: "afbouwr.nl"
+label: "Calculator · Webapplicatie"
+intro: "Calculatortool voor afbouwers. Vakspecifieke berekeningen voor scheidingswanden, plafonds en vloeren — direct op de telefoon, ook op de bouwplaats."
+image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=630&fit=crop&q=80"
+imageAlt: "Afbouwsector — scheidingswanden en plafondwerk op een bouwplaats"
+blocks:
+  - kicker: "01 — Uitdaging"
+    heading: "Het probleem"
+    body: "Afbouwers rekenen nog veel handmatig of met Excel. Dat kost tijd en geeft fouten bij offertes — met name als je midden op de bouwplaats staat zonder laptop en goede verbinding."
+  - kicker: "02 — Oplossing"
+    heading: "De aanpak"
+    body: "Webapplicatie met vakspecifieke calculators voor scheidingswanden, plafonds en vloeren. Mobiel-first, direct bruikbaar op de bouwplaats. Geen account nodig, geen installatie — gewoon de URL openen en rekenen."
+  - kicker: "03 — Resultaat"
+    heading: "Wat het opleverde"
+    body: "Dagelijks in gebruik. Snellere offertes, minder rekenfouten. Gebruikers slaan de webapp op als snelkoppeling op hun telefoon en starten er elke ochtend mee."
+ctaTitle: "Soortgelijk project nodig?"
+ctaButton: "Neem contact op"
+---

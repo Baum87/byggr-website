@@ -1,0 +1,30 @@
+---
+pageTitle: "Hosting — Altijd online, geen gedoe | BYGGR"
+metaDescription: "BYGGR regelt hosting via Netlify of Vercel — altijd online, HTTPS standaard, automatische deploys en uptime bewaking. Geen gedoe."
+canonical: "https://byggr.nl/services/hosting.html"
+ogImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=630&fit=crop&q=80"
+title: "Hosting"
+label: "04 — Hosting"
+intro: "Je site staat gewoon online. Snel, veilig, en jij hoeft er nooit meer naar om te kijken."
+image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=630&fit=crop&q=80"
+imageAlt: "Hosting en infrastructuur — serverrack met netwerkkabels"
+blocks:
+  - kicker: "Wat je krijgt"
+    heading: "Wat je krijgt"
+    items:
+      - "Hosting via Netlify of Vercel — snel en betrouwbaar"
+      - "Wijzigingen gaan automatisch live, geen FTP gedoe"
+      - "HTTPS standaard — je site is beveiligd"
+      - "Uptime bewaking zodat we het weten als er iets misgaat"
+  - kicker: "Voor wie"
+    heading: "Voor wie"
+    body: "Bedrijven die gewoon willen dat hun site online staat — zonder serverkennis, contracten of een hostingprovider die je niet terugbelt. Of je nu een nieuwe site laat bouwen of iets wil verplaatsen: BYGGR regelt het."
+  - kicker: "Werkwijze"
+    heading: "Hoe het werkt"
+    items:
+      - "<strong>Site overzetten of opzetten</strong> — bestaand of nieuw, maakt niet uit"
+      - "<strong>Domein koppelen</strong> — DNS, HTTPS, alles geregeld zonder dat jij er iets van merkt"
+      - "<strong>Live</strong> — monitoring staat aan, jij verder met je werk"
+ctaTitle: "Hosting geregeld?"
+ctaButton: "Vertel wat je nodig hebt"
+---

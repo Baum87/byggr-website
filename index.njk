@@ -1,34 +1,18 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Google Analytics 4 wordt geladen na cookietoestemming (zie script onderaan) -->
-  <!-- Vervang G-XXXXXXXXXX met jouw Measurement ID uit analytics.google.com -->
-
-  <meta name="description" content="Websites, dashboards en AI-tools voor MKB in Twente. BYGGR bouwt wat werkt — eenvoudig, snel en schaalbaar. Vraag een offerte aan.">
-  <title>Websites & AI-tools voor MKB Twente | BYGGR</title>
-  <link rel="canonical" href="https://byggr.nl/">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Websites & AI-tools voor MKB Twente | BYGGR">
-  <meta property="og:description" content="Websites, dashboards en AI-tools voor MKB in Twente. BYGGR bouwt wat werkt — eenvoudig, snel en schaalbaar. Vraag een offerte aan.">
-  <meta property="og:image" content="https://byggr.nl/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:url" content="https://byggr.nl/">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="nl_NL">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Websites & AI-tools voor MKB Twente | BYGGR">
-  <meta name="twitter:description" content="Websites, dashboards en AI-tools voor MKB in Twente. BYGGR bouwt wat werkt — eenvoudig, snel en schaalbaar.">
-  <meta name="twitter:image" content="https://byggr.nl/og-image.png">
-
-  <!-- Structured Data: LocalBusiness -->
-  <script type="application/ld+json">
+---
+layout: layouts/base.njk
+pageTitle: "Websites & AI-tools voor MKB Twente | BYGGR"
+metaDescription: "Websites, dashboards en AI-tools voor MKB in Twente. BYGGR bouwt wat werkt — eenvoudig, snel en schaalbaar. Vraag een offerte aan."
+canonical: "https://byggr.nl/"
+ogImage: "https://byggr.nl/og-image.png"
+isHome: true
+includeNetlifyIdentity: true
+extraCSS:
+  - /src/css/sections/hero.css
+  - /src/css/sections/diensten.css
+  - /src/css/sections/over.css
+  - /src/css/sections/portfolio.css
+  - /src/css/sections/contact.css
+structuredData: |
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -54,81 +38,8 @@
     "serviceType": ["Webdesign", "BI & Data dashboards", "AI-tools", "Hosting"],
     "priceRange": "€€"
   }
-  </script>
-  <!-- Theme: direct toepassen om flash te voorkomen -->
-  <script>if(localStorage.getItem('byggr-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
-
-  <!-- Fonts: Bebas Neue (display) + Barlow Condensed (koppen) + Space Mono (mono/nav) + Inter (body) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="src/css/reset.css">
-  <link rel="stylesheet" href="src/css/tokens.css">
-  <link rel="stylesheet" href="src/css/base.css">
-  <link rel="stylesheet" href="src/css/sections/nav.css">
-  <link rel="stylesheet" href="src/css/sections/hero.css">
-  <link rel="stylesheet" href="src/css/sections/diensten.css">
-  <link rel="stylesheet" href="src/css/sections/over.css">
-  <link rel="stylesheet" href="src/css/sections/portfolio.css">
-  <link rel="stylesheet" href="src/css/sections/contact.css">
-  <link rel="stylesheet" href="src/css/sections/footer.css">
-</head>
-<body>
-
-  <a href="#main-content" class="skip-link">Ga naar inhoud</a>
-
-  <!-- ============================================================
-       NAVIGATIE
-       ============================================================ -->
-  <header role="banner">
-    <nav class="nav" aria-label="Hoofdnavigatie">
-      <div class="container nav__inner">
-
-        <a href="#" class="nav__logo" aria-label="BYGGR — naar boven">
-          <img src="/logo-light.svg" alt="BYGGR" class="nav__logo-img nav__logo-img--light" width="120" height="29">
-          <img src="/logo-dark.svg"  alt="BYGGR" class="nav__logo-img nav__logo-img--dark"  width="120" height="29">
-        </a>
-
-        <ul class="nav__links" role="list">
-          <li><a href="#services" class="nav__link">Services</a></li>
-          <li><a href="#over" class="nav__link">Over</a></li>
-          <li><a href="#portfolio" class="nav__link">Portfolio</a></li>
-          <li><a href="#contact" class="nav__link">Contact</a></li>
-        </ul>
-
-        <div class="nav__actions">
-          <button class="nav__theme-toggle" id="theme-toggle" aria-label="Wisselen naar donker thema">◐</button>
-          <button
-            class="nav__hamburger"
-            aria-label="Menu openen"
-            aria-expanded="false"
-            aria-controls="mobile-menu"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </button>
-        </div>
-
-      </div>
-    </nav>
-
-    <div id="mobile-menu" class="nav__mobile-menu" role="dialog" aria-label="Navigatiemenu" aria-modal="true">
-      <ul role="list">
-        <li><a href="#services" class="nav__mobile-link">Services</a></li>
-        <li><a href="#over" class="nav__mobile-link">Over</a></li>
-        <li><a href="#portfolio" class="nav__mobile-link">Portfolio</a></li>
-        <li><a href="#contact" class="nav__mobile-link">Contact</a></li>
-      </ul>
-    </div>
-  </header>
-
-  <main id="main-content">
+permalink: /index.html
+---
 
     <!-- ============================================================
          SECTIE 1 — HERO
@@ -153,7 +64,6 @@
 
     <!-- ============================================================
          SECTIE 2 — DIENSTEN SHOWCASE
-         Donkere achtergrond, horizontale marquee met afbeeldingen
          ============================================================ -->
     <section id="services" class="showcase" aria-label="Services">
 
@@ -162,7 +72,7 @@
         <h2 class="section-title reveal">Digitaal geregeld.</h2>
       </div>
 
-      <!-- Marquee: 3 kaarten + 3 duplicaten voor seamless loop -->
+      <!-- Marquee: 4 kaarten + 4 duplicaten voor seamless loop -->
       <div class="showcase__stage">
         <div class="showcase__track">
 
@@ -328,7 +238,6 @@
 
     <!-- ============================================================
          SECTIE 4 — PORTFOLIO
-         Grid met afbeeldingen, per-project accentkleur
          ============================================================ -->
     <section id="portfolio" class="portfolio" aria-labelledby="portfolio-titel">
       <div class="container">
@@ -425,7 +334,6 @@
 
     <!-- ============================================================
          SECTIE 5 — CONTACT INTRO
-         PLACEHOLDER TITEL — wachten op copywriter keuze (A/B/C)
          ============================================================ -->
     <section id="contact" class="contact-intro" aria-labelledby="contact-intro-titel">
       <div class="container contact-intro__inner">
@@ -508,87 +416,3 @@
 
       </div>
     </section>
-
-  </main>
-
-  <!-- ============================================================
-       FOOTER
-       ============================================================ -->
-  <footer class="footer" role="contentinfo">
-    <div class="container footer__inner">
-
-      <span class="footer__logo">
-        <img src="/logo-light.svg" alt="BYGGR" class="footer__logo-img footer__logo-img--light" width="100" height="24">
-        <img src="/logo-dark.svg"  alt="BYGGR" class="footer__logo-img footer__logo-img--dark"  width="100" height="24">
-      </span>
-
-      <nav class="footer__nav" aria-label="Footer navigatie">
-        <a href="#services">Services</a>
-        <a href="#over">Over</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
-        <a href="/privacy.html">Privacy</a>
-      </nav>
-
-      <p class="footer__copy">
-        &copy; <span id="current-year">2026</span> BYGGR — Remco Baumeister, Delden
-      </p>
-
-    </div>
-  </footer>
-
-  <!-- Cookie banner -->
-  <div id="cookie-banner" class="cookie-banner" role="alertdialog" aria-label="Cookiemelding" hidden>
-    <p>Deze site gebruikt analytics om bezoekersgedrag bij te houden. <a href="/privacy.html">Meer info</a></p>
-    <button id="cookie-accept" class="cookie-banner__btn">Akkoord</button>
-  </div>
-
-  <!-- Netlify Identity — redirect naar /admin/ na login -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on('init', function(user) {
-        if (!user) {
-          window.netlifyIdentity.on('login', function() {
-            document.location.href = '/admin/';
-          });
-        }
-      });
-    }
-  </script>
-
-  <!-- JavaScript -->
-  <script src="src/js/main.js" defer></script>
-  <script src="src/js/animations.js" defer></script>
-  <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
-  <script>
-    // Cookie consent + GA4 activeren na akkoord
-    (function() {
-      function loadGA() {
-        if (window._gaLoaded) return;
-        window._gaLoaded = true;
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
-        document.head.appendChild(s);
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-      }
-      if (localStorage.getItem('byggr-cookies')) {
-        loadGA();
-      } else {
-        document.getElementById('cookie-banner').removeAttribute('hidden');
-      }
-      document.getElementById('cookie-accept').addEventListener('click', function() {
-        localStorage.setItem('byggr-cookies', '1');
-        document.getElementById('cookie-banner').setAttribute('hidden', '');
-        loadGA();
-      });
-    })();
-  </script>
-
-</body>
-</html>

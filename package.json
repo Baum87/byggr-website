@@ -1,0 +1,12 @@
+{
+  "name": "byggr-website",
+  "version": "1.0.0",
+  "description": "Byggr.nl — portfolio en leadgeneratiesite",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

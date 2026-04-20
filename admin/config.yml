@@ -5,25 +5,50 @@ backend:
 media_folder: "uploads"
 public_folder: "/uploads"
 
-# Portfolio-items worden beheerd als markdown-bestanden in content/portfolio/.
-# De bijbehorende HTML-detailpagina's in /portfolio/ zijn handmatig gebouwd
-# en hoeven niet via het CMS te worden aangemaakt.
 collections:
   - name: "portfolio"
     label: "Portfolio projecten"
-    folder: "content/portfolio"
+    folder: "portfolio"
     create: true
     slug: "{{slug}}"
     extension: "md"
     format: "frontmatter"
     fields:
-      - { label: "Projectnaam", name: "title", widget: "string" }
-      - { label: "Type", name: "type", widget: "string", hint: "bijv. Website, Dashboard, AI-tool" }
-      - { label: "Status", name: "status", widget: "select", options: ["Live", "In uitvoering", "Intern"] }
-      - { label: "Beschrijving (kort)", name: "summary", widget: "string" }
-      - { label: "Beschrijving (uitgebreid)", name: "body", widget: "markdown" }
-      - { label: "Afbeelding", name: "image", widget: "image", required: false }
-      - { label: "Live URL", name: "url", widget: "string", required: false }
-      - { label: "Detailpagina (intern)", name: "detail_path", widget: "string", hint: "bijv. /portfolio/afbouwr.html", required: false }
-      - { label: "Publicatiedatum", name: "date", widget: "datetime" }
-      - { label: "Uitgelicht op homepage", name: "featured", widget: "boolean", default: false }
+      - { label: "Paginatitel (SEO)", name: "pageTitle", widget: "string", hint: "bijv. afbouwr.nl — Calculator | BYGGR" }
+      - { label: "Meta omschrijving", name: "metaDescription", widget: "string" }
+      - { label: "Canonical URL", name: "canonical", widget: "string", hint: "bijv. https://byggr.nl/portfolio/afbouwr.html" }
+      - { label: "OG Afbeelding URL", name: "ogImage", widget: "string", required: false }
+      - { label: "Projectnaam (H1)", name: "title", widget: "string" }
+      - { label: "Label", name: "label", widget: "string", hint: "bijv. Website · In uitvoering" }
+      - { label: "Intro tekst", name: "intro", widget: "text" }
+      - { label: "Afbeelding URL", name: "image", widget: "string" }
+      - { label: "Afbeelding alt-tekst", name: "imageAlt", widget: "string" }
+      - label: "Blokken"
+        name: "blocks"
+        widget: "list"
+        fields:
+          - { label: "Kicker", name: "kicker", widget: "string", hint: "bijv. 01 — Uitdaging" }
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Tekst (paragraaf)", name: "body", widget: "text", required: false }
+      - { label: "CTA titel", name: "ctaTitle", widget: "string", default: "Soortgelijk project nodig?" }
+      - { label: "CTA knoptekst", name: "ctaButton", widget: "string", default: "Neem contact op" }
+
+  - name: "services"
+    label: "Services"
+    folder: "services"
+    create: false
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Paginatitel (SEO)", name: "pageTitle", widget: "string" }
+      - { label: "Meta omschrijving", name: "metaDescription", widget: "string" }
+      - { label: "Canonical URL", name: "canonical", widget: "string" }
+      - { label: "OG Afbeelding URL", name: "ogImage", widget: "string", required: false }
+      - { label: "Servicenaam (H1)", name: "title", widget: "string" }
+      - { label: "Label", name: "label", widget: "string", hint: "bijv. 01 — Websites" }
+      - { label: "Intro tekst", name: "intro", widget: "text" }
+      - { label: "Afbeelding URL", name: "image", widget: "string" }
+      - { label: "Afbeelding alt-tekst", name: "imageAlt", widget: "string" }
+      - { label: "CTA titel", name: "ctaTitle", widget: "string" }
+      - { label: "CTA knoptekst", name: "ctaButton", widget: "string" }

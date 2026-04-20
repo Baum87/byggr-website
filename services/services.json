@@ -1,0 +1,6 @@
+{
+  "layout": "layouts/detail.njk",
+  "pageType": "service",
+  "ogType": "website",
+  "permalink": "/services/{{ page.fileSlug }}.html"
+}

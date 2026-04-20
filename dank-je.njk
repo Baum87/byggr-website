@@ -1,0 +1,42 @@
+---
+layout: layouts/base.njk
+pageTitle: "Bericht ontvangen | BYGGR"
+metaDescription: "Je bericht is ontvangen."
+canonical: "https://byggr.nl/dank-je.html"
+noindex: true
+simpleNav: true
+permalink: /dank-je.html
+inlineCSS: |
+  .dank-inner {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: var(--space-6);
+    padding-block: var(--space-32);
+  }
+  .dank-inner .section-label { margin-bottom: 0; }
+  .dank-inner h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(var(--text-4xl), 6vw, var(--text-7xl));
+    font-weight: 700;
+    letter-spacing: var(--tracking-tight);
+    text-transform: uppercase;
+    line-height: var(--leading-tight);
+  }
+  .dank-inner p {
+    color: var(--color-text-muted);
+    font-size: var(--text-lg);
+    max-width: 420px;
+    line-height: var(--leading-relaxed);
+  }
+---
+
+    <div class="container dank-inner">
+      <span class="section-label">Ontvangen</span>
+      <h1>Bericht<br>ontvangen.</h1>
+      <p>Je hoort zo snel mogelijk van ons. Gemiddeld binnen één werkdag.</p>
+      <a href="/" class="btn btn--primary">Terug naar home</a>
+    </div>
