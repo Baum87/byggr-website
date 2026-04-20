@@ -39,6 +39,17 @@ extraCSS:
         >
       </div>
 
+      {% if meta %}
+      <div class="project-meta reveal-fade">
+        {% for item in meta %}
+        <div class="project-meta__item">
+          <span class="project-meta__label">{{ item.label }}</span>
+          <span class="project-meta__value">{{ item.value }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
     </section>
 
     <!-- ============================================================
@@ -51,8 +62,30 @@ extraCSS:
         <div class="detail-block reveal">
           <span class="detail-block__kicker">{{ block.kicker }}</span>
           <h2 class="detail-block__heading">{{ block.heading }}</h2>
+
           {% if block.body %}
           <p class="detail-block__body">{{ block.body }}</p>
+
+          {% elif block.spec %}
+          <ul class="spec-list">
+            {% for item in block.spec %}
+            <li class="spec-list__item">{{ item }}</li>
+            {% endfor %}
+          </ul>
+
+          {% elif block.steps %}
+          <ol class="process-steps">
+            {% for step in block.steps %}
+            <li class="process-step">
+              <span class="process-step__num">{{ step.num if step.num else loop.index }}</span>
+              <div class="process-step__content">
+                <span class="process-step__title">{{ step.title }}</span>
+                <span class="process-step__body">{{ step.body }}</span>
+              </div>
+            </li>
+            {% endfor %}
+          </ol>
+
           {% elif block.items %}
           <ul class="detail-block__body" style="padding-left: 1.25em; display: flex; flex-direction: column; gap: 0.5em;">
             {% for item in block.items %}
@@ -60,6 +93,15 @@ extraCSS:
             {% endfor %}
           </ul>
           {% endif %}
+
+          {% if block.tags %}
+          <ul class="project-tags" aria-label="Gebruikte technologie">
+            {% for tag in block.tags %}
+            <li class="project-tags__item">{{ tag }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
         </div>
         {% endfor %}
 
@@ -69,10 +111,28 @@ extraCSS:
     <!-- ============================================================
          CTA
          ============================================================ -->
-    <section class="project-cta" aria-label="{% if pageType == 'service' %}Contact opnemen{% else %}Soortgelijk project aanvragen{% endif %}">
+    <section class="project-cta project-cta--dark" aria-label="{% if pageType == 'service' %}Contact opnemen{% else %}Soortgelijk project aanvragen{% endif %}">
       <div class="project-cta__inner">
         <span class="project-cta__label reveal-fade">Volgende stap</span>
         <h2 class="project-cta__title reveal">{{ ctaTitle }}</h2>
         <a href="/#contact" class="btn btn--primary reveal-fade">{{ ctaButton }}</a>
       </div>
     </section>
+
+    {% if nextUrl %}
+    <!-- ============================================================
+         NAVIGATIE VOLGENDE PAGINA
+         ============================================================ -->
+    <nav class="project-nav" aria-label="{% if pageType == 'service' %}Andere services{% else %}Navigeer tussen projecten{% endif %}">
+      <div class="project-nav__inner">
+        <a href="{{ nextUrl }}" class="project-nav__link">
+          <span class="project-nav__label">{% if pageType == 'service' %}Volgende service{% else %}Volgend project{% endif %}</span>
+          <span class="project-nav__title">{{ nextTitle }} →</span>
+        </a>
+        <a href="{% if pageType == 'service' %}/#services{% else %}/#portfolio{% endif %}" class="project-nav__link project-nav__link--next">
+          <span class="project-nav__label">Overzicht</span>
+          <span class="project-nav__title">{% if pageType == 'service' %}Alle services{% else %}Alle projecten{% endif %}</span>
+        </a>
+      </div>
+    </nav>
+    {% endif %}

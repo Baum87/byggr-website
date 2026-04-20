@@ -143,8 +143,8 @@ const countObserver = new IntersectionObserver((entries) => {
 
 statGetallen.forEach((el) => countObserver.observe(el));
 
-// ── Typewriter hover op sectie-titels (niet hero) ────────────
-document.querySelectorAll('.section-title').forEach((title) => {
+// ── Typewriter hover op sectie-titels + project-hero titels ──
+document.querySelectorAll('.section-title, .project-hero__title').forEach((title) => {
   // Splits tekst in individuele karakter-spans
   title.innerHTML = title.textContent
     .split('')

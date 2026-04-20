@@ -77,22 +77,21 @@
 }
 .showcase__card:hover .showcase__img-wrap img { transform: scale(1.05); }
 
-/* Info onder de afbeelding — kan een <div> of <a> zijn */
+/* Link-wrapper die de hele kaart klikbaar maakt */
+.showcase__card-inner {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Info onder de afbeelding */
 .showcase__card-body {
   padding: var(--space-4) var(--space-6);
   display: flex;
   align-items: baseline;
   gap: var(--space-4);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  /* Neutrale link-reset wanneer het element een <a> is */
-  text-decoration: none;
-  color: inherit;
-}
-/* Stretched link — maakt de hele kaart klikbaar */
-a.showcase__card-body::after {
-  content: '';
-  position: absolute;
-  inset: 0;
 }
 
 .showcase__card-num {

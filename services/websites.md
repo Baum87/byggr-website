@@ -10,8 +10,8 @@ image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&h=630&f
 imageAlt: "Website ontwikkeling — laptop met code editor op een werkplek"
 blocks:
   - kicker: "Wat je krijgt"
-    heading: "Wat je krijgt"
-    items:
+    heading: "Inbegrepen"
+    spec:
       - "Responsive website — werkt op telefoon en desktop"
       - "CMS zodat je zelf teksten en foto's kunt aanpassen"
       - "Hosting inbegrepen — geen technisch gedoe"
@@ -21,10 +21,18 @@ blocks:
     body: "Ondernemers die online gevonden willen worden maar geen zin hebben in ellenlange trajecten of bureaus die je niet terugbellen. Je hoeft niks van techniek te snappen — na oplevering regel je het zelf."
   - kicker: "Werkwijze"
     heading: "Hoe het werkt"
-    items:
-      - "<strong>Gesprek</strong> — wat moet de site doen, voor wie, en wanneer moet het live?"
-      - "<strong>Prototype</strong> — je ziet al vroeg iets werkends, niet alleen een ontwerp"
-      - "<strong>Oplevering</strong> — je krijgt de sleutels, inclusief uitleg hoe je het zelf beheert"
+    steps:
+      - num: "01"
+        title: "Gesprek"
+        body: "Wat moet de site doen, voor wie, en wanneer moet het live?"
+      - num: "02"
+        title: "Prototype"
+        body: "Je ziet al vroeg iets werkends — geen statisch ontwerp, maar de echte site."
+      - num: "03"
+        title: "Oplevering"
+        body: "Je krijgt de sleutels, inclusief uitleg hoe je het zelf beheert."
 ctaTitle: "Wil je een website?"
 ctaButton: "Vertel wat je nodig hebt"
+nextUrl: "/services/bi-data.html"
+nextTitle: "BI & Data"
 ---

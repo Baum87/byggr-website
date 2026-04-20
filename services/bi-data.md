@@ -10,8 +10,8 @@ image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=63
 imageAlt: "BI en Data — laptop met data dashboard en grafieken"
 blocks:
   - kicker: "Wat je krijgt"
-    heading: "Wat je krijgt"
-    items:
+    heading: "Inbegrepen"
+    spec:
       - "Power BI of web-dashboard op maat"
       - "Gekoppeld aan jouw bestaande databronnen"
       - "Data ververst automatisch — geen handmatig werk meer"
@@ -21,10 +21,18 @@ blocks:
     body: "Bedrijven die al data hebben maar er weinig mee doen — omdat het verspreid zit over Excel-bestanden, systemen of e-mails. Je wil gewoon weten hoe het er voor staat, zonder elke keer iemand te hoeven vragen."
   - kicker: "Werkwijze"
     heading: "Hoe het werkt"
-    items:
-      - "<strong>Inventarisatie</strong> — waar zit je data, wat wil je ermee weten?"
-      - "<strong>Bouwen</strong> — stap voor stap, jij bepaalt wat op het scherm komt"
-      - "<strong>Overdracht</strong> — je begrijpt wat je ziet en kunt het zelf bijhouden"
+    steps:
+      - num: "01"
+        title: "Inventarisatie"
+        body: "Waar zit je data, wat wil je ermee weten?"
+      - num: "02"
+        title: "Bouwen"
+        body: "Stap voor stap — jij bepaalt wat op het scherm komt."
+      - num: "03"
+        title: "Overdracht"
+        body: "Je begrijpt wat je ziet en kunt het zelf bijhouden."
 ctaTitle: "Inzicht nodig?"
 ctaButton: "Vertel wat je nodig hebt"
+nextUrl: "/services/ai-tools.html"
+nextTitle: "AI-tools"
 ---

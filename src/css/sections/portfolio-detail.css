@@ -1,11 +1,10 @@
 /* ============================================================
-   PORTFOLIO DETAIL — Byggr.nl
-   Stijlen voor de projectdetailpagina's onder /portfolio/
+   PORTFOLIO & SERVICE DETAIL — Byggr.nl
    ============================================================ */
 
 /* ── Paginastructuur ─────────────────────────────────────── */
 .detail-page {
-  padding-top: var(--space-32); /* ruimte voor vaste nav */
+  padding-top: var(--space-32);
 }
 
 /* ── Project Hero ────────────────────────────────────────── */
@@ -17,6 +16,25 @@
   max-width: var(--container-narrow);
   margin-inline: auto;
   padding-inline: var(--container-padding);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Groot achtergrond-nummer — decoratief */
+.project-hero__bg-num {
+  position: absolute;
+  right: var(--container-padding);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 22vw, 18rem);
+  font-weight: 400;
+  color: var(--color-text);
+  opacity: 0.04;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.05em;
 }
 
 /* Breadcrumb */
@@ -33,20 +51,13 @@
   margin-bottom: var(--space-8);
   transition: color var(--transition-fast);
 }
-
-.project-hero__breadcrumb:hover {
-  color: var(--color-accent);
-}
-
+.project-hero__breadcrumb:hover { color: var(--color-accent); }
 .project-hero__breadcrumb::before {
   content: '←';
   display: inline-block;
   transition: transform var(--transition-fast);
 }
-
-.project-hero__breadcrumb:hover::before {
-  transform: translateX(-3px);
-}
+.project-hero__breadcrumb:hover::before { transform: translateX(-3px); }
 
 /* Label boven de H1 */
 .project-hero__label {
@@ -83,12 +94,10 @@
 /* Hero afbeelding */
 .project-hero__img-wrap {
   margin-top: var(--space-12);
-  /* Breek uit de narrow container — volle breedte */
   max-width: var(--container-max);
   margin-inline: auto;
   padding-inline: var(--container-padding);
 }
-
 .project-hero__img {
   display: block;
   width: 100%;
@@ -96,6 +105,44 @@
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border: 1px solid var(--color-border);
+}
+
+@media (min-width: 768px) {
+  .project-hero__img {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+/* ── Project meta-balk ───────────────────────────────────── */
+.project-meta {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+  margin-top: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.project-meta__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.project-meta__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-disabled);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+.project-meta__value {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text);
+  letter-spacing: var(--tracking-wide);
 }
 
 /* ── Project Detail ──────────────────────────────────────── */
@@ -119,7 +166,7 @@
   }
 }
 
-/* Individueel blok (Uitdaging / Oplossing / Resultaat) */
+/* Individueel blok */
 .detail-block__kicker {
   display: block;
   font-family: var(--font-mono);
@@ -131,7 +178,6 @@
   padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--color-border-accent);
 }
-
 .detail-block__heading {
   font-family: var(--font-heading);
   font-size: var(--text-lg);
@@ -141,12 +187,102 @@
   color: var(--color-text);
   margin-bottom: var(--space-4);
 }
-
 .detail-block__body {
   font-family: var(--font-body);
   font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
   color: var(--color-text-muted);
+}
+
+/* ── Tech tags ───────────────────────────────────────────── */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-4);
+}
+.project-tags__item {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-tech);
+  background: var(--color-tech-dim);
+  border: 1px solid rgba(74, 127, 165, 0.2);
+  padding: 2px var(--space-3);
+}
+
+/* ── Spec-lijst (service pagina's) ───────────────────────── */
+.spec-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.spec-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+.spec-list__item:last-child { border-bottom: none; }
+.spec-list__item::before {
+  content: '→';
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── Proces stepper (service pagina's) ───────────────────── */
+.process-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.process-step {
+  display: flex;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+.process-step:last-child { border-bottom: none; }
+.process-step__num {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  letter-spacing: var(--tracking-wider);
+  flex-shrink: 0;
+  padding-top: 2px;
+  min-width: 2ch;
+}
+.process-step__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.process-step__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text);
+}
+.process-step__body {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
 }
 
 /* ── CTA Sectie ──────────────────────────────────────────── */
@@ -155,13 +291,18 @@
   border-top: 1px solid var(--color-border);
   text-align: center;
 }
+.project-cta--dark {
+  background-color: var(--color-showcase-bg);
+  border-color: transparent;
+}
+.project-cta--dark .project-cta__label { color: rgba(255,255,255,0.3); }
+.project-cta--dark .project-cta__title { color: #ffffff; }
 
 .project-cta__inner {
   max-width: var(--container-narrow);
   margin-inline: auto;
   padding-inline: var(--container-padding);
 }
-
 .project-cta__label {
   display: block;
   font-family: var(--font-mono);
@@ -171,7 +312,6 @@
   text-transform: uppercase;
   margin-bottom: var(--space-6);
 }
-
 .project-cta__title {
   font-family: var(--font-display);
   font-size: clamp(var(--text-3xl), 7vw, var(--text-5xl));
@@ -183,38 +323,71 @@
   margin-bottom: var(--space-8);
 }
 
-/* ── Hergebruikte basis knop uit base.css ────────────────── */
-/* .btn en .btn--primary worden overgenomen uit base.css     */
+/* ── Volgende project navigatie ──────────────────────────── */
+.project-nav {
+  border-top: 1px solid var(--color-border);
+}
+.project-nav__inner {
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+  padding-block: var(--space-8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+}
+.project-nav__link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  text-decoration: none;
+}
+.project-nav__link--next { text-align: right; }
+.project-nav__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-disabled);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+.project-nav__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+}
+.project-nav__link:hover .project-nav__title { color: var(--color-accent); }
 
-/* ── Reveal animaties (IntersectionObserver via animations.js) */
+/* ── Reveal animaties — class 'visible' via animations.js ── */
 .reveal-fade {
   opacity: 0;
   transition: opacity var(--transition-reveal);
 }
-.reveal-fade.is-visible {
-  opacity: 1;
-}
+.reveal-fade.visible { opacity: 1; }
 
 .reveal {
   opacity: 0;
   transform: translateY(24px);
-  transition:
-    opacity var(--transition-reveal),
-    transform var(--transition-reveal);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
 }
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
 .reveal-scale {
   opacity: 0;
   transform: scale(0.97);
-  transition:
-    opacity var(--transition-reveal),
-    transform var(--transition-reveal);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
 }
-.reveal-scale.is-visible {
-  opacity: 1;
-  transform: scale(1);
+.reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+/* Stagger delays */
+.reveal:nth-child(2), .reveal-fade:nth-child(2), .reveal-scale:nth-child(2) { transition-delay: 80ms; }
+.reveal:nth-child(3), .reveal-fade:nth-child(3), .reveal-scale:nth-child(3) { transition-delay: 160ms; }
+
+@media (max-width: 640px) {
+  .project-nav__inner { flex-direction: column; align-items: flex-start; }
+  .project-nav__link--next { text-align: left; }
 }

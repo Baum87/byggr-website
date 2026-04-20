@@ -1,7 +1,34 @@
 {
   "permissions": {
     "allow": [
-      "Bash(gh auth:*)"
+      "Bash(gh auth:*)",
+      "WebFetch(domain:studionamma.com)",
+      "WebFetch(domain:dvdrod.com)",
+      "WebFetch(domain:chkstepan.com)",
+      "Bash(open /Users/remco/projecten/byggr-website/index.html)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git -C /Users/remco/projecten/byggr-website pull)",
+      "Bash(python3 -c ' *)",
+      "Bash(wc -l grep -l \"privacy.html\" /Users/remco/projecten/byggr-website/portfolio/*.html /Users/remco/projecten/byggr-website/services/*.html)",
+      "Bash(wc -l grep -l \"og:image:width\" /Users/remco/projecten/byggr-website/portfolio/*.html /Users/remco/projecten/byggr-website/services/*.html)",
+      "Bash(python3)",
+      "Bash(grep -l \"skip-link\" /Users/remco/projecten/byggr-website/portfolio/*.html /Users/remco/projecten/byggr-website/services/*.html)",
+      "Bash(grep -l \"privacy.html\" /Users/remco/projecten/byggr-website/portfolio/*.html /Users/remco/projecten/byggr-website/services/*.html)",
+      "Bash(grep -l \"og:image:width\" /Users/remco/projecten/byggr-website/portfolio/*.html /Users/remco/projecten/byggr-website/services/*.html)",
+      "Bash(npm install *)",
+      "Bash(brew list *)",
+      "Read(//usr/local/**)",
+      "Read(//opt/homebrew/opt/**)",
+      "Bash(brew --version)",
+      "Bash(brew install *)",
+      "Bash(npm run *)",
+      "Bash(git rm *)",
+      "Bash(git pull *)",
+      "Bash(git stash *)",
+      "Bash(git rebase *)",
+      "Bash(git fetch *)"
     ]
   }
 }

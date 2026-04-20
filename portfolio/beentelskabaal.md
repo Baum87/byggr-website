@@ -1,6 +1,6 @@
 ---
 pageTitle: "beentelskabaal.nl — Website | BYGGR"
-metaDescription: "beentelskabaal.nl — website opgezet met AI-assisted workflow. Van briefing naar live in minder dan een week. Een case study in snelle, professionele webpresentatie."
+metaDescription: "beentelskabaal.nl — website opgezet met AI-assisted workflow. Van briefing naar live in minder dan een week."
 canonical: "https://byggr.nl/portfolio/beentelskabaal.html"
 ogImage: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&h=630&fit=crop&q=80"
 title: "beentelskabaal.nl"
@@ -9,6 +9,15 @@ label: "Website"
 intro: "Website voor een muzikant. Van briefing naar live in minder dan een week. Geen maandenlang heen-en-weer — gewoon snel online, professioneel en klaar."
 image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&h=630&fit=crop&q=80"
 imageAlt: "Muzikant op een podium met sfeervolle belichting"
+meta:
+  - label: "Type"
+    value: "Website"
+  - label: "Sector"
+    value: "Muziek & Cultuur"
+  - label: "Status"
+    value: "Live"
+  - label: "Jaar"
+    value: "2025"
 blocks:
   - kicker: "01 — Uitdaging"
     heading: "Het probleem"
@@ -19,6 +28,14 @@ blocks:
   - kicker: "03 — Resultaat"
     heading: "Wat het opleverde"
     body: "Van briefing naar live in minder dan een week. De artiest heeft een site die hij herkent als zijn eigen ding — en die hij zelf kan bijhouden."
+    tags:
+      - "HTML"
+      - "CSS"
+      - "Vanilla JS"
+      - "Netlify"
+      - "AI-assisted"
 ctaTitle: "Soortgelijk project nodig?"
 ctaButton: "Neem contact op"
+nextUrl: "/portfolio/kenkhuisprojecten.html"
+nextTitle: "Kenkhuisprojecten"
 ---

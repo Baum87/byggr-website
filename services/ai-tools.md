@@ -10,8 +10,8 @@ image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=63
 imageAlt: "AI-tools en automatisering — printplaat close-up als symbool voor technologie"
 blocks:
   - kicker: "Wat je krijgt"
-    heading: "Wat je krijgt"
-    items:
+    heading: "Inbegrepen"
+    spec:
       - "Maatwerk tool of automatisering voor jouw specifieke probleem"
       - "Koppeling met wat je al gebruikt — e-mail, spreadsheet, CRM"
       - "Overdracht met uitleg zodat je er daarna zelf mee verder kunt"
@@ -20,10 +20,18 @@ blocks:
     body: "Teams die dezelfde handeling tien keer per week uitvoeren en zich afvragen of dat echt niet anders kan. Je hoeft niks van AI te weten — je kent het probleem, wij zoeken de oplossing."
   - kicker: "Werkwijze"
     heading: "Hoe het werkt"
-    items:
-      - "<strong>Analyse</strong> — wat kost jou of je team de meeste tijd?"
-      - "<strong>Prototype</strong> — snel iets tastbaars zodat je kunt zien of het klopt"
-      - "<strong>Live en getest</strong> — in de praktijk, niet alleen op papier"
+    steps:
+      - num: "01"
+        title: "Analyse"
+        body: "Wat kost jou of je team de meeste tijd?"
+      - num: "02"
+        title: "Prototype"
+        body: "Snel iets tastbaars zodat je kunt zien of het klopt."
+      - num: "03"
+        title: "Live en getest"
+        body: "In de praktijk, niet alleen op papier."
 ctaTitle: "Iets automatiseren?"
 ctaButton: "Vertel wat er steeds terugkomt"
+nextUrl: "/services/hosting.html"
+nextTitle: "Hosting"
 ---
