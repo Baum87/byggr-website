@@ -10,7 +10,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.12 }
+  { threshold: 0.04 }
 );
 
 document.querySelectorAll(revealSelector).forEach((el) => observer.observe(el));
@@ -156,14 +156,18 @@ document.querySelectorAll('.section-title').forEach((title) => {
     return;
   }
 
-  const words = text.split(/\s+/);
+  const words      = text.split(/\s+/);
+  const accentWord = title.getAttribute('data-accent') || '';
 
   const buildWords = (stayVisible) => {
-    title.innerHTML = words.map((word, i) =>
-      `<span class="st-word-wrap"><span class="st-word"` +
-      (stayVisible ? ` style="transform:translateY(0);transition:none"` : ` style="transition-delay:${i * 95}ms"`) +
-      `>${word}</span></span>`
-    ).join(' ');
+    title.innerHTML = words.map((word, i) => {
+      const inner = accentWord && word === accentWord
+        ? `<span class="over__title-accent">${word}</span>`
+        : word;
+      return `<span class="st-word-wrap"><span class="st-word"` +
+        (stayVisible ? ` style="transform:translateY(0);transition:none"` : ` style="transition-delay:${i * 95}ms"`) +
+        `>${inner}</span></span>`;
+    }).join(' ');
   };
 
   buildWords(false);
@@ -262,67 +266,6 @@ document.querySelectorAll('.project-hero__title').forEach((title) => {
   }, { passive: true });
 })();
 
-// ── Custom cursor ─────────────────────────────────────────────
-// Dot volgt muis direct. Ring volgt met lerp-vertraging.
-// Alleen op pointer:fine (desktop met muis).
-(function () {
-  if (!window.matchMedia('(pointer: fine)').matches) return;
-
-  const dot  = document.createElement('div');
-  const ring = document.createElement('div');
-  dot.className  = 'cursor-dot is-hidden';
-  ring.className = 'cursor-ring is-hidden';
-  document.body.appendChild(dot);
-  document.body.appendChild(ring);
-
-  let mouseX = -200, mouseY = -200;
-  let ringX  = -200, ringY  = -200;
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.left = mouseX + 'px';
-    dot.style.top  = mouseY + 'px';
-    dot.classList.remove('is-hidden');
-    ring.classList.remove('is-hidden');
-  });
-
-  document.addEventListener('mouseleave', () => {
-    dot.classList.add('is-hidden');
-    ring.classList.add('is-hidden');
-  });
-
-  // Ring: soepele volgbeweging via lineaire interpolatie
-  if (!prefersReducedMotion) {
-    const lerp = (a, b, t) => a + (b - a) * t;
-    const tick = () => {
-      ringX = lerp(ringX, mouseX, 0.1);
-      ringY = lerp(ringY, mouseY, 0.1);
-      ring.style.left = ringX + 'px';
-      ring.style.top  = ringY + 'px';
-      requestAnimationFrame(tick);
-    };
-    tick();
-  } else {
-    document.addEventListener('mousemove', (e) => {
-      ring.style.left = e.clientX + 'px';
-      ring.style.top  = e.clientY + 'px';
-    });
-  }
-
-  // Hover-staat: dot krimpt, ring groeit
-  document.querySelectorAll('a, button, [role="button"], .project-card, .showcase__card-inner').forEach((el) => {
-    el.addEventListener('mouseenter', () => {
-      dot.classList.add('is-hover');
-      ring.classList.add('is-hover');
-    });
-    el.addEventListener('mouseleave', () => {
-      dot.classList.remove('is-hover');
-      ring.classList.remove('is-hover');
-    });
-  });
-})();
-
 // ── Parallax: detail-pagina hero afbeelding ───────────────────
 // De afbeelding beweegt trager dan de pagina (klassieke parallax).
 // .project-hero__img-wrap heeft overflow:hidden — de afbeelding
@@ -335,10 +278,9 @@ document.querySelectorAll('.project-hero__title').forEach((title) => {
   let ticking = false;
 
   const update = () => {
-    const y         = window.scrollY;
-    const wrapBot   = wrap.getBoundingClientRect().bottom + y;
+    const y       = window.scrollY;
+    const wrapBot = wrap.getBoundingClientRect().bottom + y;
     if (y < wrapBot) {
-      // Negatieve Y: beeld beweegt omhoog binnen de wrapper
       img.style.transform = `scale(1.08) translateY(${y * -0.12}px)`;
     }
     ticking = false;
@@ -350,4 +292,47 @@ document.querySelectorAll('.project-hero__title').forEach((title) => {
       ticking = true;
     }
   }, { passive: true });
+})();
+
+// ── Bg-num: scroll-parallax + muis-parallax ───────────────────
+// Het grote decoratieve achtergrondnummer op detailpagina's reageert
+// op zowel scrollen (drijft omlaag, 0.25x) als muisbeweging (±20px
+// tegengesteld aan cursor — gaat achter de content liggen).
+(function () {
+  const bgNum = document.querySelector('.project-hero__bg-num');
+  if (!bgNum || prefersReducedMotion) return;
+
+  let targetMX = 0, targetMY = 0;
+  let mx = 0, my = 0;
+
+  const hero = document.querySelector('.project-hero');
+  if (hero) {
+    hero.addEventListener('mousemove', (e) => {
+      // Tegengesteld aan cursor: nummer wijkt weg → diepte-illusie
+      targetMX = (e.clientX / window.innerWidth  - 0.5) * -40;
+      targetMY = (e.clientY / window.innerHeight - 0.5) * -24;
+    }, { passive: true });
+
+    // Terug naar midden zodra cursor hero verlaat
+    hero.addEventListener('mouseleave', () => {
+      targetMX = 0;
+      targetMY = 0;
+    });
+  }
+
+  // Gecombineerde rAF-loop: lerp muis + scroll
+  const lerp = (a, b, t) => a + (b - a) * t;
+
+  const tick = () => {
+    mx = lerp(mx, targetMX, 0.06);
+    my = lerp(my, targetMY, 0.06);
+
+    const scrollOffset = window.scrollY * 0.25;
+    bgNum.style.transform =
+      `translateY(calc(-50% + ${(scrollOffset + my).toFixed(2)}px)) translateX(${mx.toFixed(2)}px)`;
+
+    requestAnimationFrame(tick);
+  };
+
+  tick();
 })();

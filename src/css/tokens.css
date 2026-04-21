@@ -95,7 +95,7 @@
   --transition-fast:   150ms var(--ease-out-expo);
   --transition-base:   250ms var(--ease-out-expo);
   --transition-slow:   450ms var(--ease-out-expo);
-  --transition-reveal: 700ms var(--ease-out-expo);
+  --transition-reveal: 950ms var(--ease-out-expo);
 
   /* ── Z-index ─────────────────────────────────────────────── */
   --z-base:    0;

@@ -18,6 +18,20 @@
   text-align: center;
 }
 
+/* Afwijkend lettertype voor de over-titel — editorial, anders dan andere secties */
+.over__title {
+  font-family: var(--font-display);
+  font-weight: 400; /* Bebas Neue heeft alleen Regular */
+  font-size: clamp(4.5rem, 8vw, 8.5rem);
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+}
+
+/* Accentwoord in de over-titel */
+.over__title-accent {
+  color: var(--color-accent);
+}
+
 /* Grote brand-tekst */
 .over__body {
   display: flex;
