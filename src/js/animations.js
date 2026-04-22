@@ -184,22 +184,24 @@ document.querySelectorAll('.section-title').forEach((title) => {
 
   titleObs.observe(title);
 
-  // Hover: typewriter over originele tekst
-  title.addEventListener('mouseenter', () => {
-    title.innerHTML = text
-      .split('')
-      .map((ch) => `<span class="char" style="display:inline-block">${ch === ' ' ? '&nbsp;' : ch}</span>`)
-      .join('');
-    title.querySelectorAll('.char').forEach((ch, i) => {
-      ch.style.opacity = '0';
-      setTimeout(() => { ch.style.opacity = '1'; }, i * 65);
+  // Typewriter-hover alleen op titels zonder afwijkend accent-font
+  // (.over__title heeft een mixed-font accentwoord — typewriter breekt dat)
+  if (!title.classList.contains('over__title')) {
+    title.addEventListener('mouseenter', () => {
+      title.innerHTML = text
+        .split('')
+        .map((ch) => `<span class="char" style="display:inline-block">${ch === ' ' ? '&nbsp;' : ch}</span>`)
+        .join('');
+      title.querySelectorAll('.char').forEach((ch, i) => {
+        ch.style.opacity = '0';
+        setTimeout(() => { ch.style.opacity = '1'; }, i * 65);
+      });
     });
-  });
 
-  // Na hover: herstel word-split (zichtbaar, geen heranimatie)
-  title.addEventListener('mouseleave', () => {
-    buildWords(true);
-  });
+    title.addEventListener('mouseleave', () => {
+      buildWords(true);
+    });
+  }
 });
 
 // ── Typewriter hover op project-hero titels ──────────────────

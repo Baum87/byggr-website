@@ -27,9 +27,11 @@
   line-height: 0.95;
 }
 
-/* Accentwoord in de over-titel */
+/* Accentwoord "groeit." — afwijkend lettertype voor typografisch contrast */
 .over__title-accent {
+  font-family: var(--font-mono);
   color: var(--color-accent);
+  text-transform: none; /* lowercase tegen de uppercase Bebas Neue rest */
 }
 
 /* Grote brand-tekst */
