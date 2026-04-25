@@ -121,3 +121,334 @@
 @media (max-width: 640px) {
   .showcase__card { width: 300px; }
 }
+
+/* ── Service visualisaties — futuristische animaties ────────── */
+.service-vis {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #0e0e0e;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(245, 245, 245, 0.65);
+  overflow: hidden;
+  padding: 16px;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+/* ─── Websites: browser + terminal ──────────────────────────── */
+.svis-chrome {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.svis-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.svis-dot:nth-child(1) { background: #ff5f57; }
+.svis-dot:nth-child(2) { background: #febc2e; }
+.svis-dot:nth-child(3) { background: #28c840; }
+.svis-url {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 4px;
+  padding: 3px 10px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 10px;
+}
+
+.svis-terminal {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.svis-line {
+  opacity: 0;
+  transform: translateX(-4px);
+  animation: svis-line-in 6s ease-out infinite;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+.svis-line--tag  { color: var(--color-accent); }
+.svis-line--prop { color: rgba(74, 127, 165, 0.95); }
+.svis-line--val  { color: rgba(245, 245, 245, 0.5); }
+
+.svis-terminal .svis-line:nth-child(1) { animation-delay: 0.1s; }
+.svis-terminal .svis-line:nth-child(2) { animation-delay: 0.55s; }
+.svis-terminal .svis-line:nth-child(3) { animation-delay: 1.0s; }
+.svis-terminal .svis-line:nth-child(4) { animation-delay: 1.45s; }
+.svis-terminal .svis-line:nth-child(5) { animation-delay: 1.9s; }
+
+@keyframes svis-line-in {
+  0%, 3%    { opacity: 0; transform: translateX(-4px); }
+  10%, 78%  { opacity: 1; transform: translateX(0); }
+  90%, 100% { opacity: 0; transform: translateX(0); }
+}
+
+.svis-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 13px;
+  background: var(--color-accent);
+  opacity: 0;
+  animation:
+    svis-cursor-show 0.1s 2.2s forwards,
+    svis-blink 0.9s 2.2s step-end infinite;
+}
+@keyframes svis-cursor-show { to { opacity: 1; } }
+@keyframes svis-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* ─── BI & Data: dashboard ───────────────────────────────────── */
+.svis-kpi-row {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.svis-kpi {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 6px;
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.svis-kpi-num {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.svis-kpi-lbl {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.svis-chart {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  padding-top: 4px;
+}
+.svis-bar-wrap {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+.svis-bar {
+  width: 100%;
+  height: var(--h, 60%);
+  background: linear-gradient(to top, var(--color-accent), rgba(245, 130, 10, 0.4));
+  border-radius: 3px 3px 0 0;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  animation: svis-bar-grow 3.5s var(--ease-out-expo) infinite;
+  opacity: 0.8;
+}
+.svis-chart .svis-bar-wrap:nth-child(1) .svis-bar { animation-delay: 0s; }
+.svis-chart .svis-bar-wrap:nth-child(2) .svis-bar { animation-delay: 0.12s; }
+.svis-chart .svis-bar-wrap:nth-child(3) .svis-bar { animation-delay: 0.24s; }
+.svis-chart .svis-bar-wrap:nth-child(4) .svis-bar { animation-delay: 0.36s; }
+.svis-chart .svis-bar-wrap:nth-child(5) .svis-bar { animation-delay: 0.48s; }
+.svis-chart .svis-bar-wrap:nth-child(6) .svis-bar { animation-delay: 0.60s; }
+
+@keyframes svis-bar-grow {
+  0%, 5%    { transform: scaleY(0); opacity: 0.3; }
+  40%, 72%  { transform: scaleY(1); opacity: 0.8; }
+  88%, 100% { transform: scaleY(0); opacity: 0.3; }
+}
+
+/* ─── AI-tools: chat ─────────────────────────────────────────── */
+.svis-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  height: 100%;
+}
+.svis-bubble {
+  max-width: 82%;
+  padding: 7px 11px;
+  border-radius: 10px;
+  font-size: 10px;
+  line-height: 1.4;
+  opacity: 0;
+  animation: 8s ease-out infinite;
+}
+.svis-bubble--user {
+  align-self: flex-end;
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: 10px 10px 2px 10px;
+  animation-name: svis-chat-user-1;
+}
+.svis-bubble--ai {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.82);
+  border-radius: 10px 10px 10px 2px;
+}
+.svis-ai-typing   { animation-name: svis-chat-ai-typing; }
+.svis-ai-response { animation-name: svis-chat-ai-resp1; }
+.svis-seq-3       { animation-name: svis-chat-user-2; }
+.svis-seq-4       { animation-name: svis-chat-ai-resp2; }
+
+@keyframes svis-chat-user-1 {
+  0%          { opacity: 0; transform: translateY(5px); }
+  6%, 88%     { opacity: 1; transform: translateY(0); }
+  95%, 100%   { opacity: 0; }
+}
+@keyframes svis-chat-ai-typing {
+  0%, 13%     { opacity: 0; }
+  18%, 36%    { opacity: 1; }
+  42%, 100%   { opacity: 0; }
+}
+@keyframes svis-chat-ai-resp1 {
+  0%, 37%     { opacity: 0; transform: translateY(5px); }
+  43%, 88%    { opacity: 1; transform: translateY(0); }
+  95%, 100%   { opacity: 0; }
+}
+@keyframes svis-chat-user-2 {
+  0%, 50%     { opacity: 0; }
+  55%, 88%    { opacity: 1; transform: translateY(0); }
+  95%, 100%   { opacity: 0; }
+}
+@keyframes svis-chat-ai-resp2 {
+  0%, 63%     { opacity: 0; transform: translateY(5px); }
+  69%, 88%    { opacity: 1; transform: translateY(0); }
+  95%, 100%   { opacity: 0; }
+}
+
+/* Typing dots inside svis-ai-typing */
+.svis-typing-dots {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+.svis-typing-dots span {
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: svis-dot-bounce 1.2s ease-in-out infinite;
+}
+.svis-typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.svis-typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes svis-dot-bounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.35; }
+  40%           { transform: scale(1);   opacity: 1; }
+}
+
+/* ─── Hosting: uptime monitor ────────────────────────────────── */
+.svis-uptime-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.svis-live-dot {
+  width: 8px;
+  height: 8px;
+  background: #28c840;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 0 rgba(40, 200, 64, 0.5);
+  animation: svis-pulse 2s ease-out infinite;
+}
+@keyframes svis-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(40, 200, 64, 0.5); }
+  70%  { box-shadow: 0 0 0 8px rgba(40, 200, 64, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(40, 200, 64, 0); }
+}
+.svis-uptime-pct {
+  font-size: 18px;
+  font-weight: 700;
+  color: #28c840;
+  line-height: 1;
+}
+.svis-uptime-lbl {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.svis-blocks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  flex: 1;
+  align-content: flex-start;
+}
+.svis-block {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  animation: svis-block-glow 3s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.07s);
+}
+.svis-block--ok   { background: rgba(40, 200, 64, 0.7); }
+.svis-block--warn { background: rgba(254, 188, 46, 0.8); }
+
+@keyframes svis-block-glow {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1; }
+}
+
+.svis-ping {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 10px;
+}
+.svis-ping-dot {
+  width: 6px;
+  height: 6px;
+  background: #28c840;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: svis-pulse 1.5s ease-out infinite;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .svis-line,
+  .svis-cursor,
+  .svis-bar,
+  .svis-bubble,
+  .svis-typing-dots span,
+  .svis-live-dot,
+  .svis-block,
+  .svis-ping-dot { animation: none; opacity: 1; transform: none; }
+
+  .svis-line    { opacity: 1; transform: none; }
+  .svis-bar     { transform: scaleY(1); }
+  .svis-bubble  { opacity: 1; transform: none; }
+}

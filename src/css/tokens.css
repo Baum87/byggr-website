@@ -5,43 +5,44 @@
 :root {
 
   /* ── Light mode (standaard) ───────────────────────────────── */
-  --color-bg:             #e4e4e4;
-  --color-bg-surface:     #d4d4d4;
-  --color-bg-raised:      #c8c8c8;
-  --color-text:           #000000;
-  --color-text-muted:     #464646;
-  --color-text-disabled:  rgba(0, 0, 0, 0.25);
-  --color-accent:         #B8720A;
-  --color-accent-hover:   #C8820F;   /* amber-300 light — hover state knoppen/links */
-  --color-accent-dim:     rgba(184, 114, 10, 0.12);
-  --color-border:         rgba(0, 0, 0, 0.1);
-  --color-border-accent:  rgba(184, 114, 10, 0.35);
+  --color-bg:             #F8F7F5;
+  --color-bg-surface:     #FFFFFF;
+  --color-bg-raised:      #EEECE9;
+  --color-text:           #111111;
+  --color-text-muted:     #888888;
+  --color-text-disabled:  rgba(17, 17, 17, 0.3);
+  --color-accent:         #E5720A;
+  --color-accent-hover:   #F5820A;
+  --color-accent-dim:     #FDE8D0;
+  --color-border:         #DDDBD7;
+  --color-border-accent:  rgba(229, 114, 10, 0.4);
 
   /* ── Steelblue — optioneel, voor technische labels / code UI ── */
   --color-tech:           #4A7FA5;
   --color-tech-dim:       rgba(74, 127, 165, 0.12);
 
   /* ── Grijsschaal (modus-onafhankelijk referentie) ─────────── */
-  --gray-100: #c8c8c8;
-  --gray-200: #d4d4d4;
-  --gray-300: #e4e4e4;
-  --gray-700: #464646;
-  --gray-800: #1a1a1a;
-  --gray-900: #111111;
-  --gray-950: #000000;
+  --gray-100: #DDDBD7;
+  --gray-200: #EEECE9;
+  --gray-300: #F8F7F5;
+  --gray-700: #888888;
+  --gray-800: #1E1E1E;
+  --gray-900: #141414;
+  --gray-950: #0A0A0A;
 
   /* ── Showcase sectie — altijd donker in beide modi ───────── */
-  --color-showcase-bg:    #0f0f0f;
-  --color-showcase-text:  #ffffff;
+  --color-showcase-bg:    #0A0A0A;
+  --color-showcase-text:  #F5F5F5;
 
   /* ── Nav scrolled achtergrond ─────────────────────────────── */
-  --color-nav-scrolled:   rgba(228, 228, 228, 0.94);
+  --color-nav-scrolled:   rgba(248, 247, 245, 0.94);
 
   /* ── Typografie ───────────────────────────────────────────── */
   --font-display: 'Bebas Neue', sans-serif;
   --font-heading: 'Barlow Condensed', sans-serif;
   --font-body:    'Inter', sans-serif;
   --font-mono:    'Space Mono', monospace;
+  --font-accent:  'DM Serif Display', serif;
 
   /* ── Tekstschaal ──────────────────────────────────────────── */
   --text-xs:   0.75rem;
@@ -107,29 +108,29 @@
 
 /* ── Dark mode ──────────────────────────────────────────────── */
 [data-theme="dark"] {
-  --color-bg:             #000000;
-  --color-bg-surface:     #111111;
-  --color-bg-raised:      #1a1a1a;
-  --color-text:           #ffffff;
-  --color-text-muted:     #cccccc;
-  --color-text-disabled:  rgba(255, 255, 255, 0.25);
-  --color-accent:         #D4962A;
-  --color-accent-hover:   #F0BA5E;   /* amber-300 — hover state knoppen/links */
-  --color-accent-dim:     rgba(212, 150, 42, 0.15);
-  --color-border:         rgba(255, 255, 255, 0.1);
-  --color-border-accent:  rgba(212, 150, 42, 0.35);
+  --color-bg:             #0A0A0A;
+  --color-bg-surface:     #141414;
+  --color-bg-raised:      #1E1E1E;
+  --color-text:           #F5F5F5;
+  --color-text-muted:     #888888;
+  --color-text-disabled:  rgba(245, 245, 245, 0.25);
+  --color-accent:         #F5820A;
+  --color-accent-hover:   #FF9A30;
+  --color-accent-dim:     #7A3D03;
+  --color-border:         #2A2A2A;
+  --color-border-accent:  rgba(245, 130, 10, 0.4);
 
   /* ── Steelblue — optioneel, voor technische labels / code UI ── */
   --color-tech:           #4A7FA5;
   --color-tech-dim:       rgba(74, 127, 165, 0.15);
 
   /* ── Grijsschaal (modus-onafhankelijk referentie) ─────────── */
-  --gray-100: #c8c8c8;
-  --gray-200: #d4d4d4;
-  --gray-300: #e4e4e4;
-  --gray-700: #464646;
-  --gray-800: #1a1a1a;
-  --gray-900: #111111;
-  --gray-950: #000000;
-  --color-nav-scrolled:   rgba(0, 0, 0, 0.94);
+  --gray-100: #DDDBD7;
+  --gray-200: #EEECE9;
+  --gray-300: #F8F7F5;
+  --gray-700: #888888;
+  --gray-800: #1E1E1E;
+  --gray-900: #141414;
+  --gray-950: #0A0A0A;
+  --color-nav-scrolled:   rgba(10, 10, 10, 0.94);
 }

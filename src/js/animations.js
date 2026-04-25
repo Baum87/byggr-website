@@ -184,24 +184,36 @@ document.querySelectorAll('.section-title').forEach((title) => {
 
   titleObs.observe(title);
 
-  // Typewriter-hover alleen op titels zonder afwijkend accent-font
-  // (.over__title heeft een mixed-font accentwoord — typewriter breekt dat)
-  if (!title.classList.contains('over__title')) {
-    title.addEventListener('mouseenter', () => {
+  // Typewriter-hover: voor over__title bewaar accent-class per woord
+  title.addEventListener('mouseenter', () => {
+    if (accentWord) {
+      // Woord-bewuste splitsing: accent-woord krijgt over__title-accent class per char
+      const parts = [];
+      words.forEach((word, wi) => {
+        const isAccent = word === accentWord;
+        word.split('').forEach((ch) => parts.push({ ch, isAccent }));
+        if (wi < words.length - 1) parts.push({ ch: ' ', isAccent: false });
+      });
+      title.innerHTML = parts
+        .map(({ ch, isAccent }) =>
+          `<span class="${isAccent ? 'over__title-accent ' : ''}char" style="display:inline-block">${ch === ' ' ? '&nbsp;' : ch}</span>`
+        )
+        .join('');
+    } else {
       title.innerHTML = text
         .split('')
         .map((ch) => `<span class="char" style="display:inline-block">${ch === ' ' ? '&nbsp;' : ch}</span>`)
         .join('');
-      title.querySelectorAll('.char').forEach((ch, i) => {
-        ch.style.opacity = '0';
-        setTimeout(() => { ch.style.opacity = '1'; }, i * 65);
-      });
+    }
+    title.querySelectorAll('.char').forEach((ch, i) => {
+      ch.style.opacity = '0';
+      setTimeout(() => { ch.style.opacity = '1'; }, i * 65);
     });
+  });
 
-    title.addEventListener('mouseleave', () => {
-      buildWords(true);
-    });
-  }
+  title.addEventListener('mouseleave', () => {
+    buildWords(true);
+  });
 });
 
 // ── Typewriter hover op project-hero titels ──────────────────

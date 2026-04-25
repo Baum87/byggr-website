@@ -29,9 +29,10 @@
 
 /* Accentwoord "groeit." — afwijkend lettertype voor typografisch contrast */
 .over__title-accent {
-  font-family: var(--font-mono);
+  font-family: var(--font-accent);
   color: var(--color-accent);
   text-transform: none; /* lowercase tegen de uppercase Bebas Neue rest */
+  font-style: italic;
 }
 
 /* Grote brand-tekst */
