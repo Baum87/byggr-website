@@ -105,6 +105,15 @@
   gap: var(--space-3);
 }
 
+/* Rits: kaarten per rij tegelijk van buiten naar binnen */
+.portfolio__grid .project-card:nth-child(1),
+.portfolio__grid .project-card:nth-child(2) { transition-delay: 0ms; }
+
+.portfolio__grid .project-card:nth-child(3),
+.portfolio__grid .project-card:nth-child(4) { transition-delay: 190ms; }
+
 @media (max-width: 640px) {
   .portfolio__grid { grid-template-columns: 1fr; }
+  /* Op mobiel: alle kaarten van links, geen rits-pairing nodig */
+  .portfolio__grid .project-card { transition-delay: 0ms !important; }
 }
