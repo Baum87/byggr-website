@@ -18,6 +18,11 @@
   text-align: center;
 }
 
+/* Extra ruimte voor DM Serif Display descenders in de word-reveal clip */
+.over__title .st-word-wrap {
+  padding-bottom: 0.14em;
+}
+
 /* Afwijkend lettertype voor de over-titel — editorial, anders dan andere secties */
 .over__title {
   font-family: var(--font-display);

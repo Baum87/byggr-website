@@ -27,28 +27,24 @@
 
 /* ── Marquee container ───────────────────────────────────────── */
 .showcase__stage {
-  overflow: hidden;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   cursor: grab;
   user-select: none;
   /* Lichte fade-out aan de zijkanten */
   mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
-.showcase__stage:active { cursor: grabbing; }
+.showcase__stage::-webkit-scrollbar { display: none; }
+.showcase__stage.is-dragging { cursor: grabbing; }
 
 /* Track: originele items + duplicaat voor seamless loop */
 .showcase__track {
   display: flex;
   gap: var(--space-6);
-  animation: showcase-scroll 40s linear infinite;
   width: max-content;
-  will-change: transform;
-}
-.showcase__track:hover { animation-play-state: paused; }
-
-@keyframes showcase-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
 }
 
 /* ── Kaart ───────────────────────────────────────────────────── */
@@ -407,15 +403,21 @@
   width: 10px;
   height: 10px;
   border-radius: 2px;
-  animation: svis-block-glow 3s ease-in-out infinite;
+  transform: scale(0);
+  opacity: 0;
+  animation: svis-block-fill 5s ease-out infinite;
   animation-delay: calc(var(--i) * 0.07s);
 }
-.svis-block--ok   { background: rgba(40, 200, 64, 0.7); }
-.svis-block--warn { background: rgba(254, 188, 46, 0.8); }
+.svis-block--ok   { background: rgba(40, 200, 64, 0.85); }
+.svis-block--warn { background: rgba(254, 188, 46, 0.95); }
 
-@keyframes svis-block-glow {
-  0%, 100% { opacity: 0.6; }
-  50%      { opacity: 1; }
+@keyframes svis-block-fill {
+  0%    { transform: scale(0);    opacity: 0; }
+  6%    { transform: scale(1.15); opacity: 1; }
+  10%   { transform: scale(1); }
+  68%   { opacity: 0.75; }
+  86%   { opacity: 0;    transform: scale(0.9); }
+  100%  { transform: scale(0);    opacity: 0; }
 }
 
 .svis-ping {

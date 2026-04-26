@@ -253,21 +253,21 @@ document.querySelectorAll('.project-hero__title').forEach((title) => {
   }, { passive: true });
 })();
 
-// ── Parallax: homepage hero ───────────────────────────────────
-// De inhoud van de hero trekt achter bij het scrollen — meer
-// parallax-factor voor een zichtbaarder diepte-effect.
+// ── Parallax: homepage hero achtergrond ──────────────────────
+// Alleen de achtergrond (glow + grid) beweegt — content scrolt normaal.
+// Achtergrond drijft naar beneden terwijl de pagina omhoog gaat → diepte.
 (function () {
+  const heroBg      = document.querySelector('.hero__bg');
   const heroSection = document.querySelector('.hero');
-  const heroInner   = document.querySelector('.hero__inner');
-  if (!heroSection || !heroInner || prefersReducedMotion) return;
+  if (!heroBg || prefersReducedMotion) return;
 
-  const heroH = heroSection.offsetHeight;
   let ticking = false;
 
   const update = () => {
-    const y = window.scrollY;
-    if (y < heroH * 1.5) {
-      heroInner.style.transform = `translateY(${y * 0.32}px)`;
+    const y     = window.scrollY;
+    const heroH = heroSection ? heroSection.offsetHeight : window.innerHeight;
+    if (y < heroH * 1.2) {
+      heroBg.style.transform = `translateY(${y * 0.28}px)`;
     }
     ticking = false;
   };

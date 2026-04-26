@@ -52,10 +52,13 @@
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
-  margin-right: 0.15em;
   line-height: inherit; /* gebruik altijd de line-height van de parent */
 }
-.section-title .st-word-wrap:last-child { margin-right: 0; }
+
+/* Typewriter chars: zelfde uitlijning als word-wraps zodat er geen layout-shift is */
+.section-title .char {
+  vertical-align: bottom;
+}
 
 .section-title .st-word {
   display: inline-block;
