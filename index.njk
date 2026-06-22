@@ -1,17 +1,10 @@
 ---
-layout: layouts/base.njk
+layout: layouts/home.njk
 pageTitle: "Websites & AI-tools voor MKB Twente | BYGGR"
 metaDescription: "Websites, dashboards en AI-tools voor MKB in Twente. BYGGR bouwt wat werkt — eenvoudig, snel en schaalbaar. Vraag een offerte aan."
 canonical: "https://byggr.nl/"
 ogImage: "https://byggr.nl/og-image.png"
-isHome: true
 includeNetlifyIdentity: true
-extraCSS:
-  - /src/css/sections/hero.css
-  - /src/css/sections/diensten.css
-  - /src/css/sections/over.css
-  - /src/css/sections/portfolio.css
-  - /src/css/sections/contact.css
 structuredData: |
   {
     "@context": "https://schema.org",
@@ -20,7 +13,7 @@ structuredData: |
     "name": "Byggr",
     "description": "BYGGR is een digitale studio uit Delden voor MKB-ondernemers. Websites, dashboards en AI-tools die werken.",
     "url": "https://byggr.nl",
-    "email": "remco@byggr.nl",
+    "email": "hello@byggr.nl",
     "areaServed": {
       "@type": "AdministrativeArea",
       "name": "Twente"
@@ -41,500 +34,221 @@ structuredData: |
 permalink: /index.html
 ---
 
-    <!-- ============================================================
-         SECTIE 1 — HERO
-         ============================================================ -->
-    <section id="hero" class="hero" aria-labelledby="hero-title">
-      <div class="hero__bg" aria-hidden="true">
-        <div class="hero__glow hero__glow--1"></div>
-        <div class="hero__glow hero__glow--2"></div>
-      </div>
-      <div class="container hero__inner">
+<div id="byg-cont" style="position:relative; background:#0a0b0d; height:900vh; font-family:'Archivo',system-ui,sans-serif;">
+  <div id="byg-stage" style="position:sticky; top:0; height:100vh; width:100%; overflow:hidden; background:#0a0b0d;">
 
-        <h1 class="hero__title" id="hero-title" aria-label="Web. Data. AI. Hosting.">
-          <span class="word-reveal"><span>WEB.</span></span><br>
-          <span class="word-reveal"><span>DATA.</span></span><br>
-          <span class="word-reveal"><span>AI.</span></span><br>
-          <span class="word-reveal"><span>HOSTING.</span></span><br>
+    <!-- Canvas — generative mesh -->
+    <canvas id="byg-canvas" style="position:absolute; inset:0; width:100%; height:100%; display:block; z-index:0;"></canvas>
+
+    <!-- Vignette — darkens center for text legibility -->
+    <div id="byg-vignette" style="position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0.3; background:radial-gradient(ellipse 62% 52% at 50% 50%, rgba(10,11,13,.72) 0%, rgba(10,11,13,.30) 48%, rgba(10,11,13,0) 72%);"></div>
+
+    <!-- Progress bar -->
+    <div style="position:absolute; top:0; left:0; right:0; height:2px; z-index:6; background:rgba(236,234,228,.06);">
+      <div id="byg-bar" style="height:100%; width:0%; background:#4fa8ff; box-shadow:0 0 12px rgba(79,168,255,.7); transition:width 0s;"></div>
+    </div>
+
+    <!-- Wordmark top-left -->
+    <div style="position:absolute; top:24px; left:34px; z-index:8; display:flex; align-items:center; justify-content:center; height:34px;">
+      <span style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:34px; height:34px; border-radius:50%; border:1.5px solid rgba(79,168,255,.6); box-shadow:0 0 18px rgba(79,168,255,.16); pointer-events:none;"></span>
+      <a href="#" aria-label="BYGGR — terug naar start" style="position:relative; font-weight:800; font-size:19px; letter-spacing:.02em; color:#ecece4; line-height:1;">BYGGR</a>
+    </div>
+
+    <!-- Top-right links -->
+    <div style="position:absolute; top:24px; right:34px; z-index:8; display:flex; gap:28px; align-items:center;">
+      <button type="button" data-jump="0.855" class="byg-toplink">Cases</button>
+      <button type="button" data-jump="0.97" class="byg-toplink">Contact</button>
+    </div>
+
+    <!-- Phase nav right side -->
+    <nav id="byg-nav" aria-label="Fasen" style="position:absolute; right:30px; top:50%; transform:translateY(-50%); z-index:7; display:flex; flex-direction:column; gap:17px; align-items:flex-end; opacity:0; transition:opacity .5s ease;">
+      <button data-i="0" data-target="0.05" style="all:unset; cursor:pointer; display:flex; align-items:center; gap:11px;">
+        <span data-lbl style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(236,234,228,.32); transition:all .35s;">Start</span>
+        <span data-tick style="display:block; width:14px; height:1.5px; background:rgba(236,234,228,.32); transition:all .35s;"></span>
+      </button>
+      <button data-i="1" data-target="0.19" style="all:unset; cursor:pointer; display:flex; align-items:center; gap:11px;">
+        <span data-lbl style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(236,234,228,.32); transition:all .35s;">Discovery</span>
+        <span data-tick style="display:block; width:14px; height:1.5px; background:rgba(236,234,228,.32); transition:all .35s;"></span>
+      </button>
+      <button data-i="2" data-target="0.37" style="all:unset; cursor:pointer; display:flex; align-items:center; gap:11px;">
+        <span data-lbl style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(236,234,228,.32); transition:all .35s;">Architectuur</span>
+        <span data-tick style="display:block; width:14px; height:1.5px; background:rgba(236,234,228,.32); transition:all .35s;"></span>
+      </button>
+      <button data-i="3" data-target="0.53" style="all:unset; cursor:pointer; display:flex; align-items:center; gap:11px;">
+        <span data-lbl style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(236,234,228,.32); transition:all .35s;">Iteraties</span>
+        <span data-tick style="display:block; width:14px; height:1.5px; background:rgba(236,234,228,.32); transition:all .35s;"></span>
+      </button>
+      <button data-i="4" data-target="0.70" style="all:unset; cursor:pointer; display:flex; align-items:center; gap:11px;">
+        <span data-lbl style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(236,234,228,.32); transition:all .35s;">Kwaliteit</span>
+        <span data-tick style="display:block; width:14px; height:1.5px; background:rgba(236,234,228,.32); transition:all .35s;"></span>
+      </button>
+      <button data-i="5" data-target="0.86" style="all:unset; cursor:pointer; display:flex; align-items:center; gap:11px;">
+        <span data-lbl style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(236,234,228,.32); transition:all .35s;">Resultaat</span>
+        <span data-tick style="display:block; width:14px; height:1.5px; background:rgba(236,234,228,.32); transition:all .35s;"></span>
+      </button>
+      <button data-i="6" data-target="0.97" style="all:unset; cursor:pointer; display:flex; align-items:center; gap:11px;">
+        <span data-lbl style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(236,234,228,.32); transition:all .35s;">Contact</span>
+        <span data-tick style="display:block; width:14px; height:1.5px; background:rgba(236,234,228,.32); transition:all .35s;"></span>
+      </button>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         PHASE OVERLAYS
+         ═══════════════════════════════════════════════════════════════ -->
+    <div style="position:absolute; inset:0; z-index:4;">
+
+      <!-- P1 — Start (p 0.00–0.12) -->
+      <div data-range="0.00,0.12"
+           style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:0 6vw; opacity:1; will-change:opacity,transform; pointer-events:none;">
+        <h1 style="margin:0; font-weight:800; font-size:clamp(48px,10vw,158px); line-height:.92; letter-spacing:-.045em; color:#ecece4; max-width:13ch; text-transform:lowercase; text-shadow:0 0 70px rgba(79,168,255,.22);">
+          elk product begint met <span style="color:#4fa8ff;">een idee</span>
         </h1>
+      </div>
 
-        <div class="hero__scroll reveal-fade" aria-hidden="true">
-          <span class="hero__scroll-line"></span>
-          <span>Scroll</span>
+      <!-- P2 — Discovery (p 0.10–0.29) -->
+      <div data-range="0.10,0.29"
+           style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 9vw; opacity:0; will-change:opacity,transform; pointer-events:none;">
+        <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#4fa8ff; margin-bottom:26px;">01 &mdash; Discovery</div>
+        <h2 style="margin:0; font-weight:800; font-size:clamp(34px,5.6vw,86px); line-height:1.0; letter-spacing:-.032em; color:#ecece4; max-width:18ch;">We beginnen met vragen, niet met aannames.</h2>
+        <p style="margin:30px auto 0; font-size:clamp(15px,1.4vw,20px); line-height:1.5; color:rgba(236,234,228,.55); max-width:42ch;">De eerste lijnen verschijnen. Nog niets staat vast &mdash; en juist dat is het punt.</p>
+      </div>
+
+      <!-- P3 — Architectuur tekst (p 0.27–0.46) -->
+      <div data-range="0.27,0.46"
+           style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 9vw; opacity:0; will-change:opacity,transform; pointer-events:none;">
+        <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#4fa8ff; margin-bottom:26px;">02 &mdash; Architectuur</div>
+        <h2 style="margin:0; font-weight:800; font-size:clamp(34px,5.6vw,86px); line-height:1.0; letter-spacing:-.032em; color:#ecece4; max-width:16ch;">Losse idee&euml;n worden een fundament.</h2>
+      </div>
+
+      <!-- P3b — Services grid (p 0.295–0.455) -->
+      <div data-range="0.295,0.455"
+           style="position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center; padding:0 9vw 9vh; opacity:0; will-change:opacity,transform; pointer-events:none;">
+        <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; width:100%; max-width:1180px; background:rgba(236,234,228,.10); border:1px solid rgba(236,234,228,.10);">
+          <div style="background:#0c0e12; padding:26px 24px 30px;">
+            <div style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.18em; color:rgba(79,168,255,.85); margin-bottom:16px;">01</div>
+            <div style="font-weight:700; font-size:21px; letter-spacing:-.02em; color:#ecece4; margin-bottom:9px;">Websites</div>
+            <div style="font-size:13.5px; line-height:1.45; color:rgba(236,234,228,.5);">Sites die werken zoals ze horen.</div>
+          </div>
+          <div style="background:#0c0e12; padding:26px 24px 30px;">
+            <div style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.18em; color:rgba(79,168,255,.85); margin-bottom:16px;">02</div>
+            <div style="font-weight:700; font-size:21px; letter-spacing:-.02em; color:#ecece4; margin-bottom:9px;">BI &amp; Data</div>
+            <div style="font-size:13.5px; line-height:1.45; color:rgba(236,234,228,.5);">Inzicht uit ruwe cijfers.</div>
+          </div>
+          <div style="background:#0c0e12; padding:26px 24px 30px;">
+            <div style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.18em; color:rgba(79,168,255,.85); margin-bottom:16px;">03</div>
+            <div style="font-weight:700; font-size:21px; letter-spacing:-.02em; color:#ecece4; margin-bottom:9px;">AI-tools</div>
+            <div style="font-size:13.5px; line-height:1.45; color:rgba(236,234,228,.5);">Slimme tools, op maat gebouwd.</div>
+          </div>
+          <div style="background:#0c0e12; padding:26px 24px 30px;">
+            <div style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.18em; color:rgba(79,168,255,.85); margin-bottom:16px;">04</div>
+            <div style="font-weight:700; font-size:21px; letter-spacing:-.02em; color:#ecece4; margin-bottom:9px;">Hosting</div>
+            <div style="font-size:13.5px; line-height:1.45; color:rgba(236,234,228,.5);">Betrouwbaar draaiend, dag en nacht.</div>
+          </div>
         </div>
-
-      </div>
-    </section>
-
-    <!-- ============================================================
-         SECTIE 2 — DIENSTEN SHOWCASE
-         ============================================================ -->
-    <section id="services" class="showcase" aria-label="Services">
-
-      <div class="showcase__header container">
-        <span class="section-label reveal-fade">Services</span>
-        <h2 class="section-title">Digitaal geregeld.</h2>
       </div>
 
-      <!-- Marquee: 4 kaarten + 4 duplicaten voor seamless loop -->
-      <div class="showcase__stage">
-        <div class="showcase__track">
+      <!-- P4 — Iteraties (p 0.44–0.63) -->
+      <div data-range="0.44,0.63"
+           style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 9vw; opacity:0; will-change:opacity,transform; pointer-events:none;">
+        <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#4fa8ff; margin-bottom:26px;">03 &mdash; Iteraties</div>
+        <h2 style="margin:0; font-weight:800; font-size:clamp(34px,5.6vw,86px); line-height:1.0; letter-spacing:-.032em; color:#ecece4; max-width:15ch;">Goed wordt beter &mdash; iteratie na iteratie.</h2>
+        <p style="margin:30px auto 0; font-size:clamp(15px,1.4vw,20px); line-height:1.5; color:rgba(236,234,228,.55); max-width:40ch;">Niets is af bij de eerste versie. Vorm krijgt vorm.</p>
+      </div>
 
-          <!-- Set 1 — origineel -->
-          <article class="showcase__card">
-            <a href="/services/websites.html" class="showcase__card-inner" aria-label="Meer over Websites">
-              <div class="showcase__img-wrap">
-                <div class="service-vis svis--websites" aria-hidden="true">
-                  <div class="svis-chrome">
-                    <span class="svis-dot"></span><span class="svis-dot"></span><span class="svis-dot"></span>
-                    <div class="svis-url">byggr.nl</div>
-                  </div>
-                  <div class="svis-terminal">
-                    <div class="svis-line svis-line--tag">&lt;section class="hero"&gt;</div>
-                    <div class="svis-line svis-line--prop">&nbsp;&nbsp;font: Barlow Condensed;</div>
-                    <div class="svis-line svis-line--val">&nbsp;&nbsp;animation: reveal 0.9s;</div>
-                    <div class="svis-line svis-line--prop">&nbsp;&nbsp;background: #0a0a0a;</div>
-                    <div class="svis-line svis-line--tag">&lt;/section&gt;</div>
-                    <span class="svis-cursor"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="showcase__card-body">
-                <span class="showcase__card-num">01</span>
-                <span class="showcase__card-title">Websites</span>
-                <span class="showcase__card-sub">Snel. Helder. Van jou.</span>
-              </div>
-            </a>
-          </article>
+      <!-- P5 — Kwaliteitscontrole (p 0.61–0.80) -->
+      <div data-range="0.61,0.80"
+           style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 7vw; opacity:0; will-change:opacity,transform; pointer-events:none;">
+        <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#4fa8ff; margin-bottom:26px;">04 &mdash; Kwaliteitscontrole</div>
+        <h2 style="margin:0; font-weight:800; font-size:clamp(36px,6vw,96px); line-height:1.0; letter-spacing:-.034em; color:#ecece4; max-width:14ch; text-wrap:balance;">Alles valt op zijn plek.</h2>
+        <p style="margin:30px 0 0; font-size:clamp(15px,1.4vw,20px); line-height:1.5; color:rgba(236,234,228,.55); max-width:40ch;">Precisie is geen detail. Het is het vak.</p>
+      </div>
 
-          <article class="showcase__card">
-            <a href="/services/bi-data.html" class="showcase__card-inner" aria-label="Meer over BI &amp; Data">
-              <div class="showcase__img-wrap">
-                <div class="service-vis svis--bi-data" aria-hidden="true">
-                  <div class="svis-kpi-row">
-                    <div class="svis-kpi">
-                      <span class="svis-kpi-num" data-target="98" data-suffix="%">98%</span>
-                      <span class="svis-kpi-lbl">Uptime</span>
-                    </div>
-                    <div class="svis-kpi">
-                      <span class="svis-kpi-num" data-target="3.2" data-suffix="x" data-dec="1">3.2x</span>
-                      <span class="svis-kpi-lbl">Groei</span>
-                    </div>
-                    <div class="svis-kpi">
-                      <span class="svis-kpi-num" data-target="47" data-suffix="">47</span>
-                      <span class="svis-kpi-lbl">Leads</span>
-                    </div>
-                  </div>
-                  <div class="svis-chart">
-                    <div class="svis-bar-wrap"><div class="svis-bar" style="--h:55%"></div></div>
-                    <div class="svis-bar-wrap"><div class="svis-bar" style="--h:80%"></div></div>
-                    <div class="svis-bar-wrap"><div class="svis-bar" style="--h:45%"></div></div>
-                    <div class="svis-bar-wrap"><div class="svis-bar" style="--h:95%"></div></div>
-                    <div class="svis-bar-wrap"><div class="svis-bar" style="--h:68%"></div></div>
-                    <div class="svis-bar-wrap"><div class="svis-bar" style="--h:72%"></div></div>
-                  </div>
-                </div>
-              </div>
-              <div class="showcase__card-body">
-                <span class="showcase__card-num">02</span>
-                <span class="showcase__card-title">BI &amp; Data</span>
-                <span class="showcase__card-sub">Cijfers die iets zeggen.</span>
-              </div>
-            </a>
-          </article>
+      <!-- P6 — Resultaat tekst (p 0.78–0.93) -->
+      <div data-range="0.78,0.93"
+           style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; text-align:center; padding:13vh 7vw 0; opacity:0; will-change:opacity,transform; pointer-events:none;">
+        <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#4fa8ff; margin-bottom:22px;">05 &mdash; Resultaat</div>
+        <h2 style="margin:0; font-weight:900; font-size:clamp(40px,7vw,118px); line-height:.96; letter-spacing:-.04em; color:#ecece4; max-width:13ch; text-wrap:balance;">
+          Van idee naar <span style="color:#4fa8ff;">product</span>.
+        </h2>
+      </div>
 
-          <article class="showcase__card">
-            <a href="/services/ai-tools.html" class="showcase__card-inner" aria-label="Meer over AI-tools">
-              <div class="showcase__img-wrap">
-                <div class="service-vis svis--ai-tools" aria-hidden="true">
-                  <div class="svis-chat">
-                    <div class="svis-bubble svis-bubble--user">Maak een offerte aan</div>
-                    <div class="svis-bubble svis-bubble--ai svis-ai-typing">
-                      <span class="svis-typing-dots"><span></span><span></span><span></span></span>
-                    </div>
-                    <div class="svis-bubble svis-bubble--ai svis-ai-response">Staat in je mail ✓</div>
-                    <div class="svis-bubble svis-bubble--user svis-seq-3">Stuur een reminder</div>
-                    <div class="svis-bubble svis-bubble--ai svis-seq-4">Reminder ingepland ✓</div>
-                  </div>
-                </div>
-              </div>
-              <div class="showcase__card-body">
-                <span class="showcase__card-num">03</span>
-                <span class="showcase__card-title">AI-tools</span>
-                <span class="showcase__card-sub">Minder herhaling. Meer resultaat.</span>
-              </div>
-            </a>
-          </article>
+      <!-- P6b — Cases (p 0.81–0.935) -->
+      <div data-range="0.81,0.935"
+           style="position:absolute; left:0; right:0; bottom:0; display:flex; align-items:flex-end; justify-content:center; padding:0 5vw 7vh; opacity:0; will-change:opacity,transform;">
+        <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; width:100%; max-width:1360px;">
 
-          <article class="showcase__card">
-            <a href="/services/hosting.html" class="showcase__card-inner" aria-label="Meer over Hosting">
-              <div class="showcase__img-wrap">
-                <div class="service-vis svis--hosting" aria-hidden="true">
-                  <div class="svis-uptime-header">
-                    <span class="svis-live-dot"></span>
-                    <span class="svis-uptime-pct">99.9%</span>
-                    <span class="svis-uptime-lbl">uptime</span>
-                  </div>
-                  <div class="svis-blocks">
-                    {% for i in range(30) %}<span class="svis-block{% if i == 14 %} svis-block--warn{% else %} svis-block--ok{% endif %}" style="--i:{{ i }}"></span>{% endfor %}
-                  </div>
-                  <div class="svis-ping">
-                    <span class="svis-ping-dot"></span>
-                    <span class="svis-ping-text">12ms — Online</span>
-                  </div>
-                </div>
-              </div>
-              <div class="showcase__card-body">
-                <span class="showcase__card-num">04</span>
-                <span class="showcase__card-title">Hosting</span>
-                <span class="showcase__card-sub">Altijd online. Geen zorgen.</span>
-              </div>
-            </a>
-          </article>
-
-          <!-- Set 2 — duplicaat voor seamless loop -->
-          <article class="showcase__card" aria-hidden="true">
-            <div class="showcase__card-inner">
-              <div class="showcase__img-wrap">
-                <div class="service-vis svis--websites" aria-hidden="true">
-                  <div class="svis-chrome">
-                    <span class="svis-dot"></span><span class="svis-dot"></span><span class="svis-dot"></span>
-                    <div class="svis-url">byggr.nl</div>
-                  </div>
-                  <div class="svis-terminal">
-                    <div class="svis-line svis-line--tag">&lt;section class="hero"&gt;</div>
-                    <div class="svis-line svis-line--prop">&nbsp;&nbsp;font: Barlow Condensed;</div>
-                    <div class="svis-line svis-line--val">&nbsp;&nbsp;animation: reveal 0.9s;</div>
-                    <div class="svis-line svis-line--prop">&nbsp;&nbsp;background: #0a0a0a;</div>
-                    <div class="svis-line svis-line--tag">&lt;/section&gt;</div>
-                    <span class="svis-cursor"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="showcase__card-body">
-                <span class="showcase__card-num">01</span>
-                <span class="showcase__card-title">Websites</span>
-                <span class="showcase__card-sub">Snel. Helder. Van jou.</span>
-              </div>
+          <!-- afbouwr.nl -->
+          <a href="/portfolio/afbouwr.html"
+             style="border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block;">
+            <div style="aspect-ratio:16/10; background-image:repeating-linear-gradient(135deg, rgba(79,168,255,.10) 0 2px, transparent 2px 11px); display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(236,234,228,.10);">
+              <span style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.14em; color:rgba(236,234,228,.38);">afbouwr.nl</span>
             </div>
-          </article>
-
-          <article class="showcase__card" aria-hidden="true">
-            <div class="showcase__card-inner">
-              <div class="showcase__img-wrap">
-                <div class="service-vis svis--bi-data" aria-hidden="true">
-                  <div class="svis-kpi-row">
-                    <div class="svis-kpi">
-                      <span class="svis-kpi-num" data-target="98" data-suffix="%">98%</span>
-                      <span class="svis-kpi-lbl">Uptime</span>
-                    </div>
-                    <div class="svis-kpi">
-                      <span class="svis-kpi-num" data-target="3.2" data-suffix="x" data-dec="1">3.2x</span>
-                      <span class="svis-kpi-lbl">Groei</span>
-                    </div>
-                    <div class="svis-kpi">
-                      <span class="svis-kpi-num" data-target="47" data-suffix="">47</span>
-                      <span class="svis-kpi-lbl">Leads</span>
-                    </div>
-                  </div>
-                  <div class="svis-chart">
-                    <div class="svis-bar-wrap"><div class="svis-bar" style="--h:55%"></div></div>
-                    <div class="svis-bar-wrap"><div class="svis-bar" style="--h:80%"></div></div>
-                    <div class="svis-bar-wrap"><div class="svis-bar" style="--h:45%"></div></div>
-                    <div class="svis-bar-wrap"><div class="svis-bar" style="--h:95%"></div></div>
-                    <div class="svis-bar-wrap"><div class="svis-bar" style="--h:68%"></div></div>
-                    <div class="svis-bar-wrap"><div class="svis-bar" style="--h:72%"></div></div>
-                  </div>
-                </div>
-              </div>
-              <div class="showcase__card-body">
-                <span class="showcase__card-num">02</span>
-                <span class="showcase__card-title">BI &amp; Data</span>
-                <span class="showcase__card-sub">Cijfers die iets zeggen.</span>
-              </div>
+            <div style="padding:14px 16px 18px;">
+              <div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:6px;">Calculator</div>
+              <div style="font-weight:700; font-size:15px; letter-spacing:-.02em; color:#ecece4;">afbouwr.nl</div>
             </div>
-          </article>
+          </a>
 
-          <article class="showcase__card" aria-hidden="true">
-            <div class="showcase__card-inner">
-              <div class="showcase__img-wrap">
-                <div class="service-vis svis--ai-tools" aria-hidden="true">
-                  <div class="svis-chat">
-                    <div class="svis-bubble svis-bubble--user">Maak een offerte aan</div>
-                    <div class="svis-bubble svis-bubble--ai svis-ai-typing">
-                      <span class="svis-typing-dots"><span></span><span></span><span></span></span>
-                    </div>
-                    <div class="svis-bubble svis-bubble--ai svis-ai-response">Staat in je mail ✓</div>
-                    <div class="svis-bubble svis-bubble--user svis-seq-3">Stuur een reminder</div>
-                    <div class="svis-bubble svis-bubble--ai svis-seq-4">Reminder ingepland ✓</div>
-                  </div>
-                </div>
-              </div>
-              <div class="showcase__card-body">
-                <span class="showcase__card-num">03</span>
-                <span class="showcase__card-title">AI-tools</span>
-                <span class="showcase__card-sub">Minder herhaling. Meer resultaat.</span>
-              </div>
+          <!-- beentelskabaal.nl -->
+          <a href="/portfolio/beentelskabaal.html"
+             style="border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block;">
+            <div style="aspect-ratio:16/10; background-image:repeating-linear-gradient(135deg, rgba(79,168,255,.10) 0 2px, transparent 2px 11px); display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(236,234,228,.10);">
+              <span style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.14em; color:rgba(236,234,228,.38);">beentelskabaal.nl</span>
             </div>
-          </article>
+            <div style="padding:14px 16px 18px;">
+              <div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:6px;">Website</div>
+              <div style="font-weight:700; font-size:15px; letter-spacing:-.02em; color:#ecece4;">Beentels Kabaal</div>
+            </div>
+          </a>
 
-          <article class="showcase__card" aria-hidden="true">
-            <div class="showcase__card-inner">
-              <div class="showcase__img-wrap">
-                <div class="service-vis svis--hosting" aria-hidden="true">
-                  <div class="svis-uptime-header">
-                    <span class="svis-live-dot"></span>
-                    <span class="svis-uptime-pct">99.9%</span>
-                    <span class="svis-uptime-lbl">uptime</span>
-                  </div>
-                  <div class="svis-blocks">
-                    {% for i in range(30) %}<span class="svis-block{% if i == 14 %} svis-block--warn{% else %} svis-block--ok{% endif %}" style="--i:{{ i }}"></span>{% endfor %}
-                  </div>
-                  <div class="svis-ping">
-                    <span class="svis-ping-dot"></span>
-                    <span class="svis-ping-text">12ms — Online</span>
-                  </div>
-                </div>
-              </div>
-              <div class="showcase__card-body">
-                <span class="showcase__card-num">04</span>
-                <span class="showcase__card-title">Hosting</span>
-                <span class="showcase__card-sub">Altijd online. Geen zorgen.</span>
-              </div>
+          <!-- planning.byggr.nl -->
+          <a href="https://planning.byggr.nl" target="_blank" rel="noopener noreferrer"
+             style="border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block;">
+            <div style="aspect-ratio:16/10; background-image:repeating-linear-gradient(135deg, rgba(79,168,255,.10) 0 2px, transparent 2px 11px); display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(236,234,228,.10);">
+              <span style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.14em; color:rgba(236,234,228,.38);">planning.byggr.nl</span>
             </div>
-          </article>
+            <div style="padding:14px 16px 18px;">
+              <div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:6px;">SaaS &middot; MKB</div>
+              <div style="font-weight:700; font-size:15px; letter-spacing:-.02em; color:#ecece4;">Personeelsplanning</div>
+            </div>
+          </a>
+
+          <!-- BI Dashboard -->
+          <a href="/portfolio/bi-dashboard-baumeister.html"
+             style="border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block;">
+            <div style="aspect-ratio:16/10; background-image:repeating-linear-gradient(135deg, rgba(79,168,255,.10) 0 2px, transparent 2px 11px); display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(236,234,228,.10);">
+              <span style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.14em; color:rgba(236,234,228,.38);">BI dashboard</span>
+            </div>
+            <div style="padding:14px 16px 18px;">
+              <div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:6px;">BI &amp; Data</div>
+              <div style="font-weight:700; font-size:15px; letter-spacing:-.02em; color:#ecece4;">Baumeister dashboard</div>
+            </div>
+          </a>
 
         </div>
       </div>
 
-    </section>
-
-    <!-- ============================================================
-         SECTIE 3 — OVER / BRAND STATEMENT
-         ============================================================ -->
-    <section id="over" class="over" aria-labelledby="over-titel">
-      <div class="container over__inner">
-
-        <span class="section-label reveal-fade">Over</span>
-        <h2 class="section-title over__title" id="over-titel" data-accent="groeit.">Wij bouwen. Jij groeit.</h2>
-
-        <div class="over__body">
-          <p class="reveal-up">
-            BYGGR is een studio uit Delden — opgezet door Remco Baumeister.
-            Geen account managers, geen estafette van mensen. Je praat direct
-            met degene die bouwt.
-          </p>
-          <p class="reveal-up">
-            We luisteren eerst. Dan kijken we wat je echt nodig hebt —
-            niet wat er toevallig in een pakket zit.
-            <strong>Of dat nu een simpele website is of een dataplatform: BYGGR zoekt de kortste weg naar iets dat werkt.</strong>
-          </p>
+      <!-- P7 — Contact / CTA (p 0.945–1.001) -->
+      <div data-range="0.945,1.001"
+           style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 7vw; opacity:0; will-change:opacity,transform;">
+        <h2 style="margin:0; font-weight:800; font-size:clamp(38px,6.4vw,100px); line-height:.99; letter-spacing:-.035em; color:#ecece4; max-width:15ch; text-wrap:balance;">
+          Klaar om iets te bouwen dat klopt?
+        </h2>
+        <div style="margin-top:46px; display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+          <button type="button" data-jump="0.855"
+                  style="all:unset; cursor:pointer; font-weight:600; font-size:15px; letter-spacing:.01em; color:#0a0b0d; background:#4fa8ff; padding:15px 30px; box-shadow:0 0 26px rgba(79,168,255,.35);">
+            Bekijk cases
+          </button>
+          <button type="button" data-contact-cta
+                  style="all:unset; cursor:pointer; font-weight:600; font-size:15px; letter-spacing:.01em; color:#ecece4; background:transparent; border:1px solid rgba(236,234,228,.28); padding:15px 30px;">
+            Neem contact op
+          </button>
         </div>
-
-        <div class="over__stats reveal-scale">
-          <div class="stat-block">
-            <span class="stat-block__getal">8</span>
-            <span class="stat-block__label">
-              <span class="stat-block__label-default">jaar werkervaring</span>
-              <span class="stat-block__label-hover">dag in, dag uit</span>
-            </span>
-          </div>
-          <div class="stat-block">
-            <span class="stat-block__getal">4+</span>
-            <span class="stat-block__label">
-              <span class="stat-block__label-default">live projecten</span>
-              <span class="stat-block__label-hover">live. nu.</span>
-            </span>
-          </div>
-          <div class="stat-block">
-            <span class="stat-block__getal">1</span>
-            <span class="stat-block__label">
-              <span class="stat-block__label-default">aanspreekpunt</span>
-              <span class="stat-block__label-hover">direct contact</span>
-            </span>
-          </div>
+        <div style="margin-top:60px; font-family:'Space Mono',monospace; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:rgba(236,234,228,.38);">
+          Byggr &middot; Delden &middot; hello@byggr.nl
         </div>
-
       </div>
-    </section>
 
-    <!-- ============================================================
-         SECTIE 4 — PORTFOLIO
-         ============================================================ -->
-    <section id="portfolio" class="portfolio" aria-labelledby="portfolio-titel">
-      <div class="container">
-
-        <span class="section-label reveal-fade">Cases</span>
-        <h2 class="section-title" id="portfolio-titel">Live gegaan.</h2>
-
-        <div class="portfolio__grid">
-
-          <article class="project-card reveal-left" aria-labelledby="project-afbouwr">
-            <div class="project-card__img">
-              <img
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=450&fit=crop&q=80"
-                alt="afbouwr.nl — calculator voor de bouwsector"
-                loading="lazy"
-              >
-            </div>
-            <div class="project-card__content">
-              <div class="project-card__meta">
-                <span class="label">Calculator · Webapplicatie</span>
-              </div>
-              <h3 id="project-afbouwr">afbouwr.nl</h3>
-              <p>Calculatortool voor de afbouwsector. Vakspecifieke berekeningen, direct bruikbaar in het veld.</p>
-              <a href="/portfolio/afbouwr.html" class="project-card__link" aria-label="Bekijk project afbouwr.nl">
-                Bekijk project →
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card reveal-right" aria-labelledby="project-beentels">
-            <div class="project-card__img">
-              <img
-                src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&h=450&fit=crop&q=80"
-                alt="beentelskabaal.nl — website"
-                loading="lazy"
-              >
-            </div>
-            <div class="project-card__content">
-              <div class="project-card__meta">
-                <span class="label">Website</span>
-              </div>
-              <h3 id="project-beentels">beentelskabaal.nl</h3>
-              <p>Website opgezet met AI-assisted workflow. Van briefing naar live in record tempo.</p>
-              <a href="/portfolio/beentelskabaal.html" class="project-card__link" aria-label="Bekijk project beentelskabaal.nl">
-                Bekijk project →
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card reveal-left" aria-labelledby="project-kenkhuis">
-            <div class="project-card__img">
-              <img
-                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=450&fit=crop&q=80"
-                alt="Kenkhuisprojecten — projectsite aannemer"
-                loading="lazy"
-              >
-            </div>
-            <div class="project-card__content">
-              <div class="project-card__meta">
-                <span class="label">Website · In uitvoering</span>
-              </div>
-              <h3 id="project-kenkhuis">Kenkhuisprojecten</h3>
-              <p>Projectsite voor een aannemer. Overzichtelijk, zelf te beheren, gebouwd om te groeien.</p>
-              <a href="/portfolio/kenkhuisprojecten.html" class="project-card__link" aria-label="Bekijk project Kenkhuisprojecten">
-                Bekijk project →
-              </a>
-            </div>
-          </article>
-
-          <article class="project-card reveal-right" aria-labelledby="project-bi">
-            <div class="project-card__img">
-              <img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop&q=80"
-                alt="Intern Power BI dashboard voor operationele sturing"
-                loading="lazy"
-              >
-            </div>
-            <div class="project-card__content">
-              <div class="project-card__meta">
-                <span class="label">Dashboard · Intern</span>
-              </div>
-              <h3 id="project-bi">BI Dashboard Baumeister</h3>
-              <p>Intern Power BI dashboard voor operationele sturing. Dagelijks in gebruik door het MT.</p>
-              <a href="/portfolio/bi-dashboard-baumeister.html" class="project-card__link" aria-label="Bekijk project BI Dashboard Baumeister">
-                Bekijk project →
-              </a>
-            </div>
-          </article>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============================================================
-         SECTIE 5 — CONTACT INTRO
-         ============================================================ -->
-    <section id="contact" class="contact-intro" aria-labelledby="contact-intro-titel">
-      <div class="container contact-intro__inner">
-
-        <span class="section-label reveal-fade">Contact</span>
-        <h2 class="section-title" id="contact-intro-titel">Vertel wat er speelt.</h2>
-        <p class="reveal">
-          Geen verkooppraatje, geen offerte zonder gesprek. Gewoon even kijken wat er nodig is.
-        </p>
-        <a href="#contact-form" class="btn btn--primary reveal-fade">Stuur een bericht</a>
-
-      </div>
-    </section>
-
-    <!-- ============================================================
-         SECTIE 6 — CONTACTFORMULIER
-         ============================================================ -->
-    <section id="contact-form" class="contact-form-section" aria-labelledby="contact-form-titel">
-      <div class="container contact-form-section__inner">
-
-        <div class="contact-form-section__header">
-          <span class="section-label reveal-fade">Formulier</span>
-          <h2 class="section-title" id="contact-form-titel">Neem contact op</h2>
-        </div>
-
-        <form
-          class="contact__form reveal-scale"
-          name="contact"
-          method="POST"
-          action="/dank-je.html"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          aria-label="Contactformulier"
-        >
-          <p hidden>
-            <label>Niet invullen: <input name="bot-field"></label>
-          </p>
-
-          <div class="form-field">
-            <label for="naam">Naam</label>
-            <input
-              type="text"
-              id="naam"
-              name="naam"
-              autocomplete="name"
-              placeholder="Sam Altman"
-              required
-              aria-required="true"
-            >
-          </div>
-
-          <div class="form-field">
-            <label for="email">E-mailadres</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              autocomplete="email"
-              placeholder="sam@altman.nl"
-              required
-              aria-required="true"
-            >
-          </div>
-
-          <div class="form-field">
-            <label for="bericht">Bericht</label>
-            <textarea
-              id="bericht"
-              name="bericht"
-              rows="5"
-              placeholder="Vertel kort wat je nodig hebt. Een paar zinnen is genoeg."
-              required
-              aria-required="true"
-            ></textarea>
-          </div>
-
-          <button type="submit" class="btn btn--primary">Versturen</button>
-
-        </form>
-
-      </div>
-    </section>
+    </div><!-- /overlays -->
+  </div><!-- /stage -->
+</div><!-- /container -->

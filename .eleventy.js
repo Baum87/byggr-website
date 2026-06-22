@@ -11,6 +11,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "apple-touch-icon.png": "apple-touch-icon.png" });
   eleventyConfig.addPassthroughCopy({ "og-image.png": "og-image.png" });
   eleventyConfig.addPassthroughCopy({ "robots.txt": "robots.txt" });
+  eleventyConfig.addPassthroughCopy({ "werkwijze.html": "werkwijze.html" });
 
   // Collections
   eleventyConfig.addCollection("portfolio", function(collection) {

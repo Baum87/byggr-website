@@ -12,12 +12,12 @@ extraCSS:
 
       <div class="project-hero__inner">
         {% if pageType == 'service' %}
-        <a href="/#services" class="project-hero__breadcrumb reveal-fade">
-          Terug naar services
+        <a href="/" class="project-hero__breadcrumb reveal-fade">
+          Terug naar home
         </a>
         {% else %}
-        <a href="/#portfolio" class="project-hero__breadcrumb reveal-fade">
-          Terug naar portfolio
+        <a href="/" class="project-hero__breadcrumb reveal-fade">
+          Terug naar home
         </a>
         {% endif %}
 
@@ -115,7 +115,7 @@ extraCSS:
       <div class="project-cta__inner">
         <span class="project-cta__label reveal-fade">Volgende stap</span>
         <h2 class="project-cta__title reveal">{{ ctaTitle }}</h2>
-        <a href="/#contact" class="btn btn--primary reveal-fade">{{ ctaButton }}</a>
+        <a href="/#contact-form" class="btn btn--primary reveal-fade">{{ ctaButton }}</a>
       </div>
     </section>
 
@@ -129,9 +129,9 @@ extraCSS:
           <span class="project-nav__label">{% if pageType == 'service' %}Volgende service{% else %}Volgend project{% endif %}</span>
           <span class="project-nav__title">{{ nextTitle }} →</span>
         </a>
-        <a href="{% if pageType == 'service' %}/#services{% else %}/#portfolio{% endif %}" class="project-nav__link project-nav__link--next">
+        <a href="/" class="project-nav__link project-nav__link--next">
           <span class="project-nav__label">Overzicht</span>
-          <span class="project-nav__title">{% if pageType == 'service' %}Alle services{% else %}Alle projecten{% endif %}</span>
+          <span class="project-nav__title">Terug naar home</span>
         </a>
       </div>
     </nav>
