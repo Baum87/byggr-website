@@ -5,13 +5,17 @@ extraCSS:
   - /src/css/sections/portfolio-detail.css
 ---
 
+    {% if pageType == 'portfolio' %}
+    <!-- Canvas — vaste achtergrond, gehele pagina -->
+    <canvas class="bg-canvas" aria-hidden="true"></canvas>
+    {% endif %}
+
     <!-- ============================================================
          HERO
          ============================================================ -->
     <section class="project-hero" aria-labelledby="project-title">
 
       {% if pageType == 'portfolio' %}
-      <canvas class="hero-canvas" aria-hidden="true"></canvas>
       <div class="hero-fog" aria-hidden="true"></div>
       {% endif %}
 
@@ -136,7 +140,7 @@ extraCSS:
     {% if pageType == 'portfolio' %}
     <script>
     (function () {
-      var canvas = document.querySelector('.hero-canvas');
+      var canvas = document.querySelector('.bg-canvas');
       if (!canvas) return;
       var ctx = canvas.getContext('2d');
       var W, H, dpr, nodes = [], edges = [];
