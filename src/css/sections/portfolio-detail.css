@@ -116,7 +116,9 @@
 .project-meta {
   position: relative;
   z-index: 1;
-  background: #0a0b0d;
+  background: rgba(10,11,13,.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   max-width: 1360px;
   margin-inline: auto;
   padding: 0 6vw;
@@ -147,7 +149,9 @@
 .project-detail {
   position: relative;
   z-index: 1;
-  background: #0a0b0d;
+  background: rgba(10,11,13,.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: 80px 6vw;
   border-top: 1px solid rgba(236,234,228,.08);
 }
@@ -269,9 +273,11 @@
   padding: 96px 6vw;
   border-top: 1px solid rgba(236,234,228,.08);
   text-align: center;
-  background: #0a0b0d;
+  background: rgba(10,11,13,.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
-.project-cta--dark { background: #0c0e12; border-color: transparent; }
+.project-cta--dark { background: rgba(12,14,18,.92); border-color: transparent; }
 
 .project-cta__inner { max-width: 720px; margin-inline: auto; }
 
@@ -298,7 +304,9 @@
 .project-nav {
   position: relative;
   z-index: 1;
-  background: #0a0b0d;
+  background: rgba(10,11,13,.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-top: 1px solid rgba(236,234,228,.08);
 }
 .project-nav__inner {
