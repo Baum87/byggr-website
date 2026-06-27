@@ -36,6 +36,6 @@ blocks:
       - "AI-assisted"
 ctaTitle: "Soortgelijk project nodig?"
 ctaButton: "Neem contact op"
-nextUrl: "/portfolio/kenkhuisprojecten.html"
-nextTitle: "Kenkhuisprojecten"
+nextUrl: "/portfolio/bi-dashboard-baumeister.html"
+nextTitle: "BI Dashboard"
 ---

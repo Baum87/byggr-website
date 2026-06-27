@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; padding:0; background:#0a0b0d; }
+  *, *::before, *::after { box-sizing:border-box; }
+  @keyframes byggrChev { 0%,100%{ transform:translateY(0); opacity:.5 } 50%{ transform:translateY(7px); opacity:1 } }
+  @keyframes byggrLine { 0%,100%{ transform:scaleX(.35); opacity:.55 } 50%{ transform:scaleX(1); opacity:1 } }
+  ::selection { background:rgba(79,168,255,.28); color:#fff; }
+</style>
+</helmet>
+
+<div id="byg-cont" style="position:relative; background:#0a0b0d; height:900vh; font-family:'Archivo',system-ui,sans-serif;">
+  <div id="byg-stage" style="position:sticky; top:0; height:100vh; width:100%; overflow:hidden; background:#0a0b0d;">
+
+    <canvas id="byg-canvas" style="position:absolute; inset:0; width:100%; height:100%; display:block; z-index:0;"></canvas>
+
+    <div id="byg-vignette" style="position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0.3; background:radial-gradient(ellipse 62% 52% at 50% 50%, rgba(10,11,13,.72) 0%, rgba(10,11,13,.30) 48%, rgba(10,11,13,0) 72%);"></div>
+
+    <!-- top progress bar -->
+    <div style="position:absolute; top:0; left:0; right:0; height:2px; z-index:6; background:rgba(236,234,228,.06);">
+      <div id="byg-bar" style="height:100%; width:0%; background:#4fa8ff; box-shadow:0 0 12px rgba(79,168,255,.7);"></div>
+    </div>
+
+    <!-- wordmark -->
+    <div style="position:absolute; top:24px; left:34px; z-index:8; display:flex; align-items:center; justify-content:center; height:34px;">
+      <span style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:34px; height:34px; border-radius:50%; border:1.5px solid rgba(79,168,255,.6); box-shadow:0 0 18px rgba(79,168,255,.16);"></span>
+      <span style="position:relative; font-weight:800; font-size:19px; letter-spacing:.02em; color:#ecece4; line-height:1;">BYGGR</span>
+    </div>
+    <div style="position:absolute; top:24px; right:34px; z-index:8; display:flex; gap:28px; align-items:center;">
+      <button type="button" data-jump="0.855" style="all:unset; cursor:pointer; font-family:'Space Mono',monospace; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:rgba(236,234,228,.55); transition:color .25s;" style-hover="color:#ecece4;">Cases</button>
+      <button type="button" data-jump="0.99" style="all:unset; cursor:pointer; font-family:'Space Mono',monospace; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:rgba(236,234,228,.55); transition:color .25s;" style-hover="color:#ecece4;">Contact</button>
+    </div>
+
+    <!-- phase nav -->
+    <div id="byg-nav" style="position:absolute; right:30px; top:50%; transform:translateY(-50%); z-index:7; display:flex; flex-direction:column; gap:17px; align-items:flex-end; opacity:0; transition:opacity .5s ease;">
+      <button data-i="0" data-target="0.05" style="all:unset; cursor:pointer; display:flex; align-items:center; gap:11px;"><span data-lbl style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(236,234,228,.32); transition:all .35s;">Start</span><span data-tick style="display:block; width:14px; height:1.5px; background:rgba(236,234,228,.32); transition:all .35s;"></span></button>
+      <button data-i="1" data-target="0.19" style="all:unset; cursor:pointer; display:flex; align-items:center; gap:11px;"><span data-lbl style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(236,234,228,.32); transition:all .35s;">Discovery</span><span data-tick style="display:block; width:14px; height:1.5px; background:rgba(236,234,228,.32); transition:all .35s;"></span></button>
+      <button data-i="2" data-target="0.37" style="all:unset; cursor:pointer; display:flex; align-items:center; gap:11px;"><span data-lbl style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(236,234,228,.32); transition:all .35s;">Architectuur</span><span data-tick style="display:block; width:14px; height:1.5px; background:rgba(236,234,228,.32); transition:all .35s;"></span></button>
+      <button data-i="3" data-target="0.53" style="all:unset; cursor:pointer; display:flex; align-items:center; gap:11px;"><span data-lbl style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(236,234,228,.32); transition:all .35s;">Iteraties</span><span data-tick style="display:block; width:14px; height:1.5px; background:rgba(236,234,228,.32); transition:all .35s;"></span></button>
+      <button data-i="4" data-target="0.70" style="all:unset; cursor:pointer; display:flex; align-items:center; gap:11px;"><span data-lbl style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(236,234,228,.32); transition:all .35s;">Kwaliteit</span><span data-tick style="display:block; width:14px; height:1.5px; background:rgba(236,234,228,.32); transition:all .35s;"></span></button>
+      <button data-i="5" data-target="0.86" style="all:unset; cursor:pointer; display:flex; align-items:center; gap:11px;"><span data-lbl style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(236,234,228,.32); transition:all .35s;">Resultaat</span><span data-tick style="display:block; width:14px; height:1.5px; background:rgba(236,234,228,.32); transition:all .35s;"></span></button>
+      <button data-i="6" data-target="0.97" style="all:unset; cursor:pointer; display:flex; align-items:center; gap:11px;"><span data-lbl style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(236,234,228,.32); transition:all .35s;">Contact</span><span data-tick style="display:block; width:14px; height:1.5px; background:rgba(236,234,228,.32); transition:all .35s;"></span></button>
+    </div>
+
+    <!-- ===== PHASE OVERLAYS ===== -->
+    <div style="position:absolute; inset:0; z-index:4;">
+
+      <!-- P1 Start -->
+      <div data-range="0.00,0.12" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:0 6vw; opacity:1; will-change:opacity,transform;">
+        <h1 style="margin:0; font-weight:800; font-size:clamp(48px,10vw,158px); line-height:.92; letter-spacing:-.045em; color:#ecece4; max-width:13ch; text-transform:lowercase; text-shadow:0 0 70px rgba(79,168,255,.22);">elk product begint met <span style="color:#4fa8ff;">een idee</span></h1>
+      </div>
+
+      <!-- P2 Discovery -->
+      <div data-range="0.10,0.29" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 9vw; opacity:0; will-change:opacity,transform;">
+        <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#4fa8ff; margin-bottom:26px;">01 — Discovery</div>
+        <h2 style="margin:0; font-weight:800; font-size:clamp(34px,5.6vw,86px); line-height:1.0; letter-spacing:-.032em; color:#ecece4; max-width:18ch;">We beginnen met vragen, niet met aannames.</h2>
+        <p style="margin:30px auto 0; font-size:clamp(15px,1.4vw,20px); line-height:1.5; color:rgba(236,234,228,.55); max-width:42ch;">De eerste lijnen verschijnen. Nog niets staat vast — en juist dat is het punt.</p>
+      </div>
+
+      <!-- P3 Architectuur (text) -->
+      <div data-range="0.27,0.46" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 9vw; opacity:0; will-change:opacity,transform;">
+        <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#4fa8ff; margin-bottom:26px;">02 — Architectuur</div>
+        <h2 style="margin:0; font-weight:800; font-size:clamp(34px,5.6vw,86px); line-height:1.0; letter-spacing:-.032em; color:#ecece4; max-width:16ch;">Losse ideeën worden een fundament.</h2>
+      </div>
+
+
+      <!-- P4 Iteraties -->
+      <div data-range="0.44,0.63" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 9vw; opacity:0; will-change:opacity,transform;">
+        <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#4fa8ff; margin-bottom:26px;">03 — Iteraties</div>
+        <h2 style="margin:0; font-weight:800; font-size:clamp(34px,5.6vw,86px); line-height:1.0; letter-spacing:-.032em; color:#ecece4; max-width:15ch;">Goed wordt beter — iteratie na iteratie.</h2>
+        <p style="margin:30px auto 0; font-size:clamp(15px,1.4vw,20px); line-height:1.5; color:rgba(236,234,228,.55); max-width:40ch;">Niets is af bij de eerste versie. Vorm krijgt vorm.</p>
+      </div>
+
+      <!-- P5 Kwaliteit -->
+      <div data-range="0.61,0.80" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 7vw; opacity:0; will-change:opacity,transform;">
+        <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#4fa8ff; margin-bottom:26px;">04 — Kwaliteitscontrole</div>
+        <h2 style="margin:0; font-weight:800; font-size:clamp(36px,6vw,96px); line-height:1.0; letter-spacing:-.034em; color:#ecece4; max-width:14ch; text-wrap:balance;">Alles valt op zijn plek.</h2>
+        <p style="margin:30px 0 0; font-size:clamp(15px,1.4vw,20px); line-height:1.5; color:rgba(236,234,228,.55); max-width:40ch;">Precisie is geen detail. Het is het vak.</p>
+      </div>
+
+      <!-- P6 Resultaat (text) -->
+      <div data-range="0.78,0.93" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 7vw; opacity:0; will-change:opacity,transform;">
+        <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#4fa8ff; margin-bottom:22px;">05 — Resultaat</div>
+        <h2 style="margin:0; font-weight:900; font-size:clamp(40px,7vw,118px); line-height:.96; letter-spacing:-.04em; color:#ecece4; max-width:13ch; text-wrap:balance;">Van idee naar <span style="color:#4fa8ff;">product</span>.</h2>
+      </div>
+
+      <!-- P6 Cases -->
+      <div data-range="0.81,0.935" style="position:absolute; left:0; right:0; bottom:0; display:flex; align-items:flex-end; justify-content:center; padding:0 6vw 8vh; opacity:0; will-change:opacity,transform;">
+        <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; width:100%; max-width:1160px;">
+          <a href="/portfolio/bi-dashboard-baumeister.html" style="text-decoration:none; border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block; transition:border-color .25s;">
+            <div style="aspect-ratio:16/10; background-image:repeating-linear-gradient(135deg, rgba(79,168,255,.10) 0 2px, transparent 2px 11px); display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(236,234,228,.10);"><span style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.16em; color:rgba(236,234,228,.4);">[ case-beeld ]</span></div>
+            <div style="padding:18px 20px 20px;"><div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:8px;">BI &amp; Data</div><div style="font-weight:700; font-size:18px; letter-spacing:-.02em; color:#ecece4;">BI Dashboard</div></div>
+          </a>
+          <a href="/portfolio/afbouwr.html" style="text-decoration:none; border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block; transition:border-color .25s;">
+            <div style="aspect-ratio:16/10; background-image:repeating-linear-gradient(135deg, rgba(79,168,255,.10) 0 2px, transparent 2px 11px); display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(236,234,228,.10);"><span style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.16em; color:rgba(236,234,228,.4);">[ case-beeld ]</span></div>
+            <div style="padding:18px 20px 20px;"><div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:8px;">Webapplicatie</div><div style="font-weight:700; font-size:18px; letter-spacing:-.02em; color:#ecece4;">afbouwr.nl</div></div>
+          </a>
+          <a href="/portfolio/ratio.html" style="text-decoration:none; border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block; transition:border-color .25s;">
+            <div style="aspect-ratio:16/10; background-image:repeating-linear-gradient(135deg, rgba(79,168,255,.10) 0 2px, transparent 2px 11px); display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(236,234,228,.10);"><span style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.16em; color:rgba(236,234,228,.4);">[ case-beeld ]</span></div>
+            <div style="padding:18px 20px 20px;"><div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:8px;">Web-app</div><div style="font-weight:700; font-size:18px; letter-spacing:-.02em; color:#ecece4;">Ratio</div></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- P7 CTA -->
+      <div data-range="0.945,1.001" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 7vw; opacity:0; will-change:opacity,transform;">
+        <h2 style="margin:0; font-weight:800; font-size:clamp(38px,6.4vw,100px); line-height:.99; letter-spacing:-.035em; color:#ecece4; max-width:15ch; text-wrap:balance;">Klaar om iets te bouwen dat klopt?</h2>
+        <div style="margin-top:46px; display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+          <button style="all:unset; cursor:pointer; font-weight:600; font-size:15px; letter-spacing:.01em; color:#0a0b0d; background:#4fa8ff; padding:15px 30px; box-shadow:0 0 26px rgba(79,168,255,.35);">Bekijk cases</button>
+          <button style="all:unset; cursor:pointer; font-weight:600; font-size:15px; letter-spacing:.01em; color:#ecece4; background:transparent; border:1px solid rgba(236,234,228,.28); padding:15px 30px;">Neem contact op</button>
+        </div>
+        <div style="margin-top:60px; font-family:'Space Mono',monospace; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:rgba(236,234,228,.38);">Byggr · Delden · hello@byggr.nl</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+
+  componentDidMount() {
+    try { this._boot(); } catch(err){ console.error('[byggr]', err); }
+  }
+  _boot() {
+    this.container = document.getElementById('byg-cont');
+    this.stage = document.getElementById('byg-stage');
+    this.canvas = document.getElementById('byg-canvas');
+    this.bar = document.getElementById('byg-bar');
+    this.nav = document.getElementById('byg-nav');
+    this.vignette = document.getElementById('byg-vignette');
+    if (!this.container || !this.stage || !this.canvas) { this._retry = setTimeout(()=>this.componentDidMount(), 60); return; }
+    const clamp = (v,a,b)=>v<a?a:v>b?b:v;
+    const lerp = (a,b,t)=>a+(b-a)*t;
+    const smooth = (e0,e1,x)=>{ const t=clamp((x-e0)/(e1-e0),0,1); return t*t*(3-2*t); };
+    const ease = t=>t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+    function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+
+    this.clamp = clamp;
+
+    // ---- generate nodes + edges ----
+    const rnd = mulberry32(20260621);
+    const cols = 15, rows = 9;
+    const x0=0.115, x1=0.885, y0=0.16, y1=0.84;
+    const nodes = [];
+    for (let r=0;r<rows;r++){
+      for (let c=0;c<cols;c++){
+        const gx = x0 + (c/(cols-1))*(x1-x0);
+        const gy = y0 + (r/(rows-1))*(y1-y0);
+        const tx = gx + (rnd()-0.5)*0.024;
+        const ty = gy + (rnd()-0.5)*0.034;
+        const distN = Math.hypot(tx-0.5, ty-0.5)/0.55;
+        const isEarly = rnd()<0.20;                 // these disperse from the idea dot
+        let birth = clamp(distN*0.72 + (rnd()-0.5)*0.12, 0.0, 0.85);
+        if (isEarly) birth = rnd()*0.12;
+        let sx, sy;
+        if (isEarly){ const a=rnd()*6.283, rr=0.015+rnd()*0.09; sx=0.5+Math.cos(a)*rr; sy=0.5+Math.sin(a)*rr; }
+        else { sx=0.04+rnd()*0.92; sy=0.04+rnd()*0.92; }
+        nodes.push({ tx,ty,sx,sy,gx,gy, rowFrac: r/(rows-1), birth, isEarly, hub: rnd()<0.12, ph: rnd()*6.283, freq: 0.5+rnd()*1.1 });
+      }
+    }
+    const idx = (c,r)=>r*cols+c;
+    const edges = [];
+    const addEdge = (a,b)=>{ const A=nodes[a],B=nodes[b]; edges.push({a,b, reveal: Math.max(A.birth,B.birth)+0.03+rnd()*0.06, accent: rnd()<0.16}); };
+    for (let r=0;r<rows;r++){
+      for (let c=0;c<cols;c++){
+        if (c<cols-1) addEdge(idx(c,r), idx(c+1,r));
+        if (r<rows-1) addEdge(idx(c,r), idx(c,r+1));
+        if (c<cols-1 && r<rows-1 && rnd()<0.32) addEdge(idx(c,r), idx(c+1,r+1));
+      }
+    }
+    this.nodes = nodes; this.edges = edges;
+
+    // ---- overlays + nav ----
+    this.overlays = Array.from(this.stage.querySelectorAll('[data-range]')).map(el=>{
+      const [s,e] = el.getAttribute('data-range').split(',').map(Number);
+      return { el, s, e };
+    });
+    this.navBtns = Array.from(this.nav.querySelectorAll('button'));
+    const navRanges = [[0,0.10],[0.10,0.27],[0.27,0.46],[0.46,0.61],[0.61,0.78],[0.78,0.92],[0.92,1.01]];
+    this.navBtns.forEach((btn)=>{
+      btn.addEventListener('click', ()=>{
+        const frac = parseFloat(btn.getAttribute('data-target'));
+        const total = this.container.offsetHeight - window.innerHeight;
+        const top = this.container.offsetTop + frac*total;
+        window.scrollTo({ top, behavior:'smooth' });
+      });
+    });
+    this.navRanges = navRanges;
+
+    Array.from(this.stage.querySelectorAll('[data-jump]')).forEach((b)=>{
+      b.addEventListener('click', ()=>{
+        const f = parseFloat(b.getAttribute('data-jump'));
+        const total = this.container.offsetHeight - window.innerHeight;
+        window.scrollTo({ top: this.container.offsetTop + f*total, behavior:'smooth' });
+      });
+    });
+
+    // ---- canvas ----
+    const ctx = this.canvas.getContext('2d');
+    let W=0, H=0, dpr=1;
+    const resize = ()=>{
+      dpr = Math.min(window.devicePixelRatio||1, 2);
+      W = this.stage.clientWidth; H = this.stage.clientHeight;
+      this.canvas.width = W*dpr; this.canvas.height = H*dpr;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    this.targetP = 0; this.p = 0;
+    const readP = ()=>{
+      const total = this.container.offsetHeight - window.innerHeight;
+      const sy = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+      return total>0 ? clamp((sy - this.container.offsetTop)/total, 0, 1) : 0;
+    };
+
+    const nodeLocal = (n,b)=>clamp((b-n.birth)/0.28, 0, 1);
+
+    const draw = (p, now)=>{
+      ctx.clearRect(0,0,W,H);
+      const b = clamp((p-0.10)/0.78, 0, 1);
+
+      // the idea — large dot at Start that sinks, shrinks and is absorbed into the field
+      const ideaLife = clamp(1 - p/0.23, 0, 1);     // lives into Discovery
+      const ideaJP = clamp(p/0.23, 0, 1);           // journey 0 → 1
+      const ideaJE = ease(ideaJP);
+      const ideaX = lerp(0.5, 0.52, ideaJE)*W;      // drifts slightly right
+      const ideaY = lerp(0.5, 0.63, ideaJE)*H;      // sinks downward as you scroll
+      if (ideaLife > 0){
+        const soft = 1 - ideaJE;                    // 1 soft glow → 0 crisp data-dot
+        const breathe = 1 + 0.045*Math.sin(now*0.0016)*soft;
+        const R = lerp(0.22*Math.min(W,H), 2.2, ideaJE) * breathe;
+        ctx.save();
+        if (soft>0.02){
+          const hg = ctx.createRadialGradient(ideaX,ideaY,R*0.25, ideaX,ideaY,R*2.0);
+          hg.addColorStop(0,`rgba(79,168,255,${0.12*ideaLife*soft})`);
+          hg.addColorStop(1,'rgba(79,168,255,0)');
+          ctx.fillStyle=hg; ctx.beginPath(); ctx.arc(ideaX,ideaY,R*2.0,0,6.2832); ctx.fill();
+        }
+        const cg = ctx.createRadialGradient(ideaX,ideaY,0, ideaX,ideaY,R);
+        cg.addColorStop(0,`rgba(120,190,255,${(0.6+0.25*ideaJE)*ideaLife})`);
+        cg.addColorStop(0.55,`rgba(79,168,255,${(0.32+0.10*ideaJE)*ideaLife})`);
+        cg.addColorStop(1,'rgba(79,168,255,0)');
+        ctx.fillStyle=cg; ctx.beginPath(); ctx.arc(ideaX,ideaY,R,0,6.2832); ctx.fill();
+        if (soft>0.1){
+          ctx.strokeStyle=`rgba(79,168,255,${0.26*ideaLife*soft})`; ctx.lineWidth=1.5;
+          ctx.beginPath(); ctx.arc(ideaX,ideaY,R*0.86,0,6.2832); ctx.stroke();
+        }
+        if (ideaJE>0.1){   // resolves into a crisp little blue point — fades in smoothly
+          const crisp = smooth(0.1, 0.85, ideaJE);
+          ctx.shadowColor='rgba(79,168,255,0.85)'; ctx.shadowBlur=7*crisp;
+          ctx.fillStyle=`rgba(150,205,255,${0.85*crisp*ideaLife})`;
+          ctx.beginPath(); ctx.arc(ideaX,ideaY,Math.max(R*0.55,1.5),0,6.2832); ctx.fill();
+          ctx.shadowBlur=0;
+        }
+        ctx.restore();
+      }
+
+      // --- polish sweep at Resultaat: a band falls top→bottom and snaps each
+      //     row from its organic position onto the exact grid (straightening) ---
+      const sweepStart=0.78, sweepEnd=0.90, feather=0.16;
+      const sweepFrac = clamp((p - sweepStart)/(sweepEnd - sweepStart), 0, 1); // persists at 1
+      const bandPos = sweepFrac*(1+feather);          // travels across rowFrac space (0..1)
+      const sweeping = p > sweepStart && sweepFrac < 1;
+
+      // precompute each node's current pixel position (build + jitter + straighten)
+      for (let i=0;i<nodes.length;i++){
+        const n=nodes[i];
+        const nl = nodeLocal(n,b);
+        n._nl = nl;
+        if (nl<=0){ n._x=null; continue; }
+        const str = clamp((bandPos - n.rowFrac)/feather, 0, 1);   // 0 loose → 1 on-grid
+        n._str = str;
+        const eL = ease(nl);
+        const jit = (1-nl)*0.018*(1-str);                        // jitter dies as it snaps
+        const jx = Math.sin(now*0.001*n.freq + n.ph)*jit;
+        const jy = Math.cos(now*0.0011*n.freq + n.ph)*jit;
+        const ox = lerp(n.sx,n.tx,eL)+jx;
+        const oy = lerp(n.sy,n.ty,eL)+jy;
+        n._x = lerp(ox, n.gx, str)*W;
+        n._y = lerp(oy, n.gy, str)*H;
+      }
+
+      // edges (follow the straightened node positions)
+      for (let i=0;i<edges.length;i++){
+        const e=edges[i];
+        const el = clamp((b - e.reveal)/0.12, 0, 1);
+        if (el<=0) continue;
+        const A=nodes[e.a], B=nodes[e.b];
+        if (A._x===null || B._x===null) continue;
+        const ex=lerp(A._x,B._x,el), ey=lerp(A._y,B._y,el);
+        const straight = (A._str + B._str)*0.5;
+        const alpha = el*(0.05 + 0.20*b + 0.10*straight);
+        ctx.strokeStyle = e.accent ? `rgba(79,168,255,${alpha*1.35})` : `rgba(150,172,205,${alpha})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(A._x,A._y); ctx.lineTo(ex,ey); ctx.stroke();
+      }
+
+      // nodes
+      for (let i=0;i<nodes.length;i++){
+        const n=nodes[i];
+        if (n._x===null) continue;
+        const nl = n._nl;
+        const x = n._x, y = n._y;
+        const snap = Math.sin(clamp(n._str,0,1)*Math.PI);        // brief flash as the band passes
+        let spark2 = 0;                                          // flare as the idea dot passes
+        if (ideaLife>0 && n.isEarly){
+          const dd=Math.hypot(x-ideaX, y-ideaY);
+          spark2 = clamp(1 - dd/(0.12*Math.min(W,H)), 0, 1) * ideaJE * ideaLife;
+        }
+        const glow = Math.max(snap, spark2);
+        const ap = clamp(clamp(nl*1.25,0,1)*(0.42 + 0.55*b) + 0.4*glow, 0, 1);
+        if (n.hub){
+          ctx.fillStyle = `rgba(79,168,255,${ap})`;
+          ctx.shadowColor = 'rgba(79,168,255,0.85)';
+          ctx.shadowBlur = 9*b + 6*glow;
+          ctx.beginPath(); ctx.arc(x,y,2.5+0.8*glow,0,6.2832); ctx.fill();
+          ctx.shadowBlur = 0;
+        } else {
+          ctx.fillStyle = `rgba(236,234,228,${ap})`;
+          if (glow>0.05){ ctx.shadowColor='rgba(79,168,255,0.7)'; ctx.shadowBlur=5*glow; }
+          ctx.beginPath(); ctx.arc(x,y,1.5+0.8*glow,0,6.2832); ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      }
+
+      // the band itself — sits exactly on the row currently snapping
+      if (sweeping){
+        const by = (y0 + clamp(bandPos,0,1)*(y1-y0))*H;
+        const g=ctx.createLinearGradient(0,by-70,0,by+70);
+        g.addColorStop(0,'rgba(79,168,255,0)');
+        g.addColorStop(0.5,'rgba(79,168,255,0.14)');
+        g.addColorStop(1,'rgba(79,168,255,0)');
+        ctx.fillStyle=g; ctx.fillRect(0,by-70,W,140);
+        // crisp leading edge
+        ctx.strokeStyle='rgba(79,168,255,0.5)'; ctx.lineWidth=1;
+        ctx.beginPath(); ctx.moveTo(0,by); ctx.lineTo(W,by); ctx.stroke();
+      }
+    };
+
+    const updateOverlays = (p)=>{
+      for (const o of this.overlays){
+        const fin = o.s<=0.001 ? 1 : (p-o.s)/0.045;
+        const fout = o.e>=1 ? 1 : (o.e-p)/0.045;
+        const op = clamp(Math.min(fin, fout, 1), 0, 1);
+        o.el.style.opacity = op.toFixed(3);
+        o.el.style.transform = `translateY(${(1-op)*16}px)`;
+        o.el.style.pointerEvents = op>0.5 ? 'auto' : 'none';
+      }
+    };
+
+    const updateNav = (p)=>{
+      this.nav.style.opacity = p>0.04 ? '1' : '0';
+      let active = 0;
+      for (let i=0;i<this.navRanges.length;i++){ if (p>=this.navRanges[i][0] && p<this.navRanges[i][1]) active=i; }
+      this.navBtns.forEach((btn,i)=>{
+        const lbl = btn.querySelector('[data-lbl]');
+        const tick = btn.querySelector('[data-tick]');
+        const on = i===active;
+        lbl.style.color = on ? '#ecece4' : 'rgba(236,234,228,.32)';
+        lbl.style.opacity = on ? '1' : '.65';
+        tick.style.background = on ? '#4fa8ff' : 'rgba(236,234,228,.32)';
+        tick.style.width = on ? '26px' : '14px';
+        tick.style.boxShadow = on ? '0 0 8px rgba(79,168,255,.7)' : 'none';
+      });
+    };
+
+    const update = (p, now)=>{
+      draw(p, now||performance.now());
+      updateOverlays(p);
+      updateNav(p);
+      if (this.vignette) this.vignette.style.opacity = (0.3 + 0.7*clamp((p-0.02)/0.20, 0, 1)).toFixed(3);
+      if (this.bar) this.bar.style.width = (p*100).toFixed(2)+'%';
+    };
+    const onScrollDraw = ()=>{ this.targetP = readP(); update(this.targetP); };
+    this.onScroll = onScrollDraw;
+    window.addEventListener('scroll', onScrollDraw, { passive:true });
+    const tick = (now)=>{
+      this.targetP = readP();
+      this.p += (this.targetP - this.p)*0.12;
+      update(this.p, now);
+      this._raf = requestAnimationFrame(tick);
+    };
+    this.p = readP();
+    update(this.p);
+    this._raf = requestAnimationFrame(tick);
+  }
+
+  componentWillUnmount() {
+    if (this._raf) cancelAnimationFrame(this._raf);
+    if (this.onScroll) window.removeEventListener('scroll', this.onScroll);
+  }
+}
+</script>
+</body>
+</html>

@@ -9,8 +9,35 @@
 
 /* ── Project Hero ────────────────────────────────────────────── */
 .project-hero {
-  padding: 64px 6vw 48px;
+  position: relative;
+  height: 65vh;
+  min-height: 440px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  background: #0a0b0d;
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-fog {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,11,13,.90) 0%, rgba(10,11,13,.35) 55%, rgba(10,11,13,0) 100%);
+  pointer-events: none;
+}
+
+.project-hero__inner {
+  position: relative;
+  z-index: 1;
+  padding: 0 6vw 52px;
   max-width: 1360px;
+  width: 100%;
   margin-inline: auto;
 }
 
@@ -23,7 +50,7 @@
   letter-spacing: .20em;
   text-transform: uppercase;
   color: rgba(236,234,228,.42);
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   transition: color .2s;
 }
 .project-hero__breadcrumb::before {
@@ -49,23 +76,23 @@
   letter-spacing: -.04em;
   line-height: .96;
   color: #ecece4;
-  margin: 0 0 28px;
+  margin: 0 0 24px;
   text-wrap: balance;
 }
 
 .project-hero__intro {
-  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
   line-height: 1.6;
   color: rgba(236,234,228,.6);
   max-width: 58ch;
   margin: 0;
 }
 
-/* Hero afbeelding */
+/* Optionele projectafbeelding onder de meta-balk */
 .project-hero__img-wrap {
-  margin-top: 48px;
   overflow: hidden;
   border: 1px solid rgba(236,234,228,.10);
+  border-top: none;
 }
 .project-hero__img {
   width: 100%;

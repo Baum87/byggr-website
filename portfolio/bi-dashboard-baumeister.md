@@ -1,6 +1,6 @@
 ---
-pageTitle: "BI Dashboard Baumeister — Dashboard · Intern | BYGGR"
-metaDescription: "BI Dashboard Baumeister — intern Power BI dashboard voor operationele sturing. Dagelijks in gebruik door het managementteam. Wekelijkse Excel-rapportage volledig vervangen."
+pageTitle: "BI Dashboard — Dashboard · Intern | BYGGR"
+metaDescription: "BI Dashboard — intern Power BI dashboard voor operationele sturing. Dagelijks in gebruik door het managementteam. Wekelijkse Excel-rapportage volledig vervangen."
 canonical: "https://byggr.nl/portfolio/bi-dashboard-baumeister.html"
 ogImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop&q=80"
 title: "BI Dashboard"
@@ -34,6 +34,6 @@ blocks:
       - "Excel"
 ctaTitle: "Soortgelijk project nodig?"
 ctaButton: "Neem contact op"
-nextUrl: "/portfolio/afbouwr.html"
-nextTitle: "afbouwr.nl"
+nextUrl: "/portfolio/ratio.html"
+nextTitle: "Ratio"
 ---

@@ -8,49 +8,45 @@ extraCSS:
     <!-- ============================================================
          HERO
          ============================================================ -->
-    <section class="project-hero" aria-labelledby="{% if pageType == 'service' %}service-title{% else %}project-title{% endif %}">
+    <section class="project-hero" aria-labelledby="project-title">
 
-      <div class="project-hero__inner">
-        {% if pageType == 'service' %}
-        <a href="/" class="project-hero__breadcrumb reveal-fade">
-          Terug naar home
-        </a>
-        {% else %}
-        <a href="/" class="project-hero__breadcrumb reveal-fade">
-          Terug naar home
-        </a>
-        {% endif %}
-
-        <span class="project-hero__label reveal-fade">{{ label }}</span>
-        <h1 class="project-hero__title reveal" id="{% if pageType == 'service' %}service-title{% else %}project-title{% endif %}">{{ titleDisplay | safe if titleDisplay else title }}</h1>
-        <p class="project-hero__intro reveal">
-          {{ intro }}
-        </p>
-      </div>
-
-      <div class="project-hero__img-wrap reveal-scale">
-        <img
-          src="{{ image }}"
-          alt="{{ imageAlt }}"
-          width="1200"
-          height="630"
-          loading="eager"
-          class="project-hero__img"
-        >
-      </div>
-
-      {% if meta %}
-      <div class="project-meta reveal-fade">
-        {% for item in meta %}
-        <div class="project-meta__item">
-          <span class="project-meta__label">{{ item.label }}</span>
-          <span class="project-meta__value">{{ item.value }}</span>
-        </div>
-        {% endfor %}
-      </div>
+      {% if pageType == 'portfolio' %}
+      <canvas class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-fog" aria-hidden="true"></div>
       {% endif %}
 
+      <div class="project-hero__inner">
+        <a href="/" class="project-hero__breadcrumb reveal-fade">Terug naar home</a>
+        <span class="project-hero__label reveal-fade">{{ label }}</span>
+        <h1 class="project-hero__title reveal" id="project-title">{{ titleDisplay | safe if titleDisplay else title }}</h1>
+        <p class="project-hero__intro reveal">{{ intro }}</p>
+      </div>
+
     </section>
+
+    {% if meta %}
+    <div class="project-meta">
+      {% for item in meta %}
+      <div class="project-meta__item">
+        <span class="project-meta__label">{{ item.label }}</span>
+        <span class="project-meta__value">{{ item.value }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if image %}
+    <div class="project-hero__img-wrap">
+      <img
+        src="{{ image }}"
+        alt="{{ imageAlt }}"
+        width="1200"
+        height="630"
+        loading="eager"
+        class="project-hero__img"
+      >
+    </div>
+    {% endif %}
 
     <!-- ============================================================
          DETAIL BLOKKEN
@@ -121,7 +117,7 @@ extraCSS:
 
     {% if nextUrl %}
     <!-- ============================================================
-         NAVIGATIE VOLGENDE PAGINA
+         NAVIGATIE VOLGEND PROJECT
          ============================================================ -->
     <nav class="project-nav" aria-label="{% if pageType == 'service' %}Andere services{% else %}Navigeer tussen projecten{% endif %}">
       <div class="project-nav__inner">
@@ -135,4 +131,94 @@ extraCSS:
         </a>
       </div>
     </nav>
+    {% endif %}
+
+    {% if pageType == 'portfolio' %}
+    <script>
+    (function () {
+      var canvas = document.querySelector('.hero-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var W, H, dpr, nodes = [], edges = [];
+
+      function rng32(seed) {
+        return function () {
+          seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+          var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+          t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+          return ((t ^ t >>> 14) >>> 0) / 4294967296;
+        };
+      }
+
+      function setup() {
+        var rand = rng32(20260621);
+        var cols = 15, rows = 9;
+        nodes = []; edges = [];
+        for (var r = 0; r < rows; r++) {
+          for (var c = 0; c < cols; c++) {
+            var gx = 0.115 + (c / (cols - 1)) * (0.885 - 0.115);
+            var gy = 0.16 + (r / (rows - 1)) * (0.84 - 0.16);
+            var tx = gx + (rand() - 0.5) * 0.024;
+            var ty = gy + (rand() - 0.5) * 0.034;
+            var hub = rand() < 0.12;
+            var phase = rand() * Math.PI * 2;
+            nodes.push({ tx: tx, ty: ty, hub: hub, phase: phase, r: r, c: c, _x: 0, _y: 0 });
+          }
+        }
+        for (var i = 0; i < nodes.length; i++) {
+          var n = nodes[i];
+          if (n.c < cols - 1) edges.push({ a: i, b: i + 1, accent: rand() < 0.16 });
+          if (n.r < rows - 1) edges.push({ a: i, b: i + cols, accent: rand() < 0.16 });
+          if (n.c < cols - 1 && n.r < rows - 1 && rand() < 0.32) edges.push({ a: i, b: i + cols + 1, accent: rand() < 0.16 });
+        }
+      }
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = canvas.offsetWidth; H = canvas.offsetHeight;
+        canvas.width = W * dpr; canvas.height = H * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function draw(now) {
+        ctx.clearRect(0, 0, W, H);
+        var t = now * 0.001;
+        for (var i = 0; i < nodes.length; i++) {
+          var n = nodes[i];
+          n._x = (n.tx + Math.sin(t * 0.7 + n.phase) * 0.008) * W;
+          n._y = (n.ty + Math.cos(t * 0.5 + n.phase * 1.3) * 0.010) * H;
+        }
+        for (var j = 0; j < edges.length; j++) {
+          var e = edges[j], a = nodes[e.a], b = nodes[e.b];
+          ctx.beginPath();
+          ctx.moveTo(a._x, a._y);
+          ctx.lineTo(b._x, b._y);
+          ctx.strokeStyle = e.accent ? 'rgba(79,168,255,0.20)' : 'rgba(150,172,205,0.10)';
+          ctx.lineWidth = e.accent ? 1 : 0.75;
+          ctx.stroke();
+        }
+        for (var k = 0; k < nodes.length; k++) {
+          var nd = nodes[k];
+          var pulse = 0.5 + 0.5 * Math.sin(t * 1.1 + nd.phase);
+          if (nd.hub) {
+            var g = ctx.createRadialGradient(nd._x, nd._y, 0, nd._x, nd._y, 10);
+            g.addColorStop(0, 'rgba(79,168,255,0.22)');
+            g.addColorStop(1, 'rgba(79,168,255,0)');
+            ctx.beginPath(); ctx.arc(nd._x, nd._y, 10, 0, Math.PI * 2);
+            ctx.fillStyle = g; ctx.fill();
+            ctx.beginPath(); ctx.arc(nd._x, nd._y, 2 + pulse * 0.8, 0, Math.PI * 2);
+            ctx.fillStyle = '#4fa8ff'; ctx.fill();
+          } else {
+            ctx.beginPath(); ctx.arc(nd._x, nd._y, 1.5, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(236,234,228,0.45)'; ctx.fill();
+          }
+        }
+      }
+
+      setup(); resize();
+      requestAnimationFrame(function loop(now) { draw(now); requestAnimationFrame(loop); });
+      var ro = new ResizeObserver(function () { ctx.setTransform(1, 0, 0, 1, 0, 0); resize(); });
+      ro.observe(canvas);
+    })();
+    </script>
     {% endif %}
