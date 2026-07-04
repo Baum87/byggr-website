@@ -31,6 +31,6 @@ blocks:
       - "In ontwikkeling"
 ctaTitle: "Interesse in een soortgelijke tool?"
 ctaButton: "Neem contact op"
-nextUrl: "/portfolio/afbouwr.html"
-nextTitle: "afbouwr.nl"
+nextUrl: "/portfolio/personeelplanning.html"
+nextTitle: "Personeelplanning"
 ---

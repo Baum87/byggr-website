@@ -6,8 +6,9 @@ ogImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630
 title: "BI Dashboard"
 label: "Dashboard · Intern"
 intro: "Power BI dashboard voor intern gebruik. Het MT startte de dag met een week oude Excel — nu met actuele cijfers. De wekelijkse rapportage is er niet meer."
-image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop&q=80"
-imageAlt: "Data dashboard met grafieken en KPI-overzichten op een scherm"
+images:
+  - src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop&q=80"
+    alt: "Data dashboard met grafieken en KPI-overzichten op een scherm"
 meta:
   - label: "Type"
     value: "Dashboard"

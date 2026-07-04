@@ -22,8 +22,10 @@ extraCSS:
       <div class="project-hero__inner">
         <a href="/" class="project-hero__breadcrumb reveal-fade">Terug naar home</a>
         <span class="project-hero__label reveal-fade">{{ label }}</span>
-        <h1 class="project-hero__title reveal" id="project-title">{{ titleDisplay | safe if titleDisplay else title }}</h1>
-        <p class="project-hero__intro reveal">{{ intro }}</p>
+        <h1 class="project-hero__title" id="project-title">
+          {% if titleUrl %}<a href="{{ titleUrl }}" class="project-hero__title-link link-swipe" target="_blank" rel="noopener">{{ titleDisplay | safe if titleDisplay else title }}</a>{% else %}{{ titleDisplay | safe if titleDisplay else title }}{% endif %}
+        </h1>
+        <p class="project-hero__intro">{{ intro }}</p>
       </div>
 
     </section>
@@ -39,16 +41,24 @@ extraCSS:
     </div>
     {% endif %}
 
-    {% if image %}
-    <div class="project-hero__img-wrap">
-      <img
-        src="{{ image }}"
-        alt="{{ imageAlt }}"
-        width="1200"
-        height="630"
-        loading="eager"
-        class="project-hero__img"
-      >
+    {% if images and images.length %}
+    <div class="slideshow" data-slideshow>
+      <div class="slideshow__track">
+        {% for img in images %}
+        <div class="slideshow__slide">
+          <img src="{{ img.src }}" alt="{{ img.alt }}" loading="{% if loop.first %}eager{% else %}lazy{% endif %}">
+        </div>
+        {% endfor %}
+      </div>
+      {% if images.length > 1 %}
+      <button class="slideshow__btn slideshow__btn--prev" aria-label="Vorige afbeelding">&#8592;</button>
+      <button class="slideshow__btn slideshow__btn--next" aria-label="Volgende afbeelding">&#8594;</button>
+      <div class="slideshow__dots">
+        {% for img in images %}
+        <button class="slideshow__dot{% if loop.first %} is-active{% endif %}" aria-label="Afbeelding {{ loop.index }}"></button>
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
     {% endif %}
 
@@ -187,9 +197,11 @@ extraCSS:
       function draw(now) {
         ctx.clearRect(0, 0, W, H);
         var t = now * 0.001;
+        var scaleW = H * (15 / 9);
+        var ox = (W - scaleW) / 2;
         for (var i = 0; i < nodes.length; i++) {
           var n = nodes[i];
-          n._x = (n.tx + Math.sin(t * 0.7 + n.phase) * 0.008) * W;
+          n._x = ox + (n.tx + Math.sin(t * 0.7 + n.phase) * 0.008) * scaleW;
           n._y = (n.ty + Math.cos(t * 0.5 + n.phase * 1.3) * 0.010) * H;
         }
         for (var j = 0; j < edges.length; j++) {
@@ -197,7 +209,7 @@ extraCSS:
           ctx.beginPath();
           ctx.moveTo(a._x, a._y);
           ctx.lineTo(b._x, b._y);
-          ctx.strokeStyle = e.accent ? 'rgba(79,168,255,0.20)' : 'rgba(150,172,205,0.10)';
+          ctx.strokeStyle = e.accent ? 'rgba(79,168,255,0.35)' : 'rgba(150,172,205,0.22)';
           ctx.lineWidth = e.accent ? 1 : 0.75;
           ctx.stroke();
         }
@@ -214,7 +226,7 @@ extraCSS:
             ctx.fillStyle = '#4fa8ff'; ctx.fill();
           } else {
             ctx.beginPath(); ctx.arc(nd._x, nd._y, 1.5, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(236,234,228,0.45)'; ctx.fill();
+            ctx.fillStyle = 'rgba(236,234,228,0.65)'; ctx.fill();
           }
         }
       }
@@ -226,3 +238,30 @@ extraCSS:
     })();
     </script>
     {% endif %}
+
+    <script>
+    (function () {
+      document.querySelectorAll('[data-slideshow]').forEach(function (el) {
+        var track = el.querySelector('.slideshow__track');
+        var slides = el.querySelectorAll('.slideshow__slide');
+        var dots = el.querySelectorAll('.slideshow__dot');
+        var total = slides.length;
+        if (total < 2) return;
+        var current = 0;
+        var timer;
+
+        function goTo(n) {
+          current = (n + total) % total;
+          track.style.transform = 'translateX(-' + current * 100 + '%)';
+          dots.forEach(function (d, i) { d.classList.toggle('is-active', i === current); });
+        }
+
+        el.querySelector('.slideshow__btn--prev').addEventListener('click', function () { clearInterval(timer); goTo(current - 1); startAuto(); });
+        el.querySelector('.slideshow__btn--next').addEventListener('click', function () { clearInterval(timer); goTo(current + 1); startAuto(); });
+        dots.forEach(function (d, i) { d.addEventListener('click', function () { clearInterval(timer); goTo(i); startAuto(); }); });
+
+        function startAuto() { timer = setInterval(function () { goTo(current + 1); }, 6000); }
+        startAuto();
+      });
+    })();
+    </script>

@@ -1,18 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <!--
-    Byggr favicon — "B." wordmark, minimaal
-    Donkere achtergrond zodat het werkt in alle browsers en OS-contexten
-  -->
-  <rect width="32" height="32" fill="#111111" rx="4"/>
+  <rect width="32" height="32" fill="#0a0b0d"/>
+  <circle cx="16" cy="16" r="14" fill="none" stroke="rgba(79,168,255,0.6)" stroke-width="1.5"/>
   <text
-    x="3"
-    y="26"
-    font-family="Arial Black, Impact, sans-serif"
-    font-size="26"
+    x="16"
+    y="22"
+    font-family="Arial Black, sans-serif"
+    font-size="18"
     font-weight="900"
-    letter-spacing="-1"
-    fill="none"
-  >
-    <tspan fill="#ffffff">B</tspan><tspan fill="#D4962A">.</tspan>
-  </text>
+    text-anchor="middle"
+    fill="#ecece4"
+    letter-spacing="-0.5"
+  >B</text>
 </svg>

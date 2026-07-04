@@ -216,20 +216,6 @@ document.querySelectorAll('.section-title').forEach((title) => {
   });
 });
 
-// ── Typewriter hover op project-hero titels ──────────────────
-document.querySelectorAll('.project-hero__title').forEach((title) => {
-  title.innerHTML = title.textContent
-    .split('')
-    .map((ch) => `<span class="char" style="display:inline-block">${ch === ' ' ? '&nbsp;' : ch}</span>`)
-    .join('');
-
-  title.addEventListener('mouseenter', () => {
-    title.querySelectorAll('.char').forEach((ch, i) => {
-      ch.style.opacity = '0';
-      setTimeout(() => { ch.style.opacity = '1'; }, i * 65);
-    });
-  });
-});
 
 // ── Scroll progress bar ──────────────────────────────────────
 (function () {

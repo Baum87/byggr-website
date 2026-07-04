@@ -164,7 +164,7 @@
       background: #0c0e12;
       border: 1px solid rgba(236,234,228,.12);
       padding: 18px 20px;
-      z-index: 200;
+      z-index: 9999;
       display: flex;
       gap: 16px;
       align-items: center;
@@ -266,17 +266,16 @@
         gtag('js', new Date());
         gtag('config', 'G-KTDQMECGQJ');
       }
+      var banner = document.getElementById('cookie-banner');
+      var btn = document.getElementById('cookie-accept');
       if (localStorage.getItem('byggr-cookies')) {
         loadGA();
       } else {
-        var banner = document.getElementById('cookie-banner');
-        if (banner) banner.removeAttribute('hidden');
+        if (banner) banner.style.display = 'flex';
       }
-      var btn = document.getElementById('cookie-accept');
       if (btn) btn.addEventListener('click', function () {
         localStorage.setItem('byggr-cookies', '1');
-        var banner = document.getElementById('cookie-banner');
-        if (banner) banner.setAttribute('hidden', '');
+        if (banner) banner.style.display = 'none';
         loadGA();
       });
     })();
