@@ -6,8 +6,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("_headers");
   eleventyConfig.addPassthroughCopy({ "favicon.svg": "favicon.svg" });
   eleventyConfig.addPassthroughCopy({ "favicon.png": "favicon.png" });
-  eleventyConfig.addPassthroughCopy({ "logo-light.svg": "logo-light.svg" });
-  eleventyConfig.addPassthroughCopy({ "logo-dark.svg": "logo-dark.svg" });
   eleventyConfig.addPassthroughCopy({ "apple-touch-icon.png": "apple-touch-icon.png" });
   eleventyConfig.addPassthroughCopy({ "og-image.png": "og-image.png" });
   eleventyConfig.addPassthroughCopy({ "robots.txt": "robots.txt" });
