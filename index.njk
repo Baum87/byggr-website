@@ -138,91 +138,133 @@ permalink: /index.html
 
       <!-- P6 — Resultaat tekst (p 0.78–0.93) -->
       <div data-range="0.78,0.93"
-           style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 7vw; opacity:0; will-change:opacity,transform; pointer-events:none;">
+           style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; padding:0 5vw; opacity:0; will-change:opacity,transform; pointer-events:none; z-index:2;">
         <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#4fa8ff; margin-bottom:22px;">05 &mdash; Resultaat</div>
-        <h2 style="margin:0; font-weight:900; font-size:clamp(40px,7vw,118px); line-height:.96; letter-spacing:-.04em; color:#ecece4; max-width:13ch; text-wrap:balance;">
+        <h2 style="margin:0; font-weight:900; font-size:clamp(36px,5.5vw,90px); line-height:.96; letter-spacing:-.04em; color:#ecece4; max-width:10ch; text-wrap:balance;">
           Van idee naar <span style="color:#4fa8ff;">product</span>.
         </h2>
       </div>
 
-      <!-- P6b — Cases (p 0.81–0.935) -->
+      <!-- P6b — Cases carrousel (p 0.81–0.935) -->
       <div data-range="0.81,0.935"
-           style="position:absolute; left:0; right:0; bottom:0; display:flex; align-items:flex-end; justify-content:center; padding:0 5vw 7vh; opacity:0; will-change:opacity,transform;">
-        <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; width:100%; max-width:1360px;">
+           style="position:absolute; right:160px; bottom:0; width:40vw; padding:0 0 6vh 0; opacity:0; will-change:opacity,transform; z-index:1;">
 
-          <!-- afbouwr.nl -->
-          <a href="/portfolio/afbouwr.html"
-             style="border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block; overflow:hidden;">
-            <div style="background:#13151a; padding:8px 12px; display:flex; align-items:center; gap:5px; border-bottom:1px solid rgba(236,234,228,.08);">
-              <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
-              <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
-              <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
-              <div style="flex:1;margin-left:8px;background:rgba(236,234,228,.07);border-radius:3px;height:16px;"></div>
-            </div>
-            <div style="aspect-ratio:16/10; overflow:hidden;">
-              <img src="/src/images/portfolio/afbouwr/afbouwr-materiaalcalculator-app-afbouwsector-overzicht.png" alt="afbouwr.nl materiaalcalculator" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block; filter:brightness(.9);">
-            </div>
-            <div style="padding:14px 16px 18px;">
-              <div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:6px;">Calculator</div>
-              <div style="font-weight:700; font-size:15px; letter-spacing:-.02em; color:#ecece4;">afbouwr.nl</div>
-            </div>
-          </a>
+        <div id="byg-car" style="position:relative; overflow:hidden;">
+          <div id="byg-car-track" style="display:flex; gap:14px; will-change:transform; transition:transform .55s cubic-bezier(.4,0,.2,1);">
 
-          <!-- beentelskabaal.nl -->
-          <a href="/portfolio/beentelskabaal.html"
-             style="border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block; overflow:hidden;">
-            <div style="background:#13151a; padding:8px 12px; display:flex; align-items:center; gap:5px; border-bottom:1px solid rgba(236,234,228,.08);">
-              <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
-              <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
-              <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
-              <div style="flex:1;margin-left:8px;background:rgba(236,234,228,.07);border-radius:3px;height:16px;"></div>
+            <!-- Slide: afbouwr.nl -->
+            <div class="byg-car-slide" style="flex:0 0 100%; min-width:0;">
+              <a href="/portfolio/afbouwr.html" style="border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block; overflow:hidden;">
+                <div style="background:#13151a; padding:8px 12px; display:flex; align-items:center; gap:5px; border-bottom:1px solid rgba(236,234,228,.08);">
+                  <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
+                  <div style="flex:1;margin-left:8px;background:rgba(236,234,228,.07);border-radius:3px;height:16px;"></div>
+                </div>
+                <div style="aspect-ratio:16/10; overflow:hidden; background:#f5f4f0; display:flex; align-items:center; justify-content:center;">
+                  <img src="/src/images/portfolio/afbouwr/afbouwr-materiaalcalculator-app-afbouwsector-overzicht.png" alt="afbouwr.nl" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block; filter:brightness(.95);">
+                </div>
+                <div style="padding:14px 16px 18px;">
+                  <div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:6px;">Calculator</div>
+                  <div style="font-weight:700; font-size:15px; letter-spacing:-.02em; color:#ecece4;">afbouwr.nl</div>
+                </div>
+              </a>
             </div>
-            <div style="aspect-ratio:16/10; overflow:hidden;">
-              <img src="/src/images/portfolio/beentelskabaal/beentelskabaal-website-homepage-twents-dweilorkest-bentelo.png" alt="beentelskabaal.nl website" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block; filter:brightness(.9);">
-            </div>
-            <div style="padding:14px 16px 18px;">
-              <div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:6px;">Website</div>
-              <div style="font-weight:700; font-size:15px; letter-spacing:-.02em; color:#ecece4;">Beentels Kabaal</div>
-            </div>
-          </a>
 
-          <!-- personeelplanning -->
-          <a href="/portfolio/personeelplanning.html"
-             style="border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block; overflow:hidden;">
-            <div style="background:#13151a; padding:8px 12px; display:flex; align-items:center; gap:5px; border-bottom:1px solid rgba(236,234,228,.08);">
-              <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
-              <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
-              <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
-              <div style="flex:1;margin-left:8px;background:rgba(236,234,228,.07);border-radius:3px;height:16px;"></div>
+            <!-- Slide: beentelskabaal.nl -->
+            <div class="byg-car-slide" style="flex:0 0 100%; min-width:0;">
+              <a href="/portfolio/beentelskabaal.html" style="border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block; overflow:hidden;">
+                <div style="background:#13151a; padding:8px 12px; display:flex; align-items:center; gap:5px; border-bottom:1px solid rgba(236,234,228,.08);">
+                  <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
+                  <div style="flex:1;margin-left:8px;background:rgba(236,234,228,.07);border-radius:3px;height:16px;"></div>
+                </div>
+                <div style="aspect-ratio:16/10; overflow:hidden;">
+                  <img src="/src/images/portfolio/beentelskabaal/beentelskabaal-website-homepage-twents-dweilorkest-bentelo.png" alt="beentelskabaal.nl" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block; filter:brightness(.9);">
+                </div>
+                <div style="padding:14px 16px 18px;">
+                  <div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:6px;">Website</div>
+                  <div style="font-weight:700; font-size:15px; letter-spacing:-.02em; color:#ecece4;">Beentels Kabaal</div>
+                </div>
+              </a>
             </div>
-            <div style="aspect-ratio:16/10; overflow:hidden;">
-              <img src="/src/images/portfolio/personeelplanning/personeelplanning-afbouwsector-weekplanning-monteurs-per-project.png" alt="Personeelplanning weekplanning" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:top; display:block; filter:brightness(.9);">
-            </div>
-            <div style="padding:14px 16px 18px;">
-              <div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:6px;">SaaS &middot; MKB</div>
-              <div style="font-weight:700; font-size:15px; letter-spacing:-.02em; color:#ecece4;">Personeelsplanning</div>
-            </div>
-          </a>
 
-          <!-- BI Dashboard -->
-          <a href="/portfolio/bi-dashboard-baumeister.html"
-             style="border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block; overflow:hidden;">
-            <div style="background:#13151a; padding:8px 12px; display:flex; align-items:center; gap:5px; border-bottom:1px solid rgba(236,234,228,.08);">
-              <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
-              <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
-              <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
-              <div style="flex:1;margin-left:8px;background:rgba(236,234,228,.07);border-radius:3px;height:16px;"></div>
+            <!-- Slide: personeelplanning -->
+            <div class="byg-car-slide" style="flex:0 0 100%; min-width:0;">
+              <a href="/portfolio/personeelplanning.html" style="border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block; overflow:hidden;">
+                <div style="background:#13151a; padding:8px 12px; display:flex; align-items:center; gap:5px; border-bottom:1px solid rgba(236,234,228,.08);">
+                  <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
+                  <div style="flex:1;margin-left:8px;background:rgba(236,234,228,.07);border-radius:3px;height:16px;"></div>
+                </div>
+                <div style="aspect-ratio:16/10; overflow:hidden; background:#f5f4f0; display:flex; align-items:center; justify-content:center;">
+                  <img src="/src/images/portfolio/personeelplanning/personeelplanning-afbouwsector-weekplanning-monteurs-per-project.png" alt="Personeelplanning" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block; filter:brightness(.95);">
+                </div>
+                <div style="padding:14px 16px 18px;">
+                  <div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:6px;">SaaS &middot; MKB</div>
+                  <div style="font-weight:700; font-size:15px; letter-spacing:-.02em; color:#ecece4;">Personeelsplanning</div>
+                </div>
+              </a>
             </div>
-            <div style="aspect-ratio:16/10; overflow:hidden;">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop&q=80" alt="BI Dashboard data visualisatie" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.9);">
-            </div>
-            <div style="padding:14px 16px 18px;">
-              <div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:6px;">BI &amp; Data</div>
-              <div style="font-weight:700; font-size:15px; letter-spacing:-.02em; color:#ecece4;">BI Dashboard</div>
-            </div>
-          </a>
 
+            <!-- Slide: BI Dashboard -->
+            <div class="byg-car-slide" style="flex:0 0 100%; min-width:0;">
+              <a href="/portfolio/bi-dashboard-baumeister.html" style="border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block; overflow:hidden;">
+                <div style="background:#13151a; padding:8px 12px; display:flex; align-items:center; gap:5px; border-bottom:1px solid rgba(236,234,228,.08);">
+                  <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
+                  <div style="flex:1;margin-left:8px;background:rgba(236,234,228,.07);border-radius:3px;height:16px;"></div>
+                </div>
+                <div style="aspect-ratio:16/10; overflow:hidden;">
+                  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop&q=80" alt="BI Dashboard" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; filter:brightness(.9);">
+                </div>
+                <div style="padding:14px 16px 18px;">
+                  <div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:6px;">BI &amp; Data</div>
+                  <div style="font-weight:700; font-size:15px; letter-spacing:-.02em; color:#ecece4;">BI Dashboard</div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Slide: Ratio -->
+            <div class="byg-car-slide" style="flex:0 0 100%; min-width:0;">
+              <a href="/portfolio/ratio.html" style="border:1px solid rgba(236,234,228,.12); background:#0c0e12; display:block; overflow:hidden;">
+                <div style="background:#13151a; padding:8px 12px; display:flex; align-items:center; gap:5px; border-bottom:1px solid rgba(236,234,228,.08);">
+                  <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
+                  <span style="width:8px;height:8px;border-radius:50%;background:rgba(236,234,228,.18);display:inline-block;"></span>
+                  <div style="flex:1;margin-left:8px;background:rgba(236,234,228,.07);border-radius:3px;height:16px;"></div>
+                </div>
+                <div style="aspect-ratio:16/10; overflow:hidden; background:#0d0f14; display:flex; align-items:center; justify-content:center;">
+                  <span style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.14em; color:rgba(236,234,228,.25);">screenshots volgen</span>
+                </div>
+                <div style="padding:14px 16px 18px;">
+                  <div style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(79,168,255,.85); margin-bottom:6px;">Web-app &middot; Finance</div>
+                  <div style="font-weight:700; font-size:15px; letter-spacing:-.02em; color:#ecece4;">Ratio</div>
+                </div>
+              </a>
+            </div>
+
+          </div>
         </div>
+
+        <!-- Carrousel controls -->
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:12px; padding:0 2px;">
+          <div id="byg-car-dots" style="display:flex; gap:7px; align-items:center;">
+            <button class="byg-car-dot" style="width:6px;height:6px;border-radius:50%;border:none;padding:0;cursor:pointer;background:#4fa8ff;transform:scale(1.35);"></button>
+            <button class="byg-car-dot" style="width:6px;height:6px;border-radius:50%;border:none;padding:0;cursor:pointer;background:rgba(236,234,228,.28);"></button>
+            <button class="byg-car-dot" style="width:6px;height:6px;border-radius:50%;border:none;padding:0;cursor:pointer;background:rgba(236,234,228,.28);"></button>
+            <button class="byg-car-dot" style="width:6px;height:6px;border-radius:50%;border:none;padding:0;cursor:pointer;background:rgba(236,234,228,.28);"></button>
+            <button class="byg-car-dot" style="width:6px;height:6px;border-radius:50%;border:none;padding:0;cursor:pointer;background:rgba(236,234,228,.28);"></button>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button id="byg-car-prev" style="all:unset;cursor:pointer;width:32px;height:32px;border:1px solid rgba(236,234,228,.18);display:flex;align-items:center;justify-content:center;color:rgba(236,234,228,.6);font-size:14px;transition:border-color .2s,color .2s;" onmouseover="this.style.borderColor='rgba(79,168,255,.5)';this.style.color='#4fa8ff'" onmouseout="this.style.borderColor='rgba(236,234,228,.18)';this.style.color='rgba(236,234,228,.6)'">&#8592;</button>
+            <button id="byg-car-next" style="all:unset;cursor:pointer;width:32px;height:32px;border:1px solid rgba(236,234,228,.18);display:flex;align-items:center;justify-content:center;color:rgba(236,234,228,.6);font-size:14px;transition:border-color .2s,color .2s;" onmouseover="this.style.borderColor='rgba(79,168,255,.5)';this.style.color='#4fa8ff'" onmouseout="this.style.borderColor='rgba(236,234,228,.18)';this.style.color='rgba(236,234,228,.6)'">&#8594;</button>
+          </div>
+        </div>
+
       </div>
 
       <!-- P7 — Contact / CTA (p 0.945–1.001) -->
@@ -249,3 +291,35 @@ permalink: /index.html
     </div><!-- /overlays -->
   </div><!-- /stage -->
 </div><!-- /container -->
+
+<script>
+(function () {
+  var track = document.getElementById('byg-car-track');
+  var car   = document.getElementById('byg-car');
+  if (!track || !car) return;
+  var slides = track.querySelectorAll('.byg-car-slide');
+  var dots   = document.querySelectorAll('.byg-car-dot');
+  var total  = slides.length;
+  var cur    = 0;
+  var timer;
+
+  function goTo(n) {
+    cur = (n + total) % total;
+    var sw = slides[0].offsetWidth + 14;
+    track.style.transform = 'translateX(-' + (cur * sw) + 'px)';
+    dots.forEach(function (d, i) {
+      d.style.background = i === cur ? '#4fa8ff' : 'rgba(236,234,228,.28)';
+      d.style.transform  = i === cur ? 'scale(1.35)' : 'scale(1)';
+    });
+  }
+
+  document.getElementById('byg-car-prev').addEventListener('click', function () { clearInterval(timer); goTo(cur - 1); startAuto(); });
+  document.getElementById('byg-car-next').addEventListener('click', function () { clearInterval(timer); goTo(cur + 1); startAuto(); });
+  dots.forEach(function (d, i) { d.addEventListener('click', function () { clearInterval(timer); goTo(i); startAuto(); }); });
+
+  function startAuto() { timer = setInterval(function () { goTo(cur + 1); }, 5000); }
+  car.addEventListener('mouseenter', function () { clearInterval(timer); });
+  car.addEventListener('mouseleave', startAuto);
+  startAuto();
+})();
+</script>
