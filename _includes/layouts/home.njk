@@ -185,6 +185,7 @@
       color: #4fa8ff;
       white-space: nowrap;
     }
+    .cookie-banner[hidden] { display: none !important; }
   </style>
 </head>
 <body>
@@ -271,11 +272,11 @@
       if (localStorage.getItem('byggr-cookies')) {
         loadGA();
       } else {
-        if (banner) banner.style.display = 'flex';
+        if (banner) banner.removeAttribute('hidden');
       }
       if (btn) btn.addEventListener('click', function () {
         localStorage.setItem('byggr-cookies', '1');
-        if (banner) banner.style.display = 'none';
+        if (banner) banner.setAttribute('hidden', '');
         loadGA();
       });
     })();

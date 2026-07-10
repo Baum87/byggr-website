@@ -330,10 +330,15 @@
     const onScroll = () => { targetP = readP(); update(targetP); };
     window.addEventListener('scroll', onScroll, { passive: true });
 
+    let paused = false;
+    document.addEventListener('visibilitychange', () => { paused = document.hidden; });
+
     const tick = now => {
-      targetP = readP();
-      p      += (targetP - p) * 0.12;
-      update(p, now);
+      if (!paused) {
+        targetP = readP();
+        p      += (targetP - p) * 0.12;
+        update(p, now);
+      }
       requestAnimationFrame(tick);
     };
     p = readP();

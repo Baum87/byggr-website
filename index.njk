@@ -250,18 +250,12 @@ permalink: /index.html
           </div>
         </div>
 
-        <!-- Carrousel controls -->
+        <!-- Carrousel controls — dots en hover-states worden via JS gegenereerd -->
         <div style="display:flex; align-items:center; justify-content:space-between; margin-top:12px; padding:0 2px;">
-          <div id="byg-car-dots" style="display:flex; gap:7px; align-items:center;">
-            <button class="byg-car-dot" style="width:6px;height:6px;border-radius:50%;border:none;padding:0;cursor:pointer;background:#4fa8ff;transform:scale(1.35);"></button>
-            <button class="byg-car-dot" style="width:6px;height:6px;border-radius:50%;border:none;padding:0;cursor:pointer;background:rgba(236,234,228,.28);"></button>
-            <button class="byg-car-dot" style="width:6px;height:6px;border-radius:50%;border:none;padding:0;cursor:pointer;background:rgba(236,234,228,.28);"></button>
-            <button class="byg-car-dot" style="width:6px;height:6px;border-radius:50%;border:none;padding:0;cursor:pointer;background:rgba(236,234,228,.28);"></button>
-            <button class="byg-car-dot" style="width:6px;height:6px;border-radius:50%;border:none;padding:0;cursor:pointer;background:rgba(236,234,228,.28);"></button>
-          </div>
+          <div id="byg-car-dots" style="display:flex; gap:7px; align-items:center;"></div>
           <div style="display:flex; gap:8px;">
-            <button id="byg-car-prev" style="all:unset;cursor:pointer;width:32px;height:32px;border:1px solid rgba(236,234,228,.18);display:flex;align-items:center;justify-content:center;color:rgba(236,234,228,.6);font-size:14px;transition:border-color .2s,color .2s;" onmouseover="this.style.borderColor='rgba(79,168,255,.5)';this.style.color='#4fa8ff'" onmouseout="this.style.borderColor='rgba(236,234,228,.18)';this.style.color='rgba(236,234,228,.6)'">&#8592;</button>
-            <button id="byg-car-next" style="all:unset;cursor:pointer;width:32px;height:32px;border:1px solid rgba(236,234,228,.18);display:flex;align-items:center;justify-content:center;color:rgba(236,234,228,.6);font-size:14px;transition:border-color .2s,color .2s;" onmouseover="this.style.borderColor='rgba(79,168,255,.5)';this.style.color='#4fa8ff'" onmouseout="this.style.borderColor='rgba(236,234,228,.18)';this.style.color='rgba(236,234,228,.6)'">&#8594;</button>
+            <button id="byg-car-prev" style="all:unset;cursor:pointer;width:32px;height:32px;border:1px solid rgba(236,234,228,.18);display:flex;align-items:center;justify-content:center;color:rgba(236,234,228,.6);font-size:14px;transition:border-color .2s,color .2s;">&#8592;</button>
+            <button id="byg-car-next" style="all:unset;cursor:pointer;width:32px;height:32px;border:1px solid rgba(236,234,228,.18);display:flex;align-items:center;justify-content:center;color:rgba(236,234,228,.6);font-size:14px;transition:border-color .2s,color .2s;">&#8594;</button>
           </div>
         </div>
 
@@ -294,32 +288,60 @@ permalink: /index.html
 
 <script>
 (function () {
-  var track = document.getElementById('byg-car-track');
-  var car   = document.getElementById('byg-car');
-  if (!track || !car) return;
+  var track    = document.getElementById('byg-car-track');
+  var car      = document.getElementById('byg-car');
+  var dotsWrap = document.getElementById('byg-car-dots');
+  var btnPrev  = document.getElementById('byg-car-prev');
+  var btnNext  = document.getElementById('byg-car-next');
+  if (!track || !car || !dotsWrap) return;
+
   var slides = track.querySelectorAll('.byg-car-slide');
-  var dots   = document.querySelectorAll('.byg-car-dot');
   var total  = slides.length;
   var cur    = 0;
   var timer;
 
+  // Generate dots from slide count — no hardcoding in HTML
+  var dots = [];
+  for (var i = 0; i < total; i++) {
+    var dot = document.createElement('button');
+    dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+    dot.style.cssText = 'width:6px;height:6px;border-radius:50%;border:none;padding:0;cursor:pointer;transition:background .2s,transform .2s;';
+    dotsWrap.appendChild(dot);
+    dots.push(dot);
+  }
+
+  // Hover states via JS listeners — no inline onmouseover
+  [btnPrev, btnNext].forEach(function (btn) {
+    btn.addEventListener('mouseenter', function () {
+      btn.style.borderColor = 'rgba(79,168,255,.5)';
+      btn.style.color = '#4fa8ff';
+    });
+    btn.addEventListener('mouseleave', function () {
+      btn.style.borderColor = 'rgba(236,234,228,.18)';
+      btn.style.color = 'rgba(236,234,228,.6)';
+    });
+  });
+
   function goTo(n) {
     cur = (n + total) % total;
-    var sw = slides[0].offsetWidth + 14;
-    track.style.transform = 'translateX(-' + (cur * sw) + 'px)';
+    // Use scrollWidth of track divided by total slides — no hardcoded gap
+    var slideW = track.scrollWidth / total;
+    track.style.transform = 'translateX(-' + (cur * slideW) + 'px)';
     dots.forEach(function (d, i) {
       d.style.background = i === cur ? '#4fa8ff' : 'rgba(236,234,228,.28)';
       d.style.transform  = i === cur ? 'scale(1.35)' : 'scale(1)';
     });
   }
 
-  document.getElementById('byg-car-prev').addEventListener('click', function () { clearInterval(timer); goTo(cur - 1); startAuto(); });
-  document.getElementById('byg-car-next').addEventListener('click', function () { clearInterval(timer); goTo(cur + 1); startAuto(); });
+  btnPrev.addEventListener('click', function () { clearInterval(timer); goTo(cur - 1); startAuto(); });
+  btnNext.addEventListener('click', function () { clearInterval(timer); goTo(cur + 1); startAuto(); });
   dots.forEach(function (d, i) { d.addEventListener('click', function () { clearInterval(timer); goTo(i); startAuto(); }); });
 
   function startAuto() { timer = setInterval(function () { goTo(cur + 1); }, 5000); }
   car.addEventListener('mouseenter', function () { clearInterval(timer); });
   car.addEventListener('mouseleave', startAuto);
+
+  goTo(0);
   startAuto();
 })();
 </script>
